@@ -54,7 +54,7 @@ class ApiPrestamoController extends Controller
                 //'id_libro'=>$detalles[$i]['id_libro'],
                 //'ISBN'=>$detalles[$i]['ISBN'],
                 //'fecha_prestamo'=>$detalles[$i]['fecha_prestamo'],
-                'estado-prestamo'=>$detalles[$i]['describe_estado'],
+                //'estado-prestamo'=>$detalles[$i]['describe_estado'],
                 'id_ejemplar'=>$detalles[$i]['id_ejemplar']
                 //'activo'=>$request->get('activo')
             ];
@@ -81,6 +81,8 @@ class ApiPrestamoController extends Controller
     public function show($id)
     {
         //
+        $prestamos=prestamos::where('estado-prestamo','=','1')->find($id);
+        return $prestamos;
     }
 
     /**

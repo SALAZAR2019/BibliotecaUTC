@@ -12,7 +12,7 @@ class Prestamos extends Model
     protected $primaryKey="id_prestamo";
     public $timestamps=false;
    
-
+    protected $with=['ejemplar'];
 
     protected $fillable=
     [
@@ -26,5 +26,7 @@ class Prestamos extends Model
         'describe_estado'
         
     ];
-
+    public function ejemplar(){
+        return $this-> belongsTo(ejemplares::class,'id_ejemplar');
+    }
 }

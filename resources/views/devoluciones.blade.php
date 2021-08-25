@@ -2,7 +2,7 @@
 @section('titulo','Devoluciones')
 @section('contenido')
 
-<div class="container" id="prestamo">
+<div class="container" id="prestamos">
     <div class="row">
         <div class="col-12">
             <h1>Devolucion de libros</h1>
@@ -11,7 +11,10 @@
     <div class="row">
         <div class="col-5">
             <div class="input-group">
-                <input type="text" name="" class="form-control" >
+                <input type="text" name="" class="form-control" v-model="buscar">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-success"  >Buscar</button>
+                </span>
             </div>
         </div>
     </div>
@@ -20,38 +23,76 @@
 			<div class="col-8">
 				<table class="table table-bordered">
 					<thead style="background: #ffffcc">
-						<th>ID</th>
-						<th>ISBN</th>
-						<th width="15%">TITULO</th>
-						<th width="15%">ESTADO</th>
+						<th width="15%">ID PRESTAMO</th>
+						<th width="15%">FOLIO</th>
+						<th width="15%">USUARIO</th>
+						<th width="15%">EJEMPLAR</th>
+						<th width="15%">LIBRO</th>
 						<th width="15%">OPCIONES</th>
 					</thead>
 					<tbody>
-						<tr v-for="(v,index) in prestamos">
+						<tr v-for="(v,index) in filtroPrestamos">
+							<td>@{{v.id_prestamo}}</td>
+							<td>@{{v.folio}}</td>
+							<td>@{{v.id_usuario}}</td>
 							<td>@{{v.id_ejemplar}}</td>
-							<td>@{{v.id_libro}}</td>
-							<td>@{{v.codigo}}</td>
-							<td>@{{v.titulo}}</td>
-							<td><span class="btn btn-bg" @click="eliminarLibro(index)">eliminar</span></td>
+							<td>@{{v.ejemplar.libros.titulo}}</td>
+							<td>
+								<span class="btn btn-outline-primary" @click="dev(v.id_prestamo)"><i class="fa fa-edit"></i></span>
+								
+							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			<div class="col-4">
-				<div>
-				<span class="input-group-btn">
-                    <button type="button" class="btn btn-success" >Agregar</button>
-                </span>
-				</div>
-			</div>
+
 	</div>
-	<div class="row">
-		<div class="col-4">
-			<span class="input-group-btn">
-				<button class="btn btn-success" @click="prestamo" value="Actualizar" onclick="location.reload()">Realizar prestamo</button>
-			</span>
-		</div>
-	</div>
+<!-- Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="add_devolucion">
+    <div class="modal-dialog modal-lg " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" v-if="editar">Editando</h4>
+        <h4 class="modal-title" v-if="!editar">Guardar Nuevo</h4>
+       
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="Salir()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      </div>
+      <!-- Elementos del body -->
+ 
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <label>Tipo de usuario</label>
+                    <input type="text" name="" placeholder="Ingrese tipo de usuarios" class="form-control" v-model="id_ejemplar">
+                    <center><label>Activar</label></center>
+                    <input type="checkbox" placeholder="activo" v-model="activo" class="form-control">
+                </div>
+              </div>  
+              <br>
+          </div>
+
+
+
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary" v-if="editar">Actualizar</button>
+
+                  <button type="submit" class="btn btn-outline-success"  v-on:click="devolver">Guardar</button>
+          
+                  <button type="submit" class="btn btn-warning" @click="Salir()">Cancelar</button>
+                </div>
+     
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 @endsection
 @push('scripts')

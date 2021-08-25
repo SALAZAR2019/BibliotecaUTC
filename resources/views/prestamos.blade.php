@@ -40,13 +40,6 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="col-4">
-				<div>
-				<span class="input-group-btn">
-                    <button type="button" class="btn btn-success" >Agregar</button>
-                </span>
-				</div>
-			</div>
 	</div>
 	<div class="row">
 		<div class="col-4">

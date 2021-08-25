@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Prestamos;
+use App\Models\devoluciones;
 
 class ApiDevolucionesController extends Controller
 {
@@ -27,6 +28,11 @@ class ApiDevolucionesController extends Controller
     public function store(Request $request)
     {
         //
+        $devolucion=new devoluciones;
+        
+        $devolucion->id_ejemplar=$request->get('id_ejemplar');
+        $devolucion->save();
+        
     }
 
     /**
