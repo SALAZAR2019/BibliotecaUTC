@@ -1,7 +1,8 @@
 	var route = document.querySelector("[name=route]").value;
 	var UrlPre=route + '/apiPrestamo';
 	var Urldev=route + '/apidevolucion';
-
+	function init()
+	{
 	new Vue({
 		http:{
 			headers:{
@@ -18,7 +19,7 @@
 			nom:'hola',
 			folio:'',
 			id_ejemplar:'',
-			apellido_p:'',
+			id_prestamo:'',
     		apellido_m:'',
     		curp:'',
     		direccion:'',
@@ -43,14 +44,14 @@
 				this.$http.get(UrlPre)
 				.then(function(json){
 					this.prestamos=json.data;
-                    console.log(json);
+                    
 				});
 			},
 			getDev:function(){
 				this.$http.get(Urldev)
 				.then(function(json){
 					this.devoluciones=json.data;
-                    console.log(json);
+                   
 				});
 			},
 			
@@ -74,7 +75,9 @@
 				this.id_rol='';
 				
 
-				$('#add_usuarios').modal('hide');
+				$('#add_devolucion').modal('hide');
+
+				//location.reload();
 			},
 
 			dev:function(id){
@@ -83,6 +86,7 @@
 				.then(function(json){
 				this.folio=json.data.folio;
 				this.id_ejemplar=json.data.id_ejemplar;
+				this.id_prestamo=json.data.id_prestamo;
 				this.id_auxi=json.data.id_tipo;	
 				
 					$('#add_devolucion').modal('show');
@@ -92,16 +96,17 @@
 				var dev={
 
 					id_ejemplar:this.id_ejemplar,
+					folio:this.folio,
+					id_prestamo:this.id_prestamo
 					//activo:this.activo,
 					
 				};
 				this.$http.post(Urldev, dev)
 				.then(function(json){
 					this.getDev();
-					this.Salir();
+					//location.reload();
 				});
-				
-				
+				this.Salir();
 			},
 
 			
@@ -110,9 +115,12 @@
 		filtroPrestamos:function(){
 			return this.prestamos.filter((pre)=>{
 				return pre.folio.match(this.buscar.trim())||
-				pre.folio.toLowerCase().match(this.buscar.trim().toLowerCase());
+				pre.ejemplar.libros.titulo.toLowerCase().match(this.buscar.trim().toLowerCase());
+				
 			});
 		}
 	}
 
 });
+}
+window.onload=init;

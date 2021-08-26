@@ -64,7 +64,7 @@ new Vue({
 
 			})
 		},
-	
+
 		// fin de getProducto
 
 		eliminarLibro:function(id){
@@ -77,15 +77,14 @@ new Vue({
 		},
 		
 		prestamo:function(){
+			
 			var detalles2 = [];
 
 			for (var i = 0; i < this.prestamos.length; i++) {
 				detalles2.push({
 					id_libro:this.prestamos[i].id_libro,
-					ISBN:this.prestamos[i].ISBN,
 					titulo:this.prestamos[i].titulo,
 					describe_estado:this.prestamos[i].describe_estado,
-					activo:this.prestamos[i].activo,
 					id_ejemplar:this.prestamos[i].id_ejemplar
 					
 				})
@@ -94,7 +93,6 @@ new Vue({
 			
 			var unprestamo = {
 				folio:this.folio,
-
 				fecha_prestamo:this.fecha_prestamo,
 				detalles:detalles2
 			}

@@ -26,7 +26,7 @@ class ApiPrestamoController extends Controller
         //->groupBy('b.folio')
         //->get();
         //return $prestamos;
-        return $prestamos=Prestamos::all();
+        return Prestamos::where("estado_prestamo",'=','1')->select('*')->get();
 
     }
 
@@ -53,7 +53,7 @@ class ApiPrestamoController extends Controller
                 'folio'=>$request->get('folio'),
                 //'id_libro'=>$detalles[$i]['id_libro'],
                 //'ISBN'=>$detalles[$i]['ISBN'],
-                //'fecha_prestamo'=>$detalles[$i]['fecha_prestamo'],
+                'fecha_prestamo'=>$request->get('fecha_prestamo'),
                 //'estado-prestamo'=>$detalles[$i]['describe_estado'],
                 'id_ejemplar'=>$detalles[$i]['id_ejemplar']
                 //'activo'=>$request->get('activo')
@@ -81,7 +81,7 @@ class ApiPrestamoController extends Controller
     public function show($id)
     {
         //
-        $prestamos=prestamos::where('estado-prestamo','=','1')->find($id);
+        $prestamos=prestamos::where('estado_prestamo','=','1')->find($id);
         return $prestamos;
     }
 

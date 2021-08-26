@@ -11,9 +11,10 @@
     <div class="row">
         <div class="col-5">
             <div class="input-group">
-                <input type="text" name="" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()">
+				<input id="caja1" type="text" name="caja1" class="form-control" onkeyup="verificar(this.value);">
+                <input id="caja2" type="text" name="caja2" class="form-control" v-model="codigo" ref="buscar" onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
                 <span class="input-group-btn">
-                    <button type="button" class="btn btn-success" @click="getLibros()" >Agregar</button>
+                    <button id="btnEnviar" class="btn btn-success" type="submit" disabled class="btn btn-success" @click="getLibros()" disabled>Agregar</button>
                 </span>
             </div>
         </div>
@@ -44,7 +45,7 @@
 	<div class="row">
 		<div class="col-4">
 			<span class="input-group-btn">
-				<button class="btn btn-success" @click="prestamo" value="Actualizar" onclick="location.reload()">Realizar prestamo</button>
+				<button class="btn btn-success" @click="prestamo" >Realizar prestamo</button>
 			</span>
 		</div>
 	</div>
@@ -53,5 +54,6 @@
 @push('scripts')
 	<script src="js/prestamo/prestamo.js"></script>
 	<script src="js/moment-with-locales.min.js"></script>
+	<script src="js/validar.js"></script>
 @endpush
 <input type="hidden" name="route" value="{{url('/')}}">

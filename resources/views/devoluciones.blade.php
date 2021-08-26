@@ -67,6 +67,7 @@
                   <div class="col-sm-4">
                     <label>Tipo de usuario</label>
                     <input type="text" name="" placeholder="Ingrese tipo de usuarios" class="form-control" v-model="id_ejemplar">
+                    <input type="text" name="" placeholder="Ingrese tipo de usuarios" class="form-control" v-model="id_prestamo">
                     <center><label>Activar</label></center>
                     <input type="checkbox" placeholder="activo" v-model="activo" class="form-control">
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Prestamos;
 use App\Models\devoluciones;
+use DB;
 
 class ApiDevolucionesController extends Controller
 {
@@ -31,6 +32,19 @@ class ApiDevolucionesController extends Controller
         $devolucion=new devoluciones;
         
         $devolucion->id_ejemplar=$request->get('id_ejemplar');
+        $devolucion->id_prestamo=$request->get('id_prestamo');
+        $activo=$request->get('id_ejemplar');
+        
+        DB::update("UPDATE ejemplares
+        SET activo='1'
+        where id_ejemplar='$activo'");
+
+        $pres=$request->get('id_prestamo');
+
+        DB::update("UPDATE prestamos
+        SET estado_prestamo='0'
+        where id_prestamo='$pres'");
+        
         $devolucion->save();
         
     }
