@@ -45,6 +45,11 @@ new Vue({
 			.then(function(json){
 				console.log(json);
 				// this.codigo='';
+				
+				if(json.data===""){
+					alert("el libro no se encuentra disponible");
+					this.codigo='';
+				}
 				var prestamo={'id_libro':json.data.id_libro,
 							'id_ejemplar':json.data.id_ejemplar,
 							'titulo':json.data.libros.titulo,
@@ -54,6 +59,7 @@ new Vue({
 							'codigo':json.data.codigo,
 							'prestado':json.data.prestado,
 							}
+
 				if (prestamo.id_ejemplar){
 					this.prestamos.push(prestamo);
 					
@@ -73,12 +79,12 @@ new Vue({
 		
 		foliarVenta:function(){
 			this.folio='VTA-' + moment().format('YYMMDDhmmss');
-
 		},
 		
 		prestamo:function(){
 			
 			var detalles2 = [];
+			var id_usuario = document.getElementById("id_usuario").value;
 
 			for (var i = 0; i < this.prestamos.length; i++) {
 				detalles2.push({
@@ -94,17 +100,20 @@ new Vue({
 			var unprestamo = {
 				folio:this.folio,
 				fecha_prestamo:this.fecha_prestamo,
-				detalles:detalles2
+				id_usuario:id_usuario,
+				detalles:detalles2,
+				
 			}
 			
 			console.log(unprestamo);
 			
 			this.$http.post(urlPres,unprestamo)
 			.then(function(json){
-				console.log(json.data);
+				alert("su prestamo se realizo su folio es :" + unprestamo.folio);
+				location.reload();
 			}).catch(function(json){
 				console.log(json.data);
-				location.reload();
+				
 			});
 			return true;
 			

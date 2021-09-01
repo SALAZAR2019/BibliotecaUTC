@@ -39,24 +39,22 @@ class ApiPrestamoController extends Controller
     public function store(Request $request)
     {
         //
-        //$prestamo=new Prestamo;
-        
-        //$prestamo->fecha_prestamo=$request->get('fecha_prestamo');
-
         $records=[];
 
         $detalles=$request->get('detalles');
+        $usuario=$request->get('id_usuario');
 
         for($i=0;$i<count($detalles);$i++)
         {
             $records[]=[
                 'folio'=>$request->get('folio'),
-                //'id_libro'=>$detalles[$i]['id_libro'],
-                //'ISBN'=>$detalles[$i]['ISBN'],
+                
+                'id_usuario'=>$usuario,
+
                 'fecha_prestamo'=>$request->get('fecha_prestamo'),
-                //'estado-prestamo'=>$detalles[$i]['describe_estado'],
+
                 'id_ejemplar'=>$detalles[$i]['id_ejemplar']
-                //'activo'=>$request->get('activo')
+
             ];
             $activo=$detalles[$i]['id_ejemplar'];
             DB::update("UPDATE ejemplares
@@ -64,10 +62,10 @@ class ApiPrestamoController extends Controller
                         where id_ejemplar='$activo'");
         }
         if($records!=null){
-            //$prestamo->save();
 
             Prestamos::insert($records);
         }
+        
         
 
     }

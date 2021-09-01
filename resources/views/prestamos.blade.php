@@ -1,23 +1,29 @@
 @extends('layout.master')
 @section('titulo','Prestamos')
 @section('contenido')
-
 <div class="container" id="prestamo">
     <div class="row">
         <div class="col-12">
             <h1>PRESTAMO DE LIBROS</h1>
         </div>
     </div>
-    <div class="row">
-        <div class="col-5">
+    <div class="row g-2">
             <div class="input-group">
-				<input id="caja1" type="text" name="caja1" class="form-control" onkeyup="verificar(this.value);">
-                <input id="caja2" type="text" name="caja2" class="form-control" v-model="codigo" ref="buscar" onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
-                <span class="input-group-btn">
+				<div class=" col-4 position-relative">
+				
+				<input id="id_usuario" type="text" name="id_usuario" class="form-control" onkeyup="verificar(this.value);">
+				</div>
+				<div class="col-4 position-relative">
+				
+                <input id="libro" type="text" name="libro" class="form-control" v-model="codigo" ref="buscar" onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
+				</div>
+				<div class="col-3 position-relative">
+				<span class="input-group-btn">
+
                     <button id="btnEnviar" class="btn btn-success" type="submit" disabled class="btn btn-success" @click="getLibros()" disabled>Agregar</button>
                 </span>
+				</div>
             </div>
-        </div>
     </div>
     <hr>
     <div class="row">
@@ -42,6 +48,7 @@
 				</table>
 			</div>
 	</div>
+	<hr>
 	<div class="row">
 		<div class="col-4">
 			<span class="input-group-btn">
