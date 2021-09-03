@@ -81,5 +81,6 @@ class ApiDevolucionesController extends Controller
     public function destroy($id)
     {
         //
+        
     }
 }

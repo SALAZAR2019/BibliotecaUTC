@@ -21,7 +21,7 @@
     <hr>
     <div class="row">
 			<div class="col-8">
-				<table class="table table-bordered">
+				<table id="tabla-dev" class="table table-bordered">
 					<thead style="background: #ffffcc">
 						<th width="15%">ID PRESTAMO</th>
 						<th width="15%">FOLIO</th>
@@ -39,8 +39,10 @@
 							<td>@{{v.ejemplar.libros.titulo}}</td>
 							<td>
 								<span class="btn btn-outline-primary" @click="dev(v.id_prestamo)"><i class="fa fa-edit"></i></span>
-								
+                <button type="submit" class="btn btn-warning" @click="eliminarT()">Cancelar</button>
+
 							</td>
+              
 						</tr>
 					</tbody>
 				</table>
@@ -82,7 +84,7 @@
 
                   <button type="submit" class="btn btn-outline-success"  v-on:click="devolver">Guardar</button>
           
-                  <button type="submit" class="btn btn-warning" @click="Salir()">Cancelar</button>
+                  <button type="submit" class="btn btn-warning" @click="eliminarT()">Cancelar</button>
                 </div>
      
             </div>

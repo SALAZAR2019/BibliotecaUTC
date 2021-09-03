@@ -104,5 +104,6 @@ class ApiPrestamoController extends Controller
     public function destroy($id)
     {
         //
+        $prestamos=Prestamos::destroy($id);
     }
 }

@@ -3,6 +3,13 @@ var	route= document.querySelector("[name=route]").value;
 var urlLib = route + '/apiejem';
 var urlPres= route +'/apiPrestamo';
 
+var btnEnviar = document.getElementById("btnEnviar");
+var caja1 = document.getElementById("id_usuario");
+var caja2 = document.getElementById("libro");
+
+btnEnviar.disabled = true;
+caja2.disabled = true;
+
 function init()
 {
 new Vue({
@@ -27,6 +34,7 @@ new Vue({
 		id_libro:'',
 		id_ejemplar:'',
 		ISBN:'',
+		id_usuario:'',
 		titulo:'',
 		describe_estado:'',
 		activo:'',
@@ -45,9 +53,10 @@ new Vue({
 			.then(function(json){
 				console.log(json);
 				// this.codigo='';
-				
+
 				if(json.data===""){
-					alert("el libro no se encuentra disponible");
+					alert("Libro no se encuentra disponible");
+					document.getElementById("btnEnviar").disabled=true;
 					this.codigo='';
 				}
 				var prestamo={'id_libro':json.data.id_libro,
@@ -75,6 +84,11 @@ new Vue({
 
 		eliminarLibro:function(id){
 			this.prestamos.splice(id,1);
+			
+		},
+		eliminarLibros:function(id){
+			this.prestamos.splice(id);
+			this.id_usuario="";
 		}, 
 		
 		foliarVenta:function(){
@@ -94,6 +108,7 @@ new Vue({
 					id_ejemplar:this.prestamos[i].id_ejemplar
 					
 				})
+				
 			}
 			console.log(detalles2);
 			
@@ -106,16 +121,25 @@ new Vue({
 			}
 			
 			console.log(unprestamo);
-			
+			if(detalles2=="")
+			{
+				alert("no hay datos para hacer el prestamo");
+			}else{
+				alert("se ha realizado su prestamo su folio es :"+unprestamo.folio);
+				//location.reload();
+			}
+
 			this.$http.post(urlPres,unprestamo)
 			.then(function(json){
-				alert("su prestamo se realizo su folio es :" + unprestamo.folio);
-				location.reload();
+				this.eliminarLibros();
+				this.foliarVenta();
+				this.id_usuario='';
+				document.getElementById("libro").disabled=true;
 			}).catch(function(json){
-				console.log(json.data);
-				
+
 			});
 			return true;
+			
 			
 
 

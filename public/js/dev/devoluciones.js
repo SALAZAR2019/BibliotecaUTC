@@ -55,6 +55,7 @@
 				});
 			},
 			
+			
 			showModal:function(){
 				$('#add_devolucion').modal('show');
 			},
@@ -76,7 +77,7 @@
 				
 
 				$('#add_devolucion').modal('hide');
-
+				
 				//location.reload();
 			},
 
@@ -98,17 +99,15 @@
 					id_ejemplar:this.id_ejemplar,
 					folio:this.folio,
 					id_prestamo:this.id_prestamo
-					//activo:this.activo,
+					
 					
 				};
 				this.$http.post(Urldev, dev)
 				.then(function(json){
-					this.getDev();
-					//location.reload();
+					this.getPre();
 				});
 				this.Salir();
 			},
-
 			
 	},
 	computed:{

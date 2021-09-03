@@ -11,7 +11,7 @@
             <div class="input-group">
 				<div class=" col-4 position-relative">
 				
-				<input id="id_usuario" type="text" name="id_usuario" class="form-control" onkeyup="verificar(this.value);">
+				<input id="id_usuario" type="text" name="id_usuario" v-model="id_usuario" class="form-control" onkeyup="verificar(this.value);">
 				</div>
 				<div class="col-4 position-relative">
 				
@@ -28,7 +28,7 @@
     <hr>
     <div class="row">
 			<div class="col-8">
-				<table class="table table-bordered">
+				<table id="table" class="table table-bordered">
 					<thead style="background: #ffffcc">
 						<th>ID</th>
 						<th>ISBN</th>

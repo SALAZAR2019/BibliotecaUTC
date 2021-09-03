@@ -12,6 +12,7 @@ function verificar2(valor) {
     document.getElementById("btnEnviar").disabled=false;
   } else {
       btnEnviar.disabled = true;
+      document.getElementById("btnEnviar").disabled=true;
   }
 }
 
@@ -20,11 +21,10 @@ function verificar(valor) {
   	caja2.style.background = "#FFFFFF";
     caja2.disabled = false
     document.getElementById("libro").disabled=false;
-  } else {
+  }else{
     caja2.style.background = "grey";
     caja2.disabled = true;
     btnEnviar.disabled = true;
     document.getElementById("libro").disabled=true;
   }
-   
 }
