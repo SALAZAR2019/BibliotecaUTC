@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Prestamos;
-use App\Models\devoluciones;
-use DB;
+use App\Models\Usuarios;
 
-class ApiDevolucionesController extends Controller
+class ApiUsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +15,7 @@ class ApiDevolucionesController extends Controller
     public function index()
     {
         //
-        return $prestamos=Prestamos::all();
+        return $usuarios=Usuarios::all();
     }
 
     /**
@@ -29,26 +27,6 @@ class ApiDevolucionesController extends Controller
     public function store(Request $request)
     {
         //
-        $devolucion=new devoluciones;
-        
-        $devolucion->id_ejemplar=$request->get('id_ejemplar');
-        $devolucion->id_prestamo=$request->get('id_prestamo');
-        $devolucion->fecha_regresolibro=$request->get('fecha_prestamo');
-        $devolucion->fecha_actual=$request->get('fecha_actual');
-        $activo=$request->get('id_ejemplar');
-        
-        DB::update("UPDATE ejemplares
-        SET activo='1'
-        where id_ejemplar='$activo'");
-
-        $pres=$request->get('id_prestamo');
-
-        DB::update("UPDATE prestamos
-        SET estado_prestamo='0'
-        where id_prestamo='$pres'");
-        
-        $devolucion->save();
-        
     }
 
     /**
@@ -60,6 +38,8 @@ class ApiDevolucionesController extends Controller
     public function show($id)
     {
         //
+        $usuarios=Usuarios::where('activo','=','1')->find($id);
+        return $usuarios;
     }
 
     /**
@@ -83,6 +63,5 @@ class ApiDevolucionesController extends Controller
     public function destroy($id)
     {
         //
-        
     }
 }

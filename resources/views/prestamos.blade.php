@@ -10,7 +10,6 @@
     <div class="row g-2">
             <div class="input-group">
 				<div class=" col-4 position-relative">
-				
 				<input id="id_usuario" type="text" name="id_usuario" v-model="id_usuario" class="form-control" onkeyup="verificar(this.value);">
 				</div>
 				<div class="col-4 position-relative">

@@ -41,7 +41,7 @@ class ApiPrestamoController extends Controller
         //
         $records=[];
 
-        $detalles=$request->get('detalles');
+        $detalles=$request->get('newdetalles');
         $usuario=$request->get('id_usuario');
 
         for($i=0;$i<count($detalles);$i++)

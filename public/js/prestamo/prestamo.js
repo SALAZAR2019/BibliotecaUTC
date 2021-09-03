@@ -80,7 +80,7 @@ new Vue({
 			})
 		},
 
-		// fin de getProducto
+		// fin de get Libros
 
 		eliminarLibro:function(id){
 			this.prestamos.splice(id,1);
@@ -98,6 +98,8 @@ new Vue({
 		prestamo:function(){
 			
 			var detalles2 = [];
+			var newdetalles =[];
+			var midet=[];
 			var id_usuario = document.getElementById("id_usuario").value;
 
 			for (var i = 0; i < this.prestamos.length; i++) {
@@ -108,41 +110,55 @@ new Vue({
 					id_ejemplar:this.prestamos[i].id_ejemplar
 					
 				})
-				
+				var set =new Set(detalles2.map(JSON.stringify))
+				var newdetalles = Array.from(set).map(JSON.parse);
 			}
+			/*
 			console.log(detalles2);
-			
+			console.log(JSON.stringify(newdetalles));
+			console.log(newdetalles);
+			*/
 			var unprestamo = {
 				folio:this.folio,
 				fecha_prestamo:this.fecha_prestamo,
 				id_usuario:id_usuario,
-				detalles:detalles2,
+				newdetalles:newdetalles,
 				
 			}
-			
 			console.log(unprestamo);
-			if(detalles2=="")
+			if(newdetalles=="")
 			{
 				alert("no hay datos para hacer el prestamo");
-			}else{
-				alert("se ha realizado su prestamo su folio es :"+unprestamo.folio);
-				//location.reload();
 			}
-
-			this.$http.post(urlPres,unprestamo)
-			.then(function(json){
-				this.eliminarLibros();
-				this.foliarVenta();
-				this.id_usuario='';
-				document.getElementById("libro").disabled=true;
-			}).catch(function(json){
-
-			});
-			return true;
 			
-			
+			if(detalles2.length!=newdetalles.length){
+				var p=confirm('se eliminaran los libros repetidos de aceptar para continuar');
+				if(p==true){
+					this.$http.post(urlPres,unprestamo)
+					.then(function(json){
+					alert("se ha realizado su prestamo su folio es :"+unprestamo.folio);
+					this.eliminarLibros();
+					this.foliarVenta();
+					this.id_usuario='';
+					document.getElementById("libro").disabled=true;
+						}).catch(function(json){
 
-
+					});
+					return true;
+				}
+			}else{
+				this.$http.post(urlPres,unprestamo)
+				.then(function(json){
+					this.eliminarLibros();
+					this.foliarVenta();
+					this.id_usuario='';
+					alert("se ha realizado su prestamo su folio es :"+unprestamo.folio);
+					document.getElementById("libro").disabled=true;
+				}).catch(function(json){
+	
+				});
+				return true;
+			}
 		}
 	},
 

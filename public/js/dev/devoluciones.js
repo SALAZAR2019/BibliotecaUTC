@@ -20,18 +20,12 @@
 			folio:'',
 			id_ejemplar:'',
 			id_prestamo:'',
-    		apellido_m:'',
-    		curp:'',
-    		direccion:'',
-    		correo:'',
-    		telefono:'',
-    		usser:'',
-    		password:'',
-    		activo:'',
-    		id_rol:'',
-			id_auxi:'',
-			editar:true
-			
+    		id_usuario:'',
+			titulo:'',
+			id_libro:'',
+			fecha_prestamo:'',
+			editar:true,
+			fecha_actual:moment().format('YYYY-MM-DD') //almacena cantidades.
 			
 		},
 		created:function(){
@@ -64,16 +58,10 @@
 				this.editar=false;
 
 				this.id_ejemplar='';
-				this.apellido_p='';
-				this.apellido_m='';
-				this.curp='';
-				this.direccion='';
-				this.correo='';
-				this.telefono='';
-				this.usser='';
-				this.password='';
-				this.activo='';
-				this.id_rol='';
+				this.id_libro='';
+				this.id_prestamo='';
+				this.fecha_prestamo='';
+				this.fecha_actual='';
 				
 
 				$('#add_devolucion').modal('hide');
@@ -82,13 +70,16 @@
 			},
 
 			dev:function(id){
-				//this.editar=true;
 				this.$http.get(UrlPre +'/'+ id)
 				.then(function(json){
 				this.folio=json.data.folio;
 				this.id_ejemplar=json.data.id_ejemplar;
 				this.id_prestamo=json.data.id_prestamo;
-				this.id_auxi=json.data.id_tipo;	
+				this.id_usuario=json.data.id_usuario;
+				this.id_libro=json.data.id_libro;
+				this.titulo=json.data.ejemplar.libros.titulo;
+				this.fecha_prestamo=json.data.fecha_prestamo;
+				this.fecha_actual=this.fecha_actual;
 				
 					$('#add_devolucion').modal('show');
 				});
@@ -98,7 +89,9 @@
 
 					id_ejemplar:this.id_ejemplar,
 					folio:this.folio,
-					id_prestamo:this.id_prestamo
+					id_prestamo:this.id_prestamo,
+					fecha_prestamo:this.fecha_prestamo,
+					fecha_actual:this.fecha_actual
 					
 					
 				};
