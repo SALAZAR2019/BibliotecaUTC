@@ -1,26 +1,25 @@
 @extends('layout.master')
 @section('titulo','Devoluciones')
 @section('contenido')
-
 <div class="container" id="prestamos">
     <div class="row">
-        <div class="col-12">
-            <h1>Devolucion de libros</h1>
-        </div>
+      <div class="col-12">
+         <h1>Devolucion de libros</h1>
+      </div>
     </div>
     <div class="row g-2">
-        <div class="col-5">
-            <div class="input-group">
-              <div class="col-6 position-relative">
-                <input type="text" name="" class="form-control" v-model="buscar">
-              </div>
-              <div class="col-3 position-relative">
-                <span class="input-group-btn">
-                  <button type="button" class="btn btn-success"  >Buscar</button>
-                </span>
-              </div>
-            </div>
+      <div class="col-6">
+        <div class="input-group">
+          <div class="col-6 position-relative">
+            <input type="text" name="" class="form-control" v-model="buscar">
+          </div>
+          <div class="col-3 position-relative">
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-success"  >Buscar</button>
+            </span>
+          </div>
         </div>
+      </div>
     </div>
     <hr>
     <div class="row">
@@ -46,60 +45,53 @@
 							<td>
 								<span class="btn btn-outline-primary" @click="dev(v.id_prestamo)"><i class="fa fa-edit"></i></span>
 							</td>
-              
 						</tr>
 					</tbody>
 				</table>
 			</div>
-
 	</div>
-<!-- Modal -->
-<div class="modal fade" tabindex="-1" role="dialog" id="add_devolucion">
+  <!-- Modal -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="add_devolucion">
     <div class="modal-dialog modal-lg " role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="Salir()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-
-      </div>
-      <!-- Elementos del body -->
- 
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-sm-4">
-                    <label>Nombre</label>
-                    <input type="text" name="" placeholder="Ingrese su nombre" class="form-control" v-model="id_ejemplar">
-                    <label>Apellido Paterno</label>
-                    <input type="text" name="" placeholder="Ingrese su apellido paterno" class="form-control" v-model="id_prestamo">
-                    <label>Curp</label>
-                    <input type="text" name="" placeholder="Ingrese su curp" class="form-control" v-model="titulo">
-                    <label>Dirección</label>
-                    <input type="text" name="" placeholder="Ingrese su direccion" class="form-control" v-model="id_usuario">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="Salir()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+              <!-- Elementos del body -->
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <label>ID EJEMPLAR</label>
+                            <input type="text" name="" placeholder="Ingrese su nombre" class="form-control" v-model="id_ejemplar">
+                          <label>ID DEL PRESTAMO</label>
+                            <input type="text" name="" placeholder="Ingrese su apellido paterno" class="form-control" v-model="id_prestamo">
+                          <label>TITULO</label>
+                            <input type="text" name="" placeholder="Ingrese su curp" class="form-control" v-model="titulo">
+                          <label>ID USUARIO</label>
+                            <input type="text" name="" placeholder="Ingrese su direccion" class="form-control" v-model="id_usuario">
+                        </div>
+                        <div class="col-sm-4">
+                          <label>fecha del prestamo</label>
+                          <input type="text" name="" placeholder="Ingrese su nombre" class="form-control" v-model="fecha_prestamo">
+                          <label>fecha Actual</label>
+                          <input type="text" name="" placeholder="Ingrese su nombre" class="form-control" v-model="fecha_actual">        
+                        </div>
+                      </div>  
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-outline-success"  v-on:click="devolver">Guardar</button>
+                    </div>
                   </div>
-                  <div class="col-sm-4">
-                  <label>fecha del prestamo</label>
-                  <input type="text" name="" placeholder="Ingrese su nombre" class="form-control" v-model="fecha_prestamo">
-                  <label>fecha Actual</label>
-                  <input type="text" name="" placeholder="Ingrese su nombre" class="form-control" v-model="fecha_actual">
-                    
-                  </div>
-                </div>  
-              </div>
-
-              <div class="modal-footer">
-                  <button type="submit" class="btn btn-outline-success"  v-on:click="devolver">Guardar</button>
                 </div>
-     
+              </div>
             </div>
-           </div>
           </div>
-         </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 @endsection
 @push('scripts')

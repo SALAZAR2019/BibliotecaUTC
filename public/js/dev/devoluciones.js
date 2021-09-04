@@ -24,8 +24,7 @@
 			titulo:'',
 			id_libro:'',
 			fecha_prestamo:'',
-			editar:true,
-			fecha_actual:moment().format('YYYY-MM-DD') //almacena cantidades.
+			fecha_actual:moment().format('YYYY-MM-DD') //almacena fecha.
 			
 		},
 		created:function(){
@@ -55,23 +54,22 @@
 			},
 
 			Salir:function(){
-				this.editar=false;
+
 
 				this.id_ejemplar='';
 				this.id_libro='';
 				this.id_prestamo='';
 				this.fecha_prestamo='';
-				this.fecha_actual='';
 				
 
 				$('#add_devolucion').modal('hide');
 				
-				//location.reload();
 			},
 
 			dev:function(id){
 				this.$http.get(UrlPre +'/'+ id)
 				.then(function(json){
+
 				this.folio=json.data.folio;
 				this.id_ejemplar=json.data.id_ejemplar;
 				this.id_prestamo=json.data.id_prestamo;
@@ -93,7 +91,6 @@
 					fecha_prestamo:this.fecha_prestamo,
 					fecha_actual:this.fecha_actual
 					
-					
 				};
 				this.$http.post(Urldev, dev)
 				.then(function(json){
@@ -108,11 +105,9 @@
 			return this.prestamos.filter((pre)=>{
 				return pre.folio.match(this.buscar.trim())||
 				pre.ejemplar.libros.titulo.toLowerCase().match(this.buscar.trim().toLowerCase());
-				
 			});
 		}
 	}
-
 });
 }
 window.onload=init;

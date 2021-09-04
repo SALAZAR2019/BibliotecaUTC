@@ -36,14 +36,12 @@ new Vue({
 		ISBN:'',
 		id_usuario:'',
 		titulo:'',
-		describe_estado:'',
 		activo:'',
 		pago:0,
 		tot:0,
 		
-		cantidades:[1,1,1,1,1,1,1],
 		folio:'',
-		fecha_prestamo:moment().format('YYYY-MM-DD') //almacena cantidades.
+		fecha_prestamo:moment().format('YYYY-MM-DD') //almacena fecha.
 	},
 
 	// area de metodos
@@ -51,8 +49,6 @@ new Vue({
 		getLibros:function(){
 			this.$http.get(urlLib + '/' + this.codigo)
 			.then(function(json){
-				console.log(json);
-				// this.codigo='';
 
 				if(json.data===""){
 					alert("Libro no se encuentra disponible");
@@ -62,9 +58,7 @@ new Vue({
 				var prestamo={'id_libro':json.data.id_libro,
 							'id_ejemplar':json.data.id_ejemplar,
 							'titulo':json.data.libros.titulo,
-							//'cantidades':1,
 							'ISBN':json.data.libros.ISBN,
-							'describe_estado':json.data.libros.describe_estado,
 							'codigo':json.data.codigo,
 							'prestado':json.data.prestado,
 							}
@@ -99,7 +93,7 @@ new Vue({
 			
 			var detalles2 = [];
 			var newdetalles =[];
-			var midet=[];
+
 			var id_usuario = document.getElementById("id_usuario").value;
 
 			for (var i = 0; i < this.prestamos.length; i++) {
@@ -113,11 +107,7 @@ new Vue({
 				var set =new Set(detalles2.map(JSON.stringify))
 				var newdetalles = Array.from(set).map(JSON.parse);
 			}
-			/*
-			console.log(detalles2);
-			console.log(JSON.stringify(newdetalles));
-			console.log(newdetalles);
-			*/
+
 			var unprestamo = {
 				folio:this.folio,
 				fecha_prestamo:this.fecha_prestamo,
@@ -125,7 +115,7 @@ new Vue({
 				newdetalles:newdetalles,
 				
 			}
-			console.log(unprestamo);
+
 			if(newdetalles=="")
 			{
 				alert("no hay datos para hacer el prestamo");
