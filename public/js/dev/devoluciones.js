@@ -94,6 +94,11 @@
 				};
 				this.$http.post(Urldev, dev)
 				.then(function(json){
+					swal({
+						text: "Se ha registrado la devolucion del libro",
+						icon: "success",
+
+					  })
 					this.getPre();
 				});
 				this.Salir();

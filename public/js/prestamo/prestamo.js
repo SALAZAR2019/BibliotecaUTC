@@ -51,7 +51,11 @@ new Vue({
 			.then(function(json){
 
 				if(json.data===""){
-					alert("Libro no se encuentra disponible");
+					swal({
+						text: "El libro no se encuentra disponible ",
+						icon: "warning",
+						buttons: ['OK'],
+					  })
 					document.getElementById("btnEnviar").disabled=true;
 					this.codigo='';
 				}
@@ -118,31 +122,50 @@ new Vue({
 
 			if(newdetalles=="")
 			{
-				alert("no hay datos para hacer el prestamo");
+				swal({
+					text: "No hay datos para realizar el prestamo",
+					icon: "warning",
+					buttons: ['OK'],
+				  })
 			}
-			
-			if(detalles2.length!=newdetalles.length){
-				var p=confirm('se eliminaran los libros repetidos de aceptar para continuar');
-				if(p==true){
-					this.$http.post(urlPres,unprestamo)
-					.then(function(json){
-					alert("se ha realizado su prestamo su folio es :"+unprestamo.folio);
-					this.eliminarLibros();
-					this.foliarVenta();
-					this.id_usuario='';
-					document.getElementById("libro").disabled=true;
-						}).catch(function(json){
 
-					});
-					return true;
-				}
+			else if(detalles2.length!=newdetalles.length){
+				swal({
+					title: "hay libros repetidos en el prestamo",
+					text: "si continua se tomara solo un libro en cuenta ¿desea continuar?",
+					icon: "warning",
+					buttons: true,
+					dangerMode: true,
+				  }).then((willDelete) => {
+					if (willDelete) {
+						this.$http.post(urlPres,unprestamo)
+						.then(function(json){
+						swal("se ha realizado su prestamo su folio es :"+unprestamo.folio, {
+							icon: "success",
+						});this.eliminarLibros();
+						this.foliarVenta();
+						this.id_usuario='';
+						document.getElementById("libro").disabled=true;
+							}).catch(function(json){
+	
+						});
+						return true;
+					}
+					else{
+						swal("revise los libros repetidos porfavor");
+					}
+				  });
 			}else{
 				this.$http.post(urlPres,unprestamo)
 				.then(function(json){
 					this.eliminarLibros();
 					this.foliarVenta();
 					this.id_usuario='';
-					alert("se ha realizado su prestamo su folio es :"+unprestamo.folio);
+					swal({
+						text: "Se ha realizado su prestamo \n su folio es:" + unprestamo.folio,
+						icon: "success",
+
+					  })
 					document.getElementById("libro").disabled=true;
 				}).catch(function(json){
 	
