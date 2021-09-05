@@ -14,8 +14,8 @@ class ControllerUser_login extends Controller
      */
     public function index()
     {
-        $users= User_login::all();
-        return response()->json($usuarios,200);
+        return $users= User_login::all();
+        
     }
 
     /**
