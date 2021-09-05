@@ -22,3 +22,9 @@ Route::view('dev', 'devoluciones');
 
 //Apis
 Route::apiResourse('apiUser','ControlerUser_login');
+Route::view('prestamo','prestamos');
+
+//controladores
+Route::apiResource('apiPrestamo','ApiPrestamoController');
+Route::apiResource('apiejem','ApiEjemplaresController');
+Route::apiResource('apidevolucion','ApiDevolucionesController');
