@@ -19,3 +19,6 @@ Route::get('/', function () {
 
 //vistas
 Route::view('dev', 'devoluciones');
+
+//Apis
+Route::apiResourse('apiUser','ControlerUser_login');
