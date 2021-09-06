@@ -22,9 +22,9 @@ apresiacion de datos
             <td>{{ $empleado -> correo}}</td>
             <td>Editar |
 
-            <form action="{{ url ('/empleado/'.$empleado->id ) }}" method="post">
-            @csrf 
-            {{ method_field('DELETE') }}
+            <form action="{{url('/empleado/'.$empleado->id_e)}}" method="post">
+            @csrf
+            @method('delete')
             <input type="submit" onclick="return confirm('¿Quieres borrar?')" value="borrar">
 
             </form>
