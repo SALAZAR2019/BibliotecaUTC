@@ -19,3 +19,9 @@ Route::get('/', function () {
 
 //vistas
 Route::view('dev', 'devoluciones');
+Route::view('prestamo','prestamos');
+
+//controladores
+Route::apiResource('apiPrestamo','ApiPrestamoController');
+Route::apiResource('apiejem','ApiEjemplaresController');
+Route::apiResource('apidevolucion','ApiDevolucionesController');
