@@ -229,6 +229,7 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
+<script src="js/sweetalert2.all.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 

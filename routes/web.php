@@ -20,7 +20,7 @@ Route::get('/', function () {
 //vistas
 Route::view('dev', 'devoluciones');
 Route::view('prestamo','prestamos');
-
+Route::view('user','Usuarios.user_login');
 
 
 //controladores
