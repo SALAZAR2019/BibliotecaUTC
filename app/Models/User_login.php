@@ -10,6 +10,7 @@ class User_login extends Model
     use HasFactory;
     protected $table="user_login";
     protected $primaryKey="id_userlogin";
+    public $timestamps = false;
 
     protected $fillable=[
         'nombres',
@@ -17,7 +18,8 @@ class User_login extends Model
         'rol_puesto',
         'usuario',
         'password',
-        'activo'
+        // 'activo'
+        
     ];
 
 }

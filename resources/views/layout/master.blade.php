@@ -64,7 +64,8 @@
           <img src="img/user.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{Session::get('ape')}}</a>
+          <a href="#" class="d-block">{{Session::get('nombre')}}</a>
+          <a href="#" class="d-block">{{Session::get('rol')}}</a>
         </div>
       </div>
 
@@ -84,7 +85,7 @@
 
             
             <ul class="nav nav-treeview">
-              @if(Session::get('denominacion') == "Bibliotecario" || Session::get('denominacion') == "Administrador" )
+              @if(Session::get('rol') == "Bibliotecario" || Session::get('rol') == "Administrador" )
               <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -95,13 +96,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{url('lector')}}" class="nav-link">
+                  <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registrar</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url('t')}}" class="nav-link">
+                  <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tipo</p>
                   </a>
@@ -109,17 +110,17 @@
               </ul>
             </li>
           @endif
-          @if(Session::get('denominacion') == "Bibliotecario" || Session::get('denominacion') == "Administrador" )
+          @if(Session::get('rol') == "Bibliotecario" || Session::get('rol') == "Administrador" )
               <li class="nav-item">
-                <a href="{{url('libros')}}" class="nav-link">
+                <a href="" class="nav-link">
                   <i class="nav-icon fas fa-book"></i>
                   <p>Libros</p>
                 </a>
               </li>
               @endif
-              @if(Session::get('denominacion') == "Administrador")  
+              @if(Session::get('rol') == "Administrador")  
             <li class="nav-item has-treeview">
-              <a href="{{url('usuario')}}" class="nav-link">
+              <a href="" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Uusarios
@@ -128,27 +129,27 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{url('usuario')}}" class="nav-link">
+                  <a href="{{url('user')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registrar</p>
                   </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a href="{{url('r')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Roles</p>
                   </a>
-                </li>
+                </li> -->
               </ul>
             </li>
             @endif
 
             </ul>
           </li>
-          @if(Session::get('denominacion') == "Bibliotecario") 
+          @if(Session::get('rol') == "Bibliotecario") 
           <li class="nav-header">SECCIÓN DE PRESTAMOS</li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="" class="nav-link">
               <i class="nav-icon fas fa-list-alt"></i>
               <p>
                 Prestamos
@@ -157,15 +158,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{url('prestamo')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registrar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{url('dev')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Pendientes</p>
+                  <p>Devoluciones</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -177,10 +178,10 @@
             </ul>
           </li>
           @endif
-          @if(Session::get('denominacion') == "Bibliotecario" || Session::get('denominacion') == "Administrador" )
+          @if(Session::get('rol') == "Bibliotecario" || Session::get('rol') == "Administrador" )
           <li class="nav-header">SESIÓN</li>
           <li class="nav-item">
-                <a href="{{url('salir')}}" class="nav-link">
+                <a href="{{url('logout')}}" class="nav-link">
                   <i class="nav-icon fas fa-home"></i>
                   <p>Salir</p>
                 </a>
@@ -229,6 +230,7 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
+<script src="js/sweetalert2.all.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 

@@ -27,6 +27,16 @@ class ControllerUser_login extends Controller
     public function store(Request $request)
     {
         //
+        $user = new User_login;
+        $user->nombres=$request->get('nombres');
+        $user->apellidos=$request->get('apellidos');
+        $user->rol_puesto=$request->get('rol_puesto');
+        $user->usuario=$request->get('usuario');
+        $user->password=$request->get('password');
+        // $user->activo=$request->get('activo');
+
+        $user->save();
+        
     }
 
     /**
@@ -37,7 +47,7 @@ class ControllerUser_login extends Controller
      */
     public function show($id)
     {
-        //
+        return $users = User_login::find($id);
     }
 
     /**
@@ -49,7 +59,18 @@ class ControllerUser_login extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $user = new User_login;
+        $user = User_login::find($id);
+
+        $user->nombres=$request->get('nombres');
+        $user->apellidos=$request->get('apellidos');
+        $user->rol_puesto=$request->get('rol_puesto');
+        $user->usuario=$request->get('usuario');
+        $user->password=$request->get('password');
+        // $user->activo=$request->get('activo');
+
+        $user->update();
+
     }
 
     /**
@@ -60,6 +81,6 @@ class ControllerUser_login extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user= User_login::destroy($id);
     }
 }
