@@ -51,9 +51,9 @@ new Vue
              this.apellidos='',
              this.rol_puesto='',
              this.usuario='',
-             this.password='',
-            //  this.activo=''
-             $('#add_user').modal('hide');
+             this.password='';
+            //  this.activo='',
+            $('#add_user').modal('hide');
 
          },
          addUser:function(){
@@ -63,11 +63,12 @@ new Vue
                 rol_puesto:this.rol_puesto,
                 usuario:this.usuario,
                 password:this.password,
-                // activo:this.activo,
+                //activo:this.activo,
 
-             };
+                };
              this.$http.post(urlUser, us)
              .then(function(json){
+                 this.Salir();
                  this.getUser();
                  Swal.fire({
                     type: 'success',
@@ -75,16 +76,15 @@ new Vue
                     showConfirmButton: false,
                     timer: 1900
                 });
-                 
-            }, function(reason){
+            },function(reason){
                 Swal.fire({
                   type: 'error',
                   title: 'Error',
-                  text: 'Algo salió mal',
-                  footer: 'Revise los valores ingresados'
+                  text: 'Campos vacios',
+                  footer: 'Llene todos los campos para continuar'
                 });
             });
-            this.Salir();
+
          }, //fin de agregar user
 
          
@@ -139,13 +139,28 @@ new Vue
 
          //eliminar user
          deleteUser:function(id){
-            var p=confirm('¿Esta seguro que desea eliminar?');
-            if(p==true)
-                this.$http.delete(urlUser +'/'+id)
-            .then(function(json){
-                this.getUser();
-                
-            });
+            swal({
+                title: "Se eliminara el usuario",
+                text: "Esta seguro de eliminar el usuario?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                    this.$http.delete(urlUser +'/'+id)
+                    .then(function(json){
+                        this.getUser();
+                        
+                    });
+                  swal("el usuario fue eliminado exitosamente", {
+                    icon: "success",
+                  });
+                } else {
+                  swal("el usuario no se ha eliminado");
+                }
+              });
+
         },
 
      }

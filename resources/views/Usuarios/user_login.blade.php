@@ -62,35 +62,60 @@
 
       			<!-- Elementos del body -->
       			<div class="modal-body">
-						<label>Escriba su nombre</label>
-        			<input type="text" placeholder="Nombre/s" v-model="nombres" class="form-control">
-        				<br>
-						<label>Escriba sus apellidos</label>
-        			<input type="text" placeholder="Apellidos" v-model="apellidos" class="form-control">
-        				<br>
+				  	<form class="needs-validation" novalidate>
+						<div class="form-row">
+							<div class="col-md-4 mb-3">
+								<label for="validationCustom01">Escriba su nombre</label>
+								<input type="text" placeholder="Nombre/s" class="form-control" id="validationCustom01" v-model="nombres" class="form-control" required>
+								<div class="valid-feedback">
+									ok
+								</div>
+							</div>
+							<div class="col-md-4 mb-3">
+								<label for="validationCustom02">Apellidos</label>
+								<input type="text" placeholder="Apellidos" class="form-control" id="validationCustom02" v-model="apellidos" class="form-control" required>
+								<div class="valid-feedback">
+									ok
+								</div>
+							</div>
+							<div class="col-md-4 mb-3">
+								<label for="validationCustom03">Last name</label>
+								<select class="form-control" id="validationCustom02" v-model="rol_puesto" Required>
+									<option>Administrador</option>
+									<option>Bibliotecario</option>
+								</select>	
+								<div class="valid-feedback">
+									ok
+								</div>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="col-md-6 mb-3">
+								<label for="validationCustom03">City</label>
+								<input type="text" placeholder="Usuario" class="form-control" id="validationCustom03" v-model="usuario" class="form-control" required>
+								<div class="invalid-feedback">
+									Ingrese usuario.
+								</div>
+							</div>
+							<div class="col-md-3 mb-3">
+								<label for="validationCustom04">State</label>
+								<input type="text" placeholder="Contraseña" class="form-control" id="validationCustom04" v-model="password" class="form-control" required>
+								<div class="invalid-feedback">
+									ingrese una contraseña
+								</div>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-success"  v-on:click="updateUser()" v-if="editar">Actualizar</button>
+						<button type="submit" class="btn btn-success" v-on:click="addUser()" v-if="!editar">Guardar</button>
+						<button type="submit" class="btn btn-warning" @click="Salir()">Cancelar</button>
+					</form>
+
 					<!-- <input type="text" placeholder="Rol" v-model="rol_puesto" class="form-control"> -->
-						<label>Seleccione un rol</label>
-						<select class="form-control" v-model="rol_puesto">
-            				<option>Administrador</option>
-							<option>Bibliotecario</option>
-        				</select>
-						<br>
-						<label>Ingrese un usuario</label>
-					<input type="text" placeholder="Usuario" v-model="usuario" class="form-control">
-						<br>
-						<label>Ingrese una contraseña</label>
-					<input type="text" placeholder="Contraseña" v-model="password" class="form-control">
 				
 					<!-- <label class="col-12 text-center">Activar</label>
 					<input type="checkbox" placeholder="activo" v-model="activo" class="form-control"> -->
       			</div>
       			<!-- Fin del body -->
-
-        		<div class="modal-footer">
-            		<button type="submit" class="btn btn-success"  v-on:click="updateUser()" v-if="editar">Actualizar</button>
-            		<button type="submit" class="btn btn-success" v-on:click="addUser()" v-if="!editar">Guardar</button>
-          			<button type="submit" class="btn btn-warning" @click="Salir()">Cancelar</button>
-		    	</div>
     		</div>
   		</div>
 	</div> <!--Fin Modal-->
@@ -101,6 +126,7 @@
 
 @push('scripts')
     <script src="js/users/user.js"></script>
+	<script src="js/validacion.js"></script>
 @endpush
 
 <input type="hidden" name="route" value="{{url('/')}}">
