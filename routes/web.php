@@ -21,7 +21,10 @@ Route::get('/', function () {
 Route::view('dev', 'devoluciones');
 Route::view('prestamo','prestamos');
 
+
+
 //controladores
+Route::apiResource('apiUser','ControllerUser_login');
 Route::apiResource('apiPrestamo','ApiPrestamoController');
 Route::apiResource('apiejem','ApiEjemplaresController');
 Route::apiResource('apidevolucion','ApiDevolucionesController');
