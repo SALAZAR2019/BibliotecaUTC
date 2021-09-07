@@ -24,8 +24,10 @@ class AccesoController extends Controller
         {
             $rol=$ingresar->rol_puesto;
             $nombre = $ingresar->nombres;
+            $ape=$ingresar->apellidos;
             Session::put('nombre', $nombre);
             Session::put('rol', $rol);
+            Session::put('ap',$ape);
 
             if ($rol == 'Bibliotecario'){
                 return redirect('prestamo');

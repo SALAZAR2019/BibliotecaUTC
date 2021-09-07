@@ -12,7 +12,7 @@
 
     <div class="row">
 			<div class="col-12">
-				<table id="table" class="table table-bordered">
+				<table id="table" class="table table-bordered table-responsive">
 					<thead style="background: #ffffcc">
 						<th width="15%">ID</th>
 						<th width="15%">NOMBRES</th>
