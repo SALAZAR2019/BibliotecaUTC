@@ -116,6 +116,7 @@ new Vue
             };
             this.$http.patch(urlUser + '/' + this.id_auxi, us)
             .then(function(json){
+                this.Salir();
                 this.getUser();
                 Swal.fire({
                     type: 'success',
@@ -126,13 +127,12 @@ new Vue
                  
             }, function(reason){
                 Swal.fire({
-                  type: 'error',
-                  title: 'Error',
-                  text: 'Algo salió mal',
-                  footer: 'Revise los valores ingresados'
+                    type: 'error',
+                    title: 'Error',
+                    text: 'Campos vacíos',
+                    footer: 'Llene todos los campos para continuar'
                 });
             });
-            this.Salir();
          },
 
 
@@ -140,8 +140,8 @@ new Vue
          //eliminar user
          deleteUser:function(id){
             swal({
-                title: "Se eliminara el usuario",
-                text: "Esta seguro de eliminar el usuario?",
+                title: "Se eliminará el usuario",
+                text: "Está seguro de eliminar el usuario?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -153,11 +153,11 @@ new Vue
                         this.getUser();
                         
                     });
-                  swal("el usuario fue eliminado exitosamente", {
+                  swal("El usuario fue eliminado exitosamente", {
                     icon: "success",
                   });
                 } else {
-                  swal("el usuario no se ha eliminado");
+                  swal("El usuario no se ha eliminado");
                 }
               });
 
