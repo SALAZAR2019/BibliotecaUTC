@@ -27,6 +27,13 @@ class ControllerUser_login extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nombres' =>'required',
+            'apellidos' => 'required',
+            'rol_puesto'=>'required',
+            'usuario'=>'required',
+            'password'=>'required'
+        ]);
         $user = new User_login;
         $user->nombres=$request->get('nombres');
         $user->apellidos=$request->get('apellidos');
