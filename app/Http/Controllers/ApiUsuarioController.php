@@ -26,7 +26,27 @@ class ApiUsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_usuario'=>'required',
+            'nombres'=>'required',
+            'apellido_p'=>'required',
+            'apellido_m'=>'required',
+            'direccion'=>'required',
+            'correo'=>'required',
+            'telefono'=>'required',
+            'id_tipo'=>'required'
+        ]);
+        $usuario= new Usuarios;
+        $usuario->id_usuario=$request->get('id_usuario');
+        $usuario->nombres=$request->get('nombres');
+        $usuario->apellido_p=$request->get('apellido_p');
+        $usuario->apellido_m=$request->get('apellido_m');
+        $usuario->direccion=$request->get('direccion');
+        $usuario->correo=$request->get('correo');
+        $usuario->telefono=$request->get('telefono');
+        $usuario->id_tipo=$request->get('id_tipo');
+
+        $usuario->save();
     }
 
     /**
@@ -51,7 +71,29 @@ class ApiUsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_usuario'=>'required',
+            'nombres'=>'required',
+            'apellido_p'=>'required',
+            'apellido_m'=>'required',
+            'direccion'=>'required',
+            'correo'=>'required',
+            'telefono'=>'required',
+            'id_tipo'=>'required'
+        ]);
+        $usuario= Usuarios::find($id);
+
+        $usuario->id_usuario=$request->get('id_usuario');
+        $usuario->nombres=$request->get('nombres');
+        $usuario->apellido_p=$request->get('apellido_p');
+        $usuario->apellido_m=$request->get('apellido_m');
+        $usuario->direccion=$request->get('direccion');
+        $usuario->correo=$request->get('correo');
+        $usuario->telefono=$request->get('telefono');
+        $usuario->id_tipo=$request->get('id_tipo');
+        $usuario->update();
+
+        
     }
 
     /**
@@ -62,6 +104,6 @@ class ApiUsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario=Usuarios::delete($id);
     }
 }
