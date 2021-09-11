@@ -1,13 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\EmpleadoController;
+use App\Models\Libro;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Storage;
 
-class ApiEmpleadoController extends Controller
+class ApiLibrosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,8 @@ class ApiEmpleadoController extends Controller
     public function index()
     {
         //
-        $datos['empleados']=EmpleadoController::paginate(2);
-        return view('empleado.index',$datos);
+        $datos['libros']=Libro::paginate(5);
+        return view('libro.index',$datos);
     }
 
     /**
@@ -29,7 +27,7 @@ class ApiEmpleadoController extends Controller
     public function create()
     {
         //
-        return view('empleado.create');
+        return view('libro.create');
     }
 
     /**
@@ -40,11 +38,20 @@ class ApiEmpleadoController extends Controller
      */
     public function store(Request $request)
     {
+        //
         $campos=[
-            'nombre'=>'required|string|max:200',
-            'apellidop'=>'required|string|max:200',
-            'apellidom'=>'required|string|max:200',
-            'correo'=>'required|email',
+            'ISBN'=>'required|string|max:200',
+            'titulo'=>'required|string|max:150',
+            'id_autor'=>'required|string|max:11',
+            'id_editorial'=>'required|string|max:11',         
+            'edicion'=>'required|string|max:80',
+            'id_carrera'=>'required|string|max:11',
+            'id_clasifidewey'=>'required|string|max:11',
+            'paginas'=>'required|string|max:20',
+            'ejemplar_total'=>'required|string|max:11',
+            'resenia'=>'required|string|max:900',
+            'ubicacion'=>'required|string|max:90',
+            'describe_estado'=>'required|string|max:900',
             'foto'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
         $mensaje=[
@@ -54,14 +61,14 @@ class ApiEmpleadoController extends Controller
         $this->validate($request, $campos, $mensaje);
 
         //$datosEmpleado = request() ->all();
-        $datosEmpleado = request()->except('_token');
+        $datosLibro = request()->except('_token');
 
         if($request->hasFile('foto')) {
-            $datosEmpleado['foto']=$request->file('foto')->store('uploads','public');
+            $datosLibro['foto']=$request->file('foto')->store('uploads','public');
         }
-        EmpleadoController::insert($datosEmpleado);
+        Libro::insert($datosLibro);
          //return response()->json($datosEmpleado);
-         return redirect('empleado')->with('mensaje','Empleado agregado con éxito');
+         return redirect('libro')->with('mensaje','Libro agregado con éxito');
     }
 
     /**
@@ -84,8 +91,8 @@ class ApiEmpleadoController extends Controller
     public function edit($id)
     {
         //
-        $empleado=EmpleadoController::findOrFail($id);
-        return view('empleado.edit', compact('empleado') );
+        $libro=Libro::findOrFail($id);
+        return view('libro.edit', compact('libro') );
     }
 
     /**
@@ -99,10 +106,18 @@ class ApiEmpleadoController extends Controller
     {
         //
         $campos=[
-            'nombre'=>'required|string|max:200',
-            'apellidop'=>'required|string|max:200',
-            'apellidom'=>'required|string|max:200',
-            'correo'=>'required|email',
+            'ISBN'=>'required|string|max:200',
+            'titulo'=>'required|string|max:150',
+            'id_autor'=>'required|string|max:11',
+            'id_editorial'=>'required|string|max:11',         
+            'edicion'=>'required|string|max:80',
+            'id_carrera'=>'required|string|max:11',
+            'id_clasifidewey'=>'required|string|max:11',
+            'paginas'=>'required|string|max:20',
+            'ejemplar_total'=>'required|string|max:11',
+            'resenia'=>'required|string|max:900',
+            'ubicacion'=>'required|string|max:90',
+            'describe_estado'=>'required|string|max:900',
         ];
         $mensaje=[
             'required'=>'El :attribute es requerido',
@@ -115,19 +130,19 @@ class ApiEmpleadoController extends Controller
         $this->validate($request, $campos, $mensaje);
 
 
-        $datosEmpleado= request()->except(['_token','_method']);
+        $datosLibro= request()->except(['_token','_method']);
 
         if($request->hasFile('foto')) {
-            $empleado=EmpleadoController::findOrFail($id);
-            Storage::delete('public/'.$empleado->foto);
-            $datosEmpleado['foto']=$request->file('foto')->store('uploads','public');
+            $libro=Libro::findOrFail($id);
+            Storage::delete('public/'.$libro->foto);
+            $datosLibro['foto']=$request->file('foto')->store('uploads','public');
         }
 
-        EmpleadoController::where('id_e','=',$id)->update($datosEmpleado);
+        Libro::where('id_libro','=',$id)->update($datosLibro);
 
-        $empleado=EmpleadoController::findOrFail($id);
+        $libro=Libro::findOrFail($id);
         //return view('empleado.edit', compact('empleado') );
-        return redirect('empleado')->with('mensaje','Empleado Modificado');
+        return redirect('libro')->with('mensaje','Libro Modificado');
     }
 
     /**
@@ -139,12 +154,10 @@ class ApiEmpleadoController extends Controller
     public function destroy($id)
     {
         //
-
-        $empleado=EmpleadoController::findOrFail($id);
-        if(Storage::delete('public/'.$empleado->foto)){
-        EmpleadoController::destroy($id);
+        $libro=Libro::findOrFail($id);
+        if(Storage::delete('public/'.$libro->foto)){
+        Libro::destroy($id);
         }      
-        return redirect('empleado')->with('mensaje','Empleado Borrado');
-       
+        return redirect('libro')->with('mensaje','Libro Borrado');
     }
 }
