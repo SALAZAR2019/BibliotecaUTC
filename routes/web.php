@@ -53,6 +53,6 @@ Route::post('entrada','AccesoController@validar');
 Route::get('logout', 'AccesoController@salir');
 
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
