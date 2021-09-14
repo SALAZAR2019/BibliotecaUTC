@@ -44,6 +44,9 @@ Route::apiResource('apiUser','ControllerUser_login');
 Route::apiResource('apiPrestamo','ApiPrestamoController');
 Route::apiResource('apiejem','ApiEjemplaresController');
 Route::apiResource('apidevolucion','ApiDevolucionesController');
+Route::apiResource('tipos','ApiTiposController');
+Route::apiResource('usuarios','ApiUsuarioController');
+
 
 //validación
 Route::post('entrada','AccesoController@validar');

@@ -66,6 +66,13 @@ class ControllerUser_login extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nombres' =>'required',
+            'apellidos' => 'required',
+            'rol_puesto'=>'required',
+            'usuario'=>'required',
+            'password'=>'required'
+        ]);
         // $user = new User_login;
         $user = User_login::find($id);
 

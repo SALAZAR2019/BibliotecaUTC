@@ -12,7 +12,7 @@
 
     <div class="row">
 			<div class="col-12">
-				<table id="table" class="table table-bordered">
+				<table id="table" class="table table-bordered table-responsive">
 					<thead style="background: #ffffcc">
 						<th width="15%">ID</th>
 						<th width="15%">NOMBRES</th>
@@ -72,14 +72,14 @@
 								</div>
 							</div>
 							<div class="col-md-4 mb-3">
-								<label for="validationCustom02">Apellidos</label>
+								<label for="validationCustom02">Escriba sus Apellidos</label>
 								<input type="text" placeholder="Apellidos" class="form-control" id="validationCustom02" v-model="apellidos" class="form-control" required>
 								<div class="valid-feedback">
 									ok
 								</div>
 							</div>
 							<div class="col-md-4 mb-3">
-								<label for="validationCustom03">Last name</label>
+								<label for="validationCustom03">Seleccione un rol</label>
 								<select class="form-control" id="validationCustom02" v-model="rol_puesto" Required>
 									<option>Administrador</option>
 									<option>Bibliotecario</option>
@@ -91,17 +91,17 @@
 						</div>
 						<div class="form-row">
 							<div class="col-md-6 mb-3">
-								<label for="validationCustom03">City</label>
+								<label for="validationCustom03">Usuario</label>
 								<input type="text" placeholder="Usuario" class="form-control" id="validationCustom03" v-model="usuario" class="form-control" required>
 								<div class="invalid-feedback">
 									Ingrese usuario.
 								</div>
 							</div>
 							<div class="col-md-3 mb-3">
-								<label for="validationCustom04">State</label>
+								<label for="validationCustom04">Contraseña</label>
 								<input type="text" placeholder="Contraseña" class="form-control" id="validationCustom04" v-model="password" class="form-control" required>
 								<div class="invalid-feedback">
-									ingrese una contraseña
+									Ingrese una contraseña
 								</div>
 							</div>
 						</div>
