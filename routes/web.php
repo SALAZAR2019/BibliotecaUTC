@@ -22,6 +22,7 @@ Route::view('dev', 'devoluciones');
 Route::view('prestamo','prestamos');
 Route::view('user','Usuarios.user_login');
 Route::view('login','login');
+Route::view('usuario','Usuarios.usuarios');
 
 
 //controladores
@@ -29,8 +30,8 @@ Route::apiResource('apiUser','ControllerUser_login');
 Route::apiResource('apiPrestamo','ApiPrestamoController');
 Route::apiResource('apiejem','ApiEjemplaresController');
 Route::apiResource('apidevolucion','ApiDevolucionesController');
-Route::apiResource('tipos','ApiTiposController');
-Route::apiResource('usuarios','ApiUsuarioController');
+Route::apiResource('apiTipos','ApiTiposController');
+Route::apiResource('ApiUsuario','ApiUsuarioController');
 
 
 //validación
