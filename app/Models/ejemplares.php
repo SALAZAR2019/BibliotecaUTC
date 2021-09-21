@@ -17,7 +17,7 @@ class ejemplares extends Model
     protected $fillable=
     [
         'id_ejemplar',
-        'codigo',
+        'ISBN',
         'prestado',
         'id_libro',
         'activo'
