@@ -3,6 +3,8 @@ var	route= document.querySelector("[name=route]").value;
 var urlLib = route + '/apiejem';
 var urlPres= route +'/apiPrestamo';
 
+var urlUser=route+'/usuarios';
+
 var btnEnviar = document.getElementById("btnEnviar");
 var caja1 = document.getElementById("id_usuario");
 var caja2 = document.getElementById("libro");
@@ -30,6 +32,7 @@ new Vue({
 		nombre:'QUE ONDA',
 		libros:[],
 		prestamos:[],
+		users:[],
 		codigo:'',
 		id_libro:'',
 		id_ejemplar:'',
@@ -77,12 +80,45 @@ new Vue({
 
 			})
 		},
+		getUser:function(){
+			this.$http.get(urlUser + '/' + this.id_usuario)
+			.then(function(json){
+				
+				if(json.data===""){
+					swal({
+						text: "No se encuentra usuario verifique de nuevo ",
+						icon: "warning",
+						buttons: ['OK'],
+					  })
+					//document.getElementById("btnEnviar").disabled=true;
+					this.id_usuario='';
+				}
+				var user={'id_usuario':json.data.id_usuario,
+							'nombres':json.data.nombres,
+							'correo':json.data.correo,
+							}
 
+				if (user.id_usuario){
+					this.users.push(user);
+					document.getElementById("id_usuario").disabled=true;
+					
+				}
+				console.log(json);
+				//this.codigo='';
+				//this.$refs.buscar.focus();
+
+			})
+		},
 		// fin de get Libros
 
 		eliminarLibro:function(id){
 			this.prestamos.splice(id,1);
 			
+		},
+		eliminarUser:function(id){
+			this.users.splice(id,1);
+			document.getElementById("id_usuario").disabled=false;
+			this.eliminarLibros();
 		},
 		eliminarLibros:function(id){
 			this.prestamos.splice(id);
