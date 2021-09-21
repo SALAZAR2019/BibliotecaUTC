@@ -16,13 +16,15 @@
 value="{{ isset($autor -> nom_autor)?$autor -> nom_autor:old('nom_autor') }}">
 </div>
 
-<div class="form-group">
+
+<!--<div class="form-group">
 <label for="activo"> ACTIVO </label>
 <input class="form-control" type="checkbox"  name="activo"  id="activo" 
-value="{{ isset($editorial -> activo)?$editorial->activo:old('activo')}}">
+value="{{ isset($autor -> activo)?$autor->activo:old('activo')}}">
 </div>
+-->
 
 
 <input class="btn btn-success" type="submit"  value="{{ $modo }} datos">
 
-<a href="{{ url('editorial/') }}" class="btn btn-primary">Regresar</a>
+<a href="{{ url('autor/') }}" class="btn btn-primary">Regresar</a>

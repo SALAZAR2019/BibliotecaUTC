@@ -86,6 +86,7 @@ class ApiAutoresController extends Controller
     public function update(Request $request, $id)
     {
         //
+
         $campos=[
             'nom_autor'=>'required|string|max:200',
             //'activo'=>'required',
