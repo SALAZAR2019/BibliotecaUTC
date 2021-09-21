@@ -91,8 +91,8 @@ class ApiLibrosController extends Controller
 
         ejemplares::insert($ejemplar);
         
-         return response()->json($ejemplar);
-        // return redirect('libro')->with('mensaje','Libro agregado con éxito');
+        //return response()->json($ejemplar);
+         return redirect('libro')->with('mensaje','Libro agregado con éxito');
     }
 
     /**

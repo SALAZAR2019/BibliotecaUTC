@@ -19,7 +19,7 @@ class ApiEjemplaresController extends Controller
     {
         //return ejemplares::all();
         $libros = DB::table('Libros as a')
-        ->join('ejemplares as b','a.id_libro','=','b.id_libro')
+        ->join('ejemplares as b','a.ISBN','=','b.ISBN')
         ->select('titulo','b.id_ejemplar')
         ->get();
         return $libros;

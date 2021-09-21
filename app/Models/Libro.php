@@ -10,12 +10,13 @@ class Libro extends Model
     use HasFactory;
 
     protected $table="libros";
-    protected $primaryKey="id_libro";
+    protected $primaryKey="ISBN";
     public $timestamps=false;
+    public $incrementing=false;
 
     protected $fillable=
     [
-        'id_libro',
+        //'id_libro',
         'ISBN',
         'titulo',
         'id_autor',
