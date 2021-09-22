@@ -22,6 +22,8 @@ value="{{ isset($libro -> ISBN)?$libro -> ISBN:old('ISBN') }}">
 value="{{ isset($libro -> titulo)?$libro->titulo:old('titulo')}}">
 </div>
 
+
+
 <div class="form-group">
 <label for="id_autor"> Autor </label>
 <input class="form-control" type="text"  name="id_autor"  id="id_autor" 

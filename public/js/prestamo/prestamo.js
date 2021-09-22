@@ -52,7 +52,7 @@ new Vue({
 		getLibros:function(){
 			this.$http.get(urlLib + '/' + this.codigo)
 			.then(function(json){
-
+				console.log(json);
 				if(json.data===""){
 					swal({
 						text: "El libro no se encuentra disponible ",
@@ -62,15 +62,15 @@ new Vue({
 					document.getElementById("btnEnviar").disabled=true;
 					this.codigo='';
 				}
-				var prestamo={'id_libro':json.data.id_libro,
+				var prestamo={'ISBN':json.data.ISBN,
 							'id_ejemplar':json.data.id_ejemplar,
 							'titulo':json.data.libros.titulo,
-							'ISBN':json.data.libros.ISBN,
+							//'ISBN':json.data.libros.ISBN,
 							'codigo':json.data.codigo,
 							'prestado':json.data.prestado,
 							}
 
-				if (prestamo.id_ejemplar){
+				if (prestamo.ISBN){
 					this.prestamos.push(prestamo);
 					
 				}
@@ -141,7 +141,8 @@ new Vue({
 					id_libro:this.prestamos[i].id_libro,
 					titulo:this.prestamos[i].titulo,
 					describe_estado:this.prestamos[i].describe_estado,
-					id_ejemplar:this.prestamos[i].id_ejemplar
+					id_ejemplar:this.prestamos[i].id_ejemplar,
+					ISBN:this.prestamos[i].ISBN,
 					
 				})
 				var set =new Set(detalles2.map(JSON.stringify))
