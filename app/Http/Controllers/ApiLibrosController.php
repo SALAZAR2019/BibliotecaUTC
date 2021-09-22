@@ -83,7 +83,8 @@ class ApiLibrosController extends Controller
             $ejemplar[]=[
 
                 //'id_ejemplar'=>$ejemplares,
-                'ISBN'=>$ISBN+$i,
+                'codigo'=>$ISBN+$i,
+                'ISBN'=>$ISBN,
                 
             ];
             
