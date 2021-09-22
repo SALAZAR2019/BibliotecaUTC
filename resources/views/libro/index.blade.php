@@ -18,9 +18,9 @@
 <table class="table table-light table-responsive">
     <thead class="thead-light">
         <tr>
-            <th>#</th>
-            <th>Foto</th>
+            
             <th>ISBN</th>
+            <th>FOTO</th>
             <th>Titulo</th>
             <th>Autor</th>
             <th>Editorial</th>
@@ -41,11 +41,10 @@
     <tbody>
         @foreach( $libros as $libro )
         <tr>
-            <td>{{ $libro -> id_libro}}</td>
+            <td>{{ $libro -> ISBN}}</td>
             <td>
                 <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$libro -> foto }}" height="100" width="200" alt="50"> 
             </td>
-            <td>{{ $libro -> ISBN }}</td>
             <td>{{ $libro -> titulo}}</td>
             <td>{{ $libro -> id_autor}}</td>
             <td>{{ $libro -> id_editorial}}</td>
@@ -61,11 +60,11 @@
             <td>{{ $libro -> activo}}</td>
             <td>
 
-            <a href="{{ url('/libro/'.$libro->id_libro.'/edit' ) }}" class="btn btn-warning" >
+            <a href="{{ url('/libro/'.$libro->ISBN.'/edit' ) }}" class="btn btn-warning" >
             Editar
             </a>
 |
-            <form action="{{ url ('/libro/'.$libro->id_libro ) }}" method="post" class="d-inline ">
+            <form action="{{ url ('/libro/'.$libro->ISBN ) }}" method="post" class="d-inline ">
             @csrf 
             {{ method_field('DELETE') }}
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">

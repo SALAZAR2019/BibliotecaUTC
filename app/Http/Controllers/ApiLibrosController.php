@@ -77,7 +77,7 @@ class ApiLibrosController extends Controller
 
 
         $ejemplares=$request->get('ejemplar_total');
-        //$ejemplares=[];
+        $ejemplares=[];
         for($i=0;$i<($ejemplares);$i++)
         {
             $ejemplar[]=[
@@ -163,7 +163,7 @@ class ApiLibrosController extends Controller
             $datosLibro['foto']=$request->file('foto')->store('uploads','public');
         }
 
-        Libro::where('id_libro','=',$id)->update($datosLibro);
+        Libro::where('ISBN','=',$id)->update($datosLibro);
 
         $libro=Libro::findOrFail($id);
         //return view('empleado.edit', compact('empleado') );
