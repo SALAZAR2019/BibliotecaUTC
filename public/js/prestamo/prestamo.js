@@ -3,6 +3,8 @@ var	route= document.querySelector("[name=route]").value;
 var urlLib = route + '/apiejem';
 var urlPres= route +'/apiPrestamo';
 
+var urlUser=route+'/usuarios';
+
 var btnEnviar = document.getElementById("btnEnviar");
 var caja1 = document.getElementById("id_usuario");
 var caja2 = document.getElementById("libro");
@@ -30,6 +32,7 @@ new Vue({
 		nombre:'QUE ONDA',
 		libros:[],
 		prestamos:[],
+		users:[],
 		codigo:'',
 		id_libro:'',
 		id_ejemplar:'',
@@ -49,7 +52,7 @@ new Vue({
 		getLibros:function(){
 			this.$http.get(urlLib + '/' + this.codigo)
 			.then(function(json){
-
+				console.log(json);
 				if(json.data===""){
 					swal({
 						text: "El libro no se encuentra disponible ",
@@ -59,15 +62,15 @@ new Vue({
 					document.getElementById("btnEnviar").disabled=true;
 					this.codigo='';
 				}
-				var prestamo={'id_libro':json.data.id_libro,
+				var prestamo={'ISBN':json.data.ISBN,
 							'id_ejemplar':json.data.id_ejemplar,
 							'titulo':json.data.libros.titulo,
-							'ISBN':json.data.libros.ISBN,
+							//'ISBN':json.data.libros.ISBN,
 							'codigo':json.data.codigo,
 							'prestado':json.data.prestado,
 							}
 
-				if (prestamo.id_ejemplar){
+				if (prestamo.ISBN){
 					this.prestamos.push(prestamo);
 					
 				}
@@ -77,12 +80,45 @@ new Vue({
 
 			})
 		},
+		getUser:function(){
+			this.$http.get(urlUser + '/' + this.id_usuario)
+			.then(function(json){
+				
+				if(json.data===""){
+					swal({
+						text: "No se encuentra usuario verifique de nuevo ",
+						icon: "warning",
+						buttons: ['OK'],
+					  })
+					//document.getElementById("btnEnviar").disabled=true;
+					this.id_usuario='';
+				}
+				var user={'id_usuario':json.data.id_usuario,
+							'nombres':json.data.nombres,
+							'correo':json.data.correo,
+							}
 
+				if (user.id_usuario){
+					this.users.push(user);
+					document.getElementById("id_usuario").disabled=true;
+					
+				}
+				console.log(json);
+				//this.codigo='';
+				//this.$refs.buscar.focus();
+
+			})
+		},
 		// fin de get Libros
 
 		eliminarLibro:function(id){
 			this.prestamos.splice(id,1);
 			
+		},
+		eliminarUser:function(id){
+			this.users.splice(id,1);
+			document.getElementById("id_usuario").disabled=false;
+			this.eliminarLibros();
 		},
 		eliminarLibros:function(id){
 			this.prestamos.splice(id);
@@ -105,7 +141,8 @@ new Vue({
 					id_libro:this.prestamos[i].id_libro,
 					titulo:this.prestamos[i].titulo,
 					describe_estado:this.prestamos[i].describe_estado,
-					id_ejemplar:this.prestamos[i].id_ejemplar
+					id_ejemplar:this.prestamos[i].id_ejemplar,
+					ISBN:this.prestamos[i].ISBN,
 					
 				})
 				var set =new Set(detalles2.map(JSON.stringify))

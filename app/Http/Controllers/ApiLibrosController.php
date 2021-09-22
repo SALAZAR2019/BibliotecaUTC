@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Libro;
+use App\Models\ejemplares;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -63,11 +64,35 @@ class ApiLibrosController extends Controller
         //$datosEmpleado = request() ->all();
         $datosLibro = request()->except('_token');
 
+
         if($request->hasFile('foto')) {
             $datosLibro['foto']=$request->file('foto')->store('uploads','public');
         }
+
+        $codigo=$request->get('ISBN');
+
         Libro::insert($datosLibro);
-         //return response()->json($datosEmpleado);
+
+        $ISBN = $request->get('ISBN');
+
+
+        $ejemplares=$request->get('ejemplar_total');
+        $ejemplares=[];
+        for($i=0;$i<($ejemplares);$i++)
+        {
+            $ejemplar[]=[
+
+                //'id_ejemplar'=>$ejemplares,
+                'codigo'=>$ISBN+$i,
+                'ISBN'=>$ISBN,
+                
+            ];
+            
+        }
+
+        ejemplares::insert($ejemplar);
+        
+        //return response()->json($ejemplar);
          return redirect('libro')->with('mensaje','Libro agregado con éxito');
     }
 
@@ -138,7 +163,7 @@ class ApiLibrosController extends Controller
             $datosLibro['foto']=$request->file('foto')->store('uploads','public');
         }
 
-        Libro::where('id_libro','=',$id)->update($datosLibro);
+        Libro::where('ISBN','=',$id)->update($datosLibro);
 
         $libro=Libro::findOrFail($id);
         //return view('empleado.edit', compact('empleado') );
