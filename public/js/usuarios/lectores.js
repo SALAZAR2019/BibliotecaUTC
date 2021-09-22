@@ -2,7 +2,6 @@ function init()
 {
     var	route= document.querySelector("[name=route]").value;
     var urlU = route + '/ApiUsuario';
-    var urlT= route + '/apiTipos';
 
     new Vue
     ({
@@ -17,7 +16,6 @@ function init()
 
         data:{
             lectores:[],
-            tipos:[],
             id_usuario:'',
             nombres:'',
             apellido_p:'',
@@ -33,7 +31,6 @@ function init()
         },
         created:function(){
             this.getUsuarios();
-            this.getTipo();
         },
         methods:{
             getUsuarios:function(){
@@ -42,13 +39,54 @@ function init()
                     this.lectores=json.data;
                 });
             },
-            getTipo:function(){
-                this.$http.get(urlT)
+            showModal:function(){
+                $('#add_lector').modal('show');
+            },
+
+            Salir:function(){
+                this.editar=false;
+                this.id_usuario='',
+                this.nombres='',
+                this.apellido_p='',
+                this.apellido_m='',
+                this.direccion='',
+                this.correo='',
+                this.telefono='',
+                this.id_tipo='',
+               $('#add_lector').modal('hide');
+            },
+            addlector:function(){
+                var l={
+                    id_usuario:this.id_usuario,
+                    nombres:this.nombres,
+                    apellido_p:this.apellido_p,
+                    apellido_m:this.apellido_m,
+                    direccion:this.direccion,
+                    correo:this.correo,
+                    telefono:this.telefono,
+                    id_tipo:this.id_tipo,
+                };
+                this.$http.post(urlU, l)
                 .then(function(json){
-                    this.tipos=json.data;
+                    this.Salir();
+                    this.getUsuarios();
+                    Swal.fire({
+                        type: 'success',
+                        title: 'El usuario se agregó con éxito',
+                        showConfirmButton: false,
+                        timer: 1900
+                    });
+                },function(reason){
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Error',
+                        text: 'Campos vacios',
+                        footer: 'Llene todos los campos para continuar'
+                      });
                 });
-            }
-        }, //fin de methods 
+            }, //fin del agregar lector
+
+        } //fin de methods 
 
     });
 
