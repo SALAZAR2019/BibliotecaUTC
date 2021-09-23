@@ -71,16 +71,16 @@ class ApiUsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'id_usuario'=>'required',
-            'nombres'=>'required',
-            'apellido_p'=>'required',
-            'apellido_m'=>'required',
-            'direccion'=>'required',
-            'correo'=>'required',
-            'telefono'=>'required',
-            'id_tipo'=>'required'
-        ]);
+        // $request->validate([
+        //     'id_usuario'=>'required',
+        //     'nombres'=>'required',
+        //     'apellido_p'=>'required',
+        //     'apellido_m'=>'required',
+        //     'direccion'=>'required',
+        //     'correo'=>'required',
+        //     'telefono'=>'required',
+        //     // 'id_tipo'=>'required'
+        // ]);
         $usuario= Usuarios::find($id);
 
         $usuario->id_usuario=$request->get('id_usuario');
@@ -104,6 +104,6 @@ class ApiUsuarioController extends Controller
      */
     public function destroy($id)
     {
-        $usuario=Usuarios::delete($id);
+        $usuario=Usuarios::destroy($id);
     }
 }

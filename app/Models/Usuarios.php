@@ -23,7 +23,7 @@ class Usuarios extends Model
         'direccion',
         'correo',
         'telefono',
-        'id_tipo'
+        'id_tipo',
     ];
 
     public function tipo(){

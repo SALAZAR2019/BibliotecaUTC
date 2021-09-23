@@ -11,6 +11,7 @@ class Libro extends Model
 
     protected $table="libros";
     protected $primaryKey="ISBN";
+    protected $with=['carrera'];
     public $timestamps=false;
     public $incrementing=false;
 

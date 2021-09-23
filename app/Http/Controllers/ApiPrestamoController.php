@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use App\Models\Libros;
+use App\Models\Libro;
 use App\Models\ejemplares;
 use App\Models\Prestamos;
 use App\Models\Detalle_prestamo;

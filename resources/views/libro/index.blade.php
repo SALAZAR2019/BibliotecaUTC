@@ -49,7 +49,7 @@
             <td><label class="label label-info">{{ $libro->autores->nom_autor}}</label></td>
             <td><label class="label label-info">{{ $libro->editoriales->nom_editorial}}</label></td> 
             <td>{{ $libro -> edicion}}</td>
-            <td>{{ $libro -> id_carrera}}</td>
+            <td>{{ $libro -> carrera.nom}}</td>
             <td>{{ $libro -> id_materia}}</td>
             <td>{{ $libro -> id_clasifidewey}}</td>
             <td>{{ $libro -> paginas}}</td>

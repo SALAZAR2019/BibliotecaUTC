@@ -36,7 +36,7 @@
 					<tbody>
 						<tr v-for="(v,index) in prestamos">
 							<td>@{{v.id_ejemplar}}</td>
-							<td>@{{v.id_libro}}</td>
+							<td>@{{v.ISBN}}</td>
 							<td>@{{v.codigo}}</td>
 							<td>@{{v.titulo}}</td>
 							<td><span class="btn btn-bg" @click="eliminarLibro(index)">eliminar</span></td>

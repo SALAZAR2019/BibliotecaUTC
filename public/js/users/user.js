@@ -161,9 +161,9 @@ new Vue
                 }
               });
 
-        },
+            }, //fin eliminar
 
-     }
+     } //fin methods
 
 });
 

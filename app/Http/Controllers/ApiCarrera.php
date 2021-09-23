@@ -1,14 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Schema;
 
 use Illuminate\Http\Request;
-use App\Models\ejemplares;
-use App\Models\Libros;
-use DB;
+use App\Models\carreras;
 
-class ApiEjemplaresController extends Controller
+class ApiCarrera extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +14,7 @@ class ApiEjemplaresController extends Controller
      */
     public function index()
     {
-        return ejemplares::all();
-        /*$libros = DB::table('Libros as a')
-        ->join('ejemplares as b','a.ISBN','=','b.ISBN')
-        ->select('titulo','b.id_ejemplar')
-        ->get();
-        return $libros;*/
+        return $carrera=carreras::all(); 
     }
 
     /**
@@ -33,7 +25,10 @@ class ApiEjemplaresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $carrera= new carreras;
+        $carrera->nom_carrera=$request->get('nom_carrera');
+
+        $carrera->save();
     }
 
     /**
@@ -44,9 +39,7 @@ class ApiEjemplaresController extends Controller
      */
     public function show($id)
     {
-        //
-        $libro=ejemplares::where('Activo','=','1')->find($id);
-        return $libro;
+        return $carrera = carreras::find($id);
     }
 
     /**
@@ -58,8 +51,10 @@ class ApiEjemplaresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $carrera=carreras::find($id);
+        $carrera->nom_carrera=$request->get('nom_carrera');
 
+        $carrera->update();
     }
 
     /**
@@ -70,6 +65,6 @@ class ApiEjemplaresController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $carrera= carreras::destroy($id);
     }
 }
