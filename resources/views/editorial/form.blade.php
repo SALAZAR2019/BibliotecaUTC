@@ -16,10 +16,12 @@
 value="{{ isset($editorial -> nom_editorial)?$editorial -> nom_editorial:old('nom_editorial') }}">
 </div>
 
-<div class="form-group">
-<label for="activo"> ACTIVO </label>
-<input class="form-control" type="checkbox"  name="activo"  id="activo" 
-value="{{ isset($editorial -> activo)?$editorial->activo:old('activo')}}">
+<div class="checkbox">
+    <label>
+        <input type="hidden" name="activo" value="0">
+    {!! Form::checkbox('activo', 1) !!}
+     Activo
+    </label>
 </div>
 
 

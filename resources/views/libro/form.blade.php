@@ -130,10 +130,18 @@ value="{{ isset($libro -> ubicacion)?$libro -> ubicacion:old('ubicacion')}}">
 value="{{ isset($libro -> describe_estado)?$libro -> describe_estado:old('describe_estado')}}">
 </div>
 
-<div class="form-group">
+<!--<div class="form-group">
 <label for="activo"> Activo </label>
 <input class="form-control" type="checkbox"  name="activo"  id="activo" 
 value="{{ isset($libro -> activo)?$libro -> activo:old('activo')}}">
+</div>-->
+
+<div class="checkbox">
+    <label>
+        <input type="hidden" name="activo" value="0">
+    {!! Form::checkbox('activo', 1) !!}
+     Activo
+    </label>
 </div>
 
 <div class="form-group">
