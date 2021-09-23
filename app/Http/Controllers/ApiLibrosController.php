@@ -77,7 +77,7 @@ class ApiLibrosController extends Controller
 
 
         $ejemplares=$request->get('ejemplar_total');
-        $ejemplares=[];
+        // $ejemplares=[];
         for($i=0;$i<($ejemplares);$i++)
         {
             $ejemplar[]=[

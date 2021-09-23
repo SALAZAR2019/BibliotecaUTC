@@ -26,16 +26,16 @@ class ApiUsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'id_usuario'=>'required',
-        //     'nombres'=>'required',
-        //     'apellido_p'=>'required',
-        //     'apellido_m'=>'required',
-        //     'direccion'=>'required',
-        //     'correo'=>'required',
-        //     'telefono'=>'required',
-        //     // 'id_tipo'=>'required'
-        // ]);
+        $request->validate([
+            'id_usuario'=>'required',
+            'nombres'=>'required',
+            'apellido_p'=>'required',
+            'apellido_m'=>'required',
+            'direccion'=>'required',
+            'correo'=>'required',
+            'telefono'=>'required',
+            'id_tipo'=>'required'
+        ]);
         $usuario= new Usuarios;
         $usuario->id_usuario=$request->get('id_usuario');
         $usuario->nombres=$request->get('nombres');
@@ -104,6 +104,6 @@ class ApiUsuarioController extends Controller
      */
     public function destroy($id)
     {
-        $usuario=Usuarios::delete($id);
+        $usuario=Usuarios::destroy($id);
     }
 }
