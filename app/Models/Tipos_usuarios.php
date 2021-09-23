@@ -12,7 +12,7 @@ class Tipos_usuarios extends Model
     protected $primaryKey = "id_tipo";
     public $timestamps = false;
 
-    public $fillable = [
+    protected $fillable = [
         'nombre_tipo',
         'descripcion',
     ];

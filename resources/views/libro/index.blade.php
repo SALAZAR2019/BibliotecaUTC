@@ -19,8 +19,8 @@
     <thead class="thead-light">
         <tr>
             
+            <th>Foto</th>
             <th>ISBN</th>
-            <th>FOTO</th>
             <th>Titulo</th>
             <th>Autor</th>
             <th>Editorial</th>
@@ -41,10 +41,11 @@
     <tbody>
         @foreach( $libros as $libro )
         <tr>
-            <td>{{ $libro -> ISBN}}</td>
+            
             <td>
                 <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$libro -> foto }}" height="100" width="200" alt="50"> 
             </td>
+            <td>{{ $libro -> ISBN }}</td>
             <td>{{ $libro -> titulo}}</td>
             <td>{{ $libro -> id_autor}}</td>
             <td>{{ $libro -> id_editorial}}</td>

@@ -77,6 +77,6 @@ class ApiTiposController extends Controller
      */
     public function destroy($id)
     {
-        $tipo= Tipos_usuarios::delete($id);
+        $tipo= Tipos_usuarios::destroy($id);
     }
 }

@@ -50,7 +50,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a class="brand-link">
     <span class="logo-mini "><b class="text-warning"><b class="text-white">-------</b>U</b><b class="text-success font-italic">TC</b></span>
       <!-- <img src="img/utc.jpg" class="brand-image img-rounded elevation-3"
            style="opacity: .8"> -->
@@ -103,7 +103,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{url('tipo')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tipo</p>
                   </a>
@@ -135,12 +135,6 @@
                   <p>Registrar</p>
                   </a>
                 </li>
-                <!-- <li class="nav-item">
-                  <a href="{{url('r')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Roles</p>
-                  </a>
-                </li> -->
               </ul>
             </li>
             @endif

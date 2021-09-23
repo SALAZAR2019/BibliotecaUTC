@@ -39,6 +39,7 @@ Route::view('prestamo','prestamos');
 Route::view('user','Usuarios.user_login');
 Route::view('login','login');
 Route::view('usuario','Usuarios.usuarios');
+Route::view('tipo','Usuarios.tipo_usuario');
 
 
 //controladores
