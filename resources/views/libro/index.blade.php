@@ -49,7 +49,7 @@
             <td>{{ $libro -> id_autor}}</td>
             <td>{{ $libro -> id_editorial}}</td>
             <td>{{ $libro -> edicion}}</td>
-            <td>{{ $libro -> id_carrera}}</td>
+            <td>{{ $libro -> carrera.nom}}</td>
             <td>{{ $libro -> id_materia}}</td>
             <td>{{ $libro -> id_clasifidewey}}</td>
             <td>{{ $libro -> paginas}}</td>

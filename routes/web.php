@@ -48,6 +48,7 @@ Route::apiResource('apiejem','ApiEjemplaresController');
 Route::apiResource('apidevolucion','ApiDevolucionesController');
 Route::apiResource('apiTipos','ApiTiposController');
 Route::apiResource('ApiUsuario','ApiUsuarioController');
+Route::apiResource('apiCarrera','ApiCarrera');
 
 
 //validación
