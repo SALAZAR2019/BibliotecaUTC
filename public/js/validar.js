@@ -1,8 +1,10 @@
 var btnEnviar = document.getElementById("btnEnviar");
+var btnUser=document.getElementById("btnUser");
 var caja1 = document.getElementById("id_usuario");
 var caja2 = document.getElementById("libro");
 
 btnEnviar.disabled = true;
+btnUser.disabled = true;
 caja2.disabled = true;
 
 function verificar2(valor) {
@@ -17,10 +19,10 @@ function verificar2(valor) {
 }
 
 function verificar(valor) {
-  if (valor.length===7){
+  if (valor.length===8){
   	caja2.style.background = "#FFFFFF";
     caja2.disabled = false
-    document.getElementById("libro").disabled=false;
+    document.getElementById("btnUser").disabled=false;
   }else{
     caja2.style.background = "grey";
     caja2.disabled = true;

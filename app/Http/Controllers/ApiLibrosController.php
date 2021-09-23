@@ -7,6 +7,7 @@ use App\Models\AutorController;
 use App\Models\ejemplares;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class ApiLibrosController extends Controller
 {
@@ -76,7 +77,8 @@ class ApiLibrosController extends Controller
         }
         Libro::insert($datosLibro);
         
-        $codigo=$request->get('ISBN');
+        $resenia=$request->get('resenia');
+        $fecha_alta = Carbon::now();
 
         $ISBN = $request->get('ISBN');
         $ejemplares=$request->get('ejemplar_total');
@@ -85,8 +87,10 @@ class ApiLibrosController extends Controller
         {
             $ejemplar[]=[
                 //'id_ejemplar'=>$ejemplares,
-                'codigo'=>$ISBN+$i,
+                
                 'ISBN'=>$ISBN,
+                'descripcion'=>$resenia,
+                'fecha_alta'=>$fecha_alta
                 
             ];
             

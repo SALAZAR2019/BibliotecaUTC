@@ -9,15 +9,20 @@
     </div>
     <div class="row g-2">
         <div class="input-group">
-			<div class=" col-4 position-relative">
-				<input id="id_usuario" type="text" name="id_usuario" v-model="id_usuario" class="form-control" placeholder="ingrese matricula-cedula" onkeyup="verificar(this.value);" v-on:keyup.enter="getUser()">
-			</div>
-			<div class="col-4 position-relative">
-               	<input id="libro" type="text" name="libro" class="form-control" v-model="codigo" ref="buscar" placeholder="ingrese id libro" onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
+			<div class=" col-2 position-relative">
+				<input id="id_usuario" type="text" name="id_usuario" v-model="id_usuario" class="form-control" placeholder="ingrese matricula-cedula" onkeyup="verificar(this.value);" >
 			</div>
 			<div class="col-3 position-relative">
 				<span class="input-group-btn">
-					<button id="btnEnviar" class="btn btn-success" type="submit" disabled class="btn btn-success" @click="getLibros()" disabled>Agregar</button>
+					<button id="btnUser" class="btn btn-success" type="submit"  class="btn btn-success" @click="getUser()">Agregar</button>
+				</span>
+			</div>
+			<div class="col-3 position-relative">
+               	<input id="libro" type="text" name="libro" class="form-control" v-model="codigo" ref="buscar" placeholder="ingrese id libro" disabled onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
+			</div>
+			<div class="col-3 position-relative">
+				<span class="input-group-btn">
+					<button id="btnEnviar" class="btn btn-success" type="submit" disabled class="btn btn-success" @click="getLibros()">Agregar</button>
 				</span>
 			</div>
         </div>
