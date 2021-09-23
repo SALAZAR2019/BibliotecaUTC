@@ -11,6 +11,7 @@ class Libro extends Model
 
     protected $table="libros";
     protected $primaryKey="ISBN";
+    protected $with=['carrera'];
     public $timestamps=false;
     public $incrementing=false;
 
@@ -33,4 +34,8 @@ class Libro extends Model
         'foto',
         'activo',
     ];
+
+    public function carrera(){
+        return $this->belongsTo(carreras::class,'id_carrera','id_carrera');
+    }
 }
