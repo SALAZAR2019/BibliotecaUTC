@@ -84,13 +84,13 @@ new Vue({
 			this.$http.get(urlUser + '/' + this.id_usuario)
 			.then(function(json){
 				
-				if(json.data===""){
+				if(json.data===""||caja1 ===""){
 					swal({
-						text: "No se encuentra usuario verifique de nuevo ",
+						text: "Dato incorrecto o no disponible intente de nuevo ",
 						icon: "warning",
 						buttons: ['OK'],
 					  })
-					//document.getElementById("btnEnviar").disabled=true;
+					document.getElementById("btnEnviar").disabled=true;
 					this.id_usuario='';
 				}
 				var user={'id_usuario':json.data.id_usuario,
@@ -101,6 +101,9 @@ new Vue({
 				if (user.id_usuario){
 					this.users.push(user);
 					document.getElementById("id_usuario").disabled=true;
+					document.getElementById("btnUser").disabled=true;
+					document.getElementById("id_libro").disabled=false;
+					document.getElementById("btnEnviar").disabled=false;
 					
 				}
 				console.log(json);
@@ -118,6 +121,9 @@ new Vue({
 		eliminarUser:function(id){
 			this.users.splice(id,1);
 			document.getElementById("id_usuario").disabled=false;
+			document.getElementById("btnUser").disabled=false;
+			document.getElementById("btnEnviar").disabled=true;
+			document.getElementById("libro").disabled=true;
 			this.eliminarLibros();
 		},
 		eliminarLibros:function(id){
