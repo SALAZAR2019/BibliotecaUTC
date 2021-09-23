@@ -68,20 +68,16 @@ class ApiLibrosController extends Controller
         if($request->hasFile('foto')) {
             $datosLibro['foto']=$request->file('foto')->store('uploads','public');
         }
-
+        Libro::insert($datosLibro);
+        
         $codigo=$request->get('ISBN');
 
-        Libro::insert($datosLibro);
-
         $ISBN = $request->get('ISBN');
-
-
         $ejemplares=$request->get('ejemplar_total');
-        $ejemplares=[];
+        //$ejemplares=[];
         for($i=0;$i<($ejemplares);$i++)
         {
             $ejemplar[]=[
-
                 //'id_ejemplar'=>$ejemplares,
                 'codigo'=>$ISBN+$i,
                 'ISBN'=>$ISBN,
@@ -89,7 +85,6 @@ class ApiLibrosController extends Controller
             ];
             
         }
-
         ejemplares::insert($ejemplar);
         
         //return response()->json($ejemplar);

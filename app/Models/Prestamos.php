@@ -11,6 +11,7 @@ class Prestamos extends Model
     protected $table="prestamos";
     protected $primaryKey="id_prestamo";
     public $timestamps=false;
+    public $incrementing=false;
    
     protected $with=['ejemplar'];
 
