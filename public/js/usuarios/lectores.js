@@ -149,25 +149,27 @@ function init()
 
             //eliminar user
          deleteLector:function(id){
-            swal({
+            Swal.fire({
                 title: "Se eliminará el usuario",
                 text: "Está seguro de eliminar el usuario?",
                 icon: "warning",
-                buttons: true,
+                showCancelButton:true,
+                confirmButtonText:"si,eliminar",
+                cancelButtonText:"Cancelar",
                 dangerMode: true,
               })
-              .then((willDelete) => {
-                if (willDelete) {
+              .then(resultado => {
+                if (resultado.value) {
                     this.$http.delete(urlU +'/'+id)
                     .then(function(json){
                         this.getUsuarios();
                         
                     });
-                  swal("El usuario fue eliminado exitosamente", {
+                  Swal.fire("El usuario fue eliminado exitosamente", {
                     icon: "success",
                   });
                 } else {
-                  swal("El usuario no se ha eliminado");
+                  Swal.fire("El usuario no se ha eliminado");
                 }
               });
 

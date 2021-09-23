@@ -18,11 +18,11 @@
 				</span>
 			</div>
 			<div class="col-3 position-relative">
-               	<input id="libro" type="text" name="libro" class="form-control" v-model="codigo" ref="buscar" placeholder="ingrese id libro" onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
+               	<input id="libro" type="text" name="libro" class="form-control" v-model="codigo" ref="buscar" placeholder="ingrese id libro" disabled onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
 			</div>
 			<div class="col-3 position-relative">
 				<span class="input-group-btn">
-					<button id="btnEnviar" class="btn btn-success" type="submit" disabled class="btn btn-success" @click="getLibros()" disabled>Agregar</button>
+					<button id="btnEnviar" class="btn btn-success" type="submit" disabled class="btn btn-success" @click="getLibros()">Agregar</button>
 				</span>
 			</div>
         </div>
