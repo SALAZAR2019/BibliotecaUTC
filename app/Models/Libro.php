@@ -17,6 +17,7 @@ class Libro extends Model
 
     protected $fillable=
     [
+        'editoriales',
         //'id_libro',
         'ISBN',
         'titulo',
@@ -35,7 +36,13 @@ class Libro extends Model
         'activo',
     ];
 
-    public function carrera(){
-        return $this->belongsTo(carreras::class,'id_carrera','id_carrera');
+    public function editoriales()
+    {
+        return $this->belongsTo(EditorialController::class, 'id_editorial');
+    }
+
+    public function autores()
+    {
+        return $this->belongsTo(AutorController::class, 'id_autor', 'id_autor');
     }
 }

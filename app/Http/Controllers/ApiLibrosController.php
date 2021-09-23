@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Libro;
+use App\Models\EditorialController;
+use App\Models\AutorController;
 use App\Models\ejemplares;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -17,8 +19,10 @@ class ApiLibrosController extends Controller
     public function index()
     {
         //
+        $autores= AutorController::all();
+        $editoriales = EditorialController::all();
         $datos['libros']=Libro::paginate(5);
-        return view('libro.index',$datos);
+        return view('libro.index',$datos, compact('editoriales','autores'));
     }
 
     /**
@@ -29,7 +33,9 @@ class ApiLibrosController extends Controller
     public function create()
     {
         //
-        return view('libro.create');
+        $autores= AutorController::all();
+        $editoriales= EditorialController::all();
+        return view('libro.create', compact('editoriales','autores'));
     }
 
     /**
@@ -115,8 +121,10 @@ class ApiLibrosController extends Controller
     public function edit($id)
     {
         //
+        $autores= AutorController::all();
+        $editoriales= EditorialController::all();
         $libro=Libro::findOrFail($id);
-        return view('libro.edit', compact('libro') );
+        return view('libro.edit', compact('libro','autores','editoriales') );
     }
 
     /**
@@ -166,7 +174,8 @@ class ApiLibrosController extends Controller
 
         $libro=Libro::findOrFail($id);
         //return view('empleado.edit', compact('empleado') );
-        return redirect('libro')->with('mensaje','Libro Modificado');
+        return redirect('libro'
+        )->with('mensaje','Libro Modificado');
     }
 
     /**

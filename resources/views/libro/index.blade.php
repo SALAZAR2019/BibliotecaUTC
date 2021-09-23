@@ -47,8 +47,8 @@
             </td>
             <td>{{ $libro -> ISBN }}</td>
             <td>{{ $libro -> titulo}}</td>
-            <td>{{ $libro -> id_autor}}</td>
-            <td>{{ $libro -> id_editorial}}</td>
+            <td><label class="label label-info">{{ $libro->autores->nom_autor}}</label></td>
+            <td><label class="label label-info">{{ $libro->editoriales->nom_editorial}}</label></td> 
             <td>{{ $libro -> edicion}}</td>
             <td>{{ $libro -> carrera}}</td>
             <td>{{ $libro -> id_materia}}</td>
