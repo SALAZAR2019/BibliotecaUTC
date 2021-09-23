@@ -46,8 +46,8 @@
                 <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$libro -> foto }}" height="100" width="200" alt="50"> 
             </td>
             <td>{{ $libro -> titulo}}</td>
-            <td>{{ $libro -> id_autor}}</td>
-            <td>{{ $libro -> id_editorial}}</td>
+            <td><label class="label label-info">{{ $libro->autores->nom_autor}}</label></td>
+            <td><label class="label label-info">{{ $libro->editoriales->nom_editorial}}</label></td> 
             <td>{{ $libro -> edicion}}</td>
             <td>{{ $libro -> id_carrera}}</td>
             <td>{{ $libro -> id_materia}}</td>

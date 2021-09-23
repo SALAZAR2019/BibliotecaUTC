@@ -24,17 +24,55 @@ value="{{ isset($libro -> titulo)?$libro->titulo:old('titulo')}}">
 
 
 
-<div class="form-group">
-<label for="id_autor"> Autor </label>
-<input class="form-control" type="text"  name="id_autor"  id="id_autor" 
-value="{{ isset($libro -> id_autor)?$libro -> id_autor:old('id_autor') }}">
-</div>
+
 
 <div class="form-group">
-<label for="id_editorial"> Editorrial </label>
+    <label for="">Autores</label>
+    <select name="id_autor" id="id_autor" class="form-control">
+        <option value="">--Elige un autor--</option>
+        @foreach ($autores as $autor)
+        <option value="{{ $autor-> id_autor }}"
+            @if (!is_null(old('id_autor'))) 
+            {{ old('id_autor') == $autores -> id_autor ? 'selected' : ''}}
+            @else
+            @if(isset($libro))
+            {{$libro ->id_autor ==$autor->id_autor ? 'selected' : '' }}
+            @endif
+            @endif
+            >{{$autor->nom_autor}}</option>
+        @endforeach
+    </select>
+</div>
+
+
+
+
+<!--<div class="form-group">
+<label for="id_editorial"> Editorial </label>
 <input class="form-control" type="text"  name="id_editorial"  id="id_editorial" 
 value="{{ isset($libro -> id_editorial)?$libro -> id_editorial:old('id_editorial')}}">
+</div>-->
+<div class="form-group">
+    <label for="">Editorial</label>
+    <select name="id_editorial"  class="form-control">
+    <option value="">--Elige una editorial--</option>
+        @foreach ($editoriales as $editorial)
+        <option value="{{ $editorial-> id_editorial }}"
+            @if (!is_null(old('id_editorial'))) 
+            {{ old('id_editorial') == $editoriales -> id_editorial ? 'selected' : ''}}
+            @else
+            @if(isset($libro))
+            {{$libro ->id_editorial ==$editorial->id_editorial ? 'selected' : '' }}
+            @endif
+            @endif
+            >{{$editorial->nom_editorial}}</option>
+        @endforeach
+    </select>
 </div>
+
+
+
+
 
 <div class="form-group">
 <label for="edicion"> Edicion</label>
