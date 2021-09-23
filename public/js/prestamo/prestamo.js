@@ -3,7 +3,7 @@ var	route= document.querySelector("[name=route]").value;
 var urlLib = route + '/apiejem';
 var urlPres= route +'/apiPrestamo';
 
-var urlUser=route+'/usuarios';
+var urlUser=route+'/ApiUsuario';
 
 var btnEnviar = document.getElementById("btnEnviar");
 var caja1 = document.getElementById("id_usuario");
