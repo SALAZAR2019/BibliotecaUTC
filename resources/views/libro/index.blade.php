@@ -1,5 +1,7 @@
-@extends('layouts.app')
-@section('content')
+
+@extends('layout.master')
+@section('titulo','Devoluciones')
+@section('contenido')
 <div class="container">
 
 
