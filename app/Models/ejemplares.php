@@ -11,18 +11,19 @@ class ejemplares extends Model
     protected $table="ejemplares";
     protected $primaryKey="id_ejemplar";
     public $timestamps=false;
+    public $incrementing=false;
 
     protected $with=['libros'];
 
     protected $fillable=
     [
         'id_ejemplar',
-        'codigo',
+        'ISBN',
         'prestado',
-        'id_libro',
+        //'ISBN',
         'activo'
     ];
     public function libros(){
-        return $this-> belongsTo(Libros::class,'id_libro');
+        return $this-> belongsTo(Libro::class,'ISBN');
     }
 }

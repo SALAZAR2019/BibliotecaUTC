@@ -3,6 +3,8 @@ var	route= document.querySelector("[name=route]").value;
 var urlLib = route + '/apiejem';
 var urlPres= route +'/apiPrestamo';
 
+var urlUser=route+'/ApiUsuario';
+
 var btnEnviar = document.getElementById("btnEnviar");
 var caja1 = document.getElementById("id_usuario");
 var caja2 = document.getElementById("libro");
@@ -30,6 +32,7 @@ new Vue({
 		nombre:'QUE ONDA',
 		libros:[],
 		prestamos:[],
+		users:[],
 		codigo:'',
 		id_libro:'',
 		id_ejemplar:'',
@@ -49,9 +52,9 @@ new Vue({
 		getLibros:function(){
 			this.$http.get(urlLib + '/' + this.codigo)
 			.then(function(json){
-
+				console.log(json);
 				if(json.data===""){
-					swal({
+					 Swal.fire({
 						text: "El libro no se encuentra disponible ",
 						icon: "warning",
 						buttons: ['OK'],
@@ -59,15 +62,15 @@ new Vue({
 					document.getElementById("btnEnviar").disabled=true;
 					this.codigo='';
 				}
-				var prestamo={'id_libro':json.data.id_libro,
+				var prestamo={'ISBN':json.data.ISBN,
 							'id_ejemplar':json.data.id_ejemplar,
 							'titulo':json.data.libros.titulo,
-							'ISBN':json.data.libros.ISBN,
+							//'ISBN':json.data.libros.ISBN,
 							'codigo':json.data.codigo,
 							'prestado':json.data.prestado,
 							}
 
-				if (prestamo.id_ejemplar){
+				if (prestamo.ISBN){
 					this.prestamos.push(prestamo);
 					
 				}
@@ -77,12 +80,52 @@ new Vue({
 
 			})
 		},
+		getUser:function(){
+			this.$http.get(urlUser + '/' + this.id_usuario)
+			.then(function(json){
+				
+				if(json.data===""||caja1 ===""){
+					Swal.fire({
+						text: "Dato incorrecto o no disponible intente de nuevo ",
+						icon: "warning",
+						buttons: ['OK'],
+					  })
+					document.getElementById("btnEnviar").disabled=true;
+					this.id_usuario='';
+				}
+				var user={'id_usuario':json.data.id_usuario,
+							'nombres':json.data.nombres,
+							'correo':json.data.correo,
+							}
 
+				if (user.id_usuario){
+					this.users.push(user);
+					document.getElementById("id_usuario").disabled=true;
+					document.getElementById("btnUser").disabled=true;
+					document.getElementById("libro").disabled=false;
+					
+					
+					
+				}
+				console.log(json);
+				//this.codigo='';
+				//this.$refs.buscar.focus();
+
+			})
+		},
 		// fin de get Libros
 
 		eliminarLibro:function(id){
 			this.prestamos.splice(id,1);
 			
+		},
+		eliminarUser:function(id){
+			this.users.splice(id,1);
+			document.getElementById("id_usuario").disabled=false;
+			document.getElementById("btnUser").disabled=false;
+			document.getElementById("btnEnviar").disabled=true;
+			document.getElementById("libro").disabled=true;
+			this.eliminarLibros();
 		},
 		eliminarLibros:function(id){
 			this.prestamos.splice(id);
@@ -105,7 +148,8 @@ new Vue({
 					id_libro:this.prestamos[i].id_libro,
 					titulo:this.prestamos[i].titulo,
 					describe_estado:this.prestamos[i].describe_estado,
-					id_ejemplar:this.prestamos[i].id_ejemplar
+					id_ejemplar:this.prestamos[i].id_ejemplar,
+					ISBN:this.prestamos[i].ISBN,
 					
 				})
 				var set =new Set(detalles2.map(JSON.stringify))
@@ -122,7 +166,7 @@ new Vue({
 
 			if(newdetalles=="")
 			{
-				swal({
+				Swal.fire({
 					text: "No hay datos para realizar el prestamo",
 					icon: "warning",
 					buttons: ['OK'],
@@ -130,19 +174,23 @@ new Vue({
 			}
 
 			else if(detalles2.length!=newdetalles.length){
-				swal({
+				Swal.fire({
 					title: "hay libros repetidos en el prestamo",
 					text: "si continua se tomara solo un libro en cuenta ¿desea continuar?",
 					icon: "warning",
-					buttons: true,
+					showCancelButton: true,
+					confirmButtonText:"si,deseo continuar",
+					cancelButtonText:"cancelar",
 					dangerMode: true,
-				  }).then((willDelete) => {
-					if (willDelete) {
+				  }).then(resultado => {
+					if (resultado.value) {
 						this.$http.post(urlPres,unprestamo)
 						.then(function(json){
-						swal("se ha realizado su prestamo su folio es :"+unprestamo.folio, {
+						Swal.fire("se ha realizado su prestamo su folio es :"+unprestamo.folio, {
 							icon: "success",
-						});this.eliminarLibros();
+						});
+						this.eliminarLibros();
+						this.eliminarUser();
 						this.foliarVenta();
 						this.id_usuario='';
 						document.getElementById("libro").disabled=true;
@@ -152,16 +200,16 @@ new Vue({
 						return true;
 					}
 					else{
-						swal("revise los libros repetidos porfavor");
+						Swal.fire("revise los libros repetidos porfavor");
 					}
-				  });
+				});
 			}else{
 				this.$http.post(urlPres,unprestamo)
 				.then(function(json){
 					this.eliminarLibros();
 					this.foliarVenta();
 					this.id_usuario='';
-					swal({
+					Swal.fire({
 						text: "Se ha realizado su prestamo \n su folio es:" + unprestamo.folio,
 						icon: "success",
 

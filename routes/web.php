@@ -17,7 +17,10 @@ Route::get('/', function () {
 });
 Route::resource('empleado',ApiEmpleadoController::class);
 Route::resource('libro',ApiLibrosController::class);
-
+Route::resource('editorial',ApiEditorialesController::class);
+Route::resource('autor',ApiAutoresController::class);
+Route::resource('carrera',ApiCarrerasController::class);
+Route::resource('materia',ApiMateriasController::class);
 //Auth::routes();
 
 //Route::get('/home',[ApiEmpleadoController::class,'index']) ->name('home');
@@ -28,15 +31,16 @@ Route::resource('libro',ApiLibrosController::class);
 //}); 
 
 
-
-
-
-
 //vistas
-Route::view('dev', 'devoluciones');
-Route::view('prestamo','prestamos');
-Route::view('user','Usuarios.user_login');
-Route::view('login','login');
+
+  Route::view('dev', 'devoluciones')->middleware('biblio');
+  Route::view('prestamo','prestamos')->middleware('biblio');
+  Route::view('user','Usuarios.user_login')->middleware('admin');
+  Route::view('login','login');
+  Route::view('usuario','Usuarios.usuarios')->middleware('admin');
+  Route::view('tipo','Usuarios.tipo_usuario')->middleware('admin');
+
+
 
 
 //controladores
@@ -44,8 +48,9 @@ Route::apiResource('apiUser','ControllerUser_login');
 Route::apiResource('apiPrestamo','ApiPrestamoController');
 Route::apiResource('apiejem','ApiEjemplaresController');
 Route::apiResource('apidevolucion','ApiDevolucionesController');
-Route::apiResource('tipos','ApiTiposController');
-Route::apiResource('usuarios','ApiUsuarioController');
+Route::apiResource('apiTipos','ApiTiposController');
+Route::apiResource('ApiUsuario','ApiUsuarioController');
+Route::apiResource('apiCarrera','ApiCarrera');
 
 
 //validación

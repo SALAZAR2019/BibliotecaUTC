@@ -10,12 +10,15 @@ class Libro extends Model
     use HasFactory;
 
     protected $table="libros";
-    protected $primaryKey="id_libro";
+    protected $primaryKey="ISBN";
+    //protected $with=['carrera'];
     public $timestamps=false;
+    public $incrementing=false;
 
     protected $fillable=
     [
-        'id_libro',
+        'editoriales',
+        //'id_libro',
         'ISBN',
         'titulo',
         'id_autor',
@@ -32,4 +35,24 @@ class Libro extends Model
         'foto',
         'activo',
     ];
+
+    public function editoriales()
+    {
+        return $this->belongsTo(EditorialController::class, 'id_editorial');
+    }
+
+    public function autores()
+    {
+        return $this->belongsTo(AutorController::class, 'id_autor', 'id_autor');
+    }
+
+    public function carreras()
+    {
+        return $this->belongsTo(CarreraController::class, 'id_carrera');
+    }
+
+    public function materias()
+    {
+        return $this->belongsTo(MateriaController::class, 'id_materia');
+    }
 }

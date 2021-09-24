@@ -27,7 +27,7 @@ class Libros extends Model
     'editorial',
     'paginas',
     'idioma',
-    'ejemplares',
+    'ejemplar_total',
     'descripcion',
     'ubicacion',
     'foto',

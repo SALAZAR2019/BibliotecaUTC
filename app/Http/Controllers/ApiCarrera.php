@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Tipos_usuarios;
+use App\Models\carreras;
 
-class ApiTiposController extends Controller
+class ApiCarrera extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ApiTiposController extends Controller
      */
     public function index()
     {
-        return $tipo= Tipos_usuarios::all();
+        return $carrera=carreras::all(); 
     }
 
     /**
@@ -25,15 +25,10 @@ class ApiTiposController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre_tipo' => 'required'
-        ]); 
+        $carrera= new carreras;
+        $carrera->nom_carrera=$request->get('nom_carrera');
 
-        $tipo = new Tipos_usuarios;
-        $tipo->nombre_tipo=$request->get('nombre_tipo');
-        $tipo->descripcion=$request->get('descripcion');
-
-        $tipo->save();
+        $carrera->save();
     }
 
     /**
@@ -44,7 +39,7 @@ class ApiTiposController extends Controller
      */
     public function show($id)
     {
-        return $tipo=Tipos_usuarios::find($id);
+        return $carrera = carreras::find($id);
     }
 
     /**
@@ -56,17 +51,10 @@ class ApiTiposController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nombre_tipo' => 'required'
-        ]); 
-        $tipo = Tipos_usuarios::find($id);
+        $carrera=carreras::find($id);
+        $carrera->nom_carrera=$request->get('nom_carrera');
 
-        $tipo->nombre_tipo = $request->get('nombre_tipo');
-        $tipo->descripcion = $request->get('descripcion');
-        
-        $tipo->update();
-
-
+        $carrera->update();
     }
 
     /**
@@ -77,6 +65,6 @@ class ApiTiposController extends Controller
      */
     public function destroy($id)
     {
-        $tipo= Tipos_usuarios::destroy($id);
+        $carrera= carreras::destroy($id);
     }
 }

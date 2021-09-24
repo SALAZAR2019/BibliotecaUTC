@@ -14,13 +14,12 @@
 </div>
 @endif
 
-
 <a href="{{ url('libro/create') }}" class="btn btn-success">Registrar nuevo Libro</a>
 <br><br>
 <table class="table table-light table-responsive">
     <thead class="thead-light">
         <tr>
-            <th>#</th>
+            
             <th>Foto</th>
             <th>ISBN</th>
             <th>Titulo</th>
@@ -43,17 +42,17 @@
     <tbody>
         @foreach( $libros as $libro )
         <tr>
-            <td>{{ $libro -> id_libro}}</td>
+            
             <td>
                 <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$libro -> foto }}" height="100" width="200" alt="50"> 
             </td>
             <td>{{ $libro -> ISBN }}</td>
             <td>{{ $libro -> titulo}}</td>
-            <td>{{ $libro -> id_autor}}</td>
-            <td>{{ $libro -> id_editorial}}</td>
+            <td><label class="label label-info">{{ $libro->autores->nom_autor}}</label></td>
+            <td><label class="label label-info">{{ $libro->editoriales->nom_editorial}}</label></td> 
             <td>{{ $libro -> edicion}}</td>
-            <td>{{ $libro -> id_carrera}}</td>
-            <td>{{ $libro -> id_materia}}</td>
+            <td><label class="label label-info">{{ $libro->carreras->nom_carrera}}</label></td>
+            <td><label class="label label-info">{{ $libro->materias->nom_materia}}</label></td> 
             <td>{{ $libro -> id_clasifidewey}}</td>
             <td>{{ $libro -> paginas}}</td>
             <td>{{ $libro -> ejemplar_total}}</td>
@@ -63,11 +62,11 @@
             <td>{{ $libro -> activo}}</td>
             <td>
 
-            <a href="{{ url('/libro/'.$libro->id_libro.'/edit' ) }}" class="btn btn-warning" >
+            <a href="{{ url('/libro/'.$libro->ISBN.'/edit' ) }}" class="btn btn-warning" >
             Editar
             </a>
 |
-            <form action="{{ url ('/libro/'.$libro->id_libro ) }}" method="post" class="d-inline ">
+            <form action="{{ url ('/libro/'.$libro->ISBN ) }}" method="post" class="d-inline ">
             @csrf 
             {{ method_field('DELETE') }}
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">

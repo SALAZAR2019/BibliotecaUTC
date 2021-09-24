@@ -20,7 +20,7 @@
   <script type="text/javascript" src="js/vue.js"></script>
   <script type="text/javascript" src="js/vue-resource.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+ 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -43,10 +43,11 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="img/utc.jpg" class="brand-image img-rounded elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-italic">Biblioteca UTC</span>
+    <a class="brand-link">
+    <span class="logo-mini "><b class="text-warning"><b class="text-white">-------</b>U</b><b class="text-success font-italic">TC</b></span>
+      <!-- <img src="img/utc.jpg" class="brand-image img-rounded elevation-3"
+           style="opacity: .8"> -->
+      <span class="text-warning font-weight-italic">Biblioteca<b class="text-white">-------</b></span>
     </a>
 
     <!-- Sidebar -->
@@ -57,8 +58,8 @@
           <img src="img/user.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{Session::get('nombre')}}</a>
-          <a href="#" class="d-block">{{Session::get('rol')}}</a>
+          <h6 class="text-light font-weight-bold">{{Session::get('nombre')}} {{Session::get('ap')}}</h6>
+          <small class=" text-white font-italic">{{Session::get('rol')}}</small>
         </div>
       </div>
 
@@ -89,13 +90,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{url('usuario')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registrar</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{url('tipo')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tipo</p>
                   </a>
@@ -105,7 +106,7 @@
           @endif
           @if(Session::get('rol') == "Bibliotecario" || Session::get('rol') == "Administrador" )
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{url('libro')}}" class="nav-link">
                   <i class="nav-icon fas fa-book"></i>
                   <p>Libros</p>
                 </a>
@@ -127,12 +128,6 @@
                   <p>Registrar</p>
                   </a>
                 </li>
-                <!-- <li class="nav-item">
-                  <a href="{{url('r')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Roles</p>
-                  </a>
-                </li> -->
               </ul>
             </li>
             @endif

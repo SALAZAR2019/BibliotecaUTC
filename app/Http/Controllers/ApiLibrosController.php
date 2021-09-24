@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 use App\Models\Libro;
+use App\Models\EditorialController;
+use App\Models\AutorController;
+use App\Models\CarreraController;
+use App\Models\MateriaController;
+use App\Models\ejemplares;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class ApiLibrosController extends Controller
 {
@@ -15,8 +21,12 @@ class ApiLibrosController extends Controller
     public function index()
     {
         //
+        $autores= AutorController::all();
+        $editoriales = EditorialController::all();
+        $carreras= CarreraController::all();
+        $materias = MateriaController::all();
         $datos['libros']=Libro::paginate(5);
-        return view('libro.index',$datos);
+        return view('libro.index',$datos, compact('editoriales','autores','carreras','materias'));
     }
 
     /**
@@ -27,7 +37,11 @@ class ApiLibrosController extends Controller
     public function create()
     {
         //
-        return view('libro.create');
+        $autores= AutorController::all();
+        $editoriales= EditorialController::all();
+        $carreras= CarreraController::all();
+        $materias = MateriaController::all();
+        return view('libro.create', compact('editoriales','autores','carreras','materias'));
     }
 
     /**
@@ -62,12 +76,34 @@ class ApiLibrosController extends Controller
 
         //$datosEmpleado = request() ->all();
         $datosLibro = request()->except('_token');
+        
+
 
         if($request->hasFile('foto')) {
             $datosLibro['foto']=$request->file('foto')->store('uploads','public');
         }
         Libro::insert($datosLibro);
-         //return response()->json($datosEmpleado);
+        
+        $resenia=$request->get('resenia');
+        $fecha_alta = Carbon::now();
+
+        $ISBN = $request->get('ISBN');
+        $ejemplares=$request->get('ejemplar_total');
+        //$ejemplares=[];
+        for($i=0;$i<($ejemplares);$i++)
+        {
+            $ejemplar[]=[
+                //'id_ejemplar'=>$ejemplares,
+                'ISBN'=>$ISBN,
+                'descripcion'=>$resenia,
+                'fecha_alta'=>$fecha_alta
+                
+            ];
+            
+        }
+        ejemplares::insert($ejemplar);
+        
+        //return response()->json($ejemplar);
          return redirect('libro')->with('mensaje','Libro agregado con éxito');
     }
 
@@ -91,8 +127,12 @@ class ApiLibrosController extends Controller
     public function edit($id)
     {
         //
+        $autores= AutorController::all();
+        $editoriales= EditorialController::all();
+        $carreras= CarreraController::all();
+        $materias = MateriaController::all();
         $libro=Libro::findOrFail($id);
-        return view('libro.edit', compact('libro') );
+        return view('libro.edit', compact('libro','autores','editoriales', 'carreras','materias') );
     }
 
     /**
@@ -138,11 +178,12 @@ class ApiLibrosController extends Controller
             $datosLibro['foto']=$request->file('foto')->store('uploads','public');
         }
 
-        Libro::where('id_libro','=',$id)->update($datosLibro);
+        Libro::where('ISBN','=',$id)->update($datosLibro);
 
         $libro=Libro::findOrFail($id);
         //return view('empleado.edit', compact('empleado') );
-        return redirect('libro')->with('mensaje','Libro Modificado');
+        return redirect('libro'
+        )->with('mensaje','Libro Modificado');
     }
 
     /**
