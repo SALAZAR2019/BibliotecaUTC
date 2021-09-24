@@ -45,4 +45,14 @@ class Libro extends Model
     {
         return $this->belongsTo(AutorController::class, 'id_autor', 'id_autor');
     }
+
+    public function carreras()
+    {
+        return $this->belongsTo(CarreraController::class, 'id_carrera');
+    }
+
+    public function materias()
+    {
+        return $this->belongsTo(MateriaController::class, 'id_materia');
+    }
 }

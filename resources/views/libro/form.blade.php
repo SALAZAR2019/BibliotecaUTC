@@ -10,6 +10,11 @@
 </div>
 @endif
 
+<div></div>
+<div class="modal-body">
+<divc class="row">
+<div class="col-sm-4">
+
 <div class="form-group">
 <label for="ISBN"> ISBN </label>
 <input class="form-control" type="text" name="ISBN"  id="ISBN" 
@@ -79,19 +84,43 @@ value="{{ isset($libro -> id_editorial)?$libro -> id_editorial:old('id_editorial
 <input class="form-control" type="text"  name="edicion"  id="edicion" 
 value="{{ isset($libro -> edicion)?$libro->edicion:old('edicion')}}">
 </div>
+</div>
 
-
-
+<div class="col-sm-4">
 <div class="form-group">
-<label for="id_carrera"> Carrera </label>
-<input class="form-control" type="text"  name="id_carrera"  id="id_carrera" 
-value="{{ isset($libro -> id_carrera)?$libro -> id_carrera:old('id_carrera')}}">
+    <label for="">Carreras</label>
+    <select name="id_carrera"  class="form-control">
+    <option value="">--Elige una carrera--</option>
+        @foreach ($carreras as $carrera)
+        <option value="{{ $carrera-> id_carrera }}"
+            @if (!is_null(old('id_carrera'))) 
+            {{ old('id_carrera') == $carreras -> id_carrera ? 'selected' : ''}}
+            @else
+            @if(isset($libro))
+            {{$libro ->id_carrera ==$carrera->id_carrera ? 'selected' : '' }}
+            @endif
+            @endif
+            >{{$carrera->nom_carrera}}</option>
+        @endforeach
+    </select>
 </div>
 
 <div class="form-group">
-<label for="id_materia"> Materia </label>
-<input class="form-control" type="text"  name="id_materia"  id="id_materia" 
-value="{{ isset($libro -> id_materia)?$libro->id_materia:old('id_materia')}}">
+    <label for="">Materias</label>
+    <select name="id_materia"  class="form-control">
+    <option value="">--Elige una materia--</option>
+        @foreach ($materias as $materia)
+        <option value="{{ $materia-> id_materia }}"
+            @if (!is_null(old('id_materia'))) 
+            {{ old('id_materia') == $materias -> id_materia ? 'selected' : ''}}
+            @else
+            @if(isset($libro))
+            {{$libro ->id_materia ==$materia->id_materia ? 'selected' : '' }}
+            @endif
+            @endif
+            >{{$materia->nom_materia}}</option>
+        @endforeach
+    </select>
 </div>
 
 <div class="form-group">
@@ -111,7 +140,11 @@ value="{{ isset($libro -> paginas)?$libro -> paginas:old('paginas')}}">
 <input class="form-control" type="text"  name="ejemplar_total"  id="ejemplar_total" 
 value="{{ isset($libro -> ejemplar_total)?$libro->ejemplar_total:old('ejemplar_total')}}">
 </div>
+</div>
 
+
+
+<div class="col-sm-4">
 <div class="form-group">
 <label for="resenia"> Resenia </label>
 <input class="form-control" type="text"  name="resenia"  id="resenia" 
@@ -151,7 +184,7 @@ value="{{ isset($libro -> activo)?$libro -> activo:old('activo')}}">
 @endif
 <input class="form-control" type="file"  name="foto"  id="foto" value="">
 </div>
-
+</div>
 
 <input class="btn btn-success" type="submit"  value="{{ $modo }} datos">
 
