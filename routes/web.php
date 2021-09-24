@@ -29,17 +29,16 @@ Route::resource('autor',ApiAutoresController::class);
 //}); 
 
 
-
-
-
-
 //vistas
-Route::view('dev', 'devoluciones');
-Route::view('prestamo','prestamos');
-Route::view('user','Usuarios.user_login');
-Route::view('login','login');
-Route::view('usuario','Usuarios.usuarios');
-Route::view('tipo','Usuarios.tipo_usuario');
+
+  Route::view('dev', 'devoluciones')->middleware('biblio');
+  Route::view('prestamo','prestamos')->middleware('biblio');
+  Route::view('user','Usuarios.user_login')->middleware('admin');
+  Route::view('login','login');
+  Route::view('usuario','Usuarios.usuarios')->middleware('admin');
+  Route::view('tipo','Usuarios.tipo_usuario')->middleware('admin');
+
+
 
 
 //controladores
