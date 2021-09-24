@@ -69,12 +69,9 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-                <i class="right fas fa-angle-left"></i>
-              </p>
+          <a href="#" class="nav-link active">
+            <i class="fas fa-book">  Libros   </i>              
+              
             </a>
 
             
@@ -117,7 +114,7 @@
               <a href="" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Uusarios
+                Usuarios
                 <i class="right fas fa-angle-left"></i>
               </p>
               </a>
