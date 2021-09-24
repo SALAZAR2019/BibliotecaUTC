@@ -187,5 +187,5 @@ value="{{ isset($libro -> activo)?$libro -> activo:old('activo')}}">
 </div>
 
 <input class="btn btn-success" type="submit"  value="{{ $modo }} datos">
-
-<a href="{{ url('libro/') }}" class="btn btn-primary">Regresar</a>
+<br>
+<a href="{{ url('libro/') }}" class="btn btn-warning">Cancelar</a>

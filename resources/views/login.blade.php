@@ -15,13 +15,14 @@
 <body>
 <div class="wrapper fadeInDown">
   <div id="formContent">
-    <!-- Tabs Titles -->
 
+    <!-- Tabs Titles -->
+<br><br>
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="img/user.png" id="icon" alt="User Icon" />
+      <img src="img/utc.jpg" alt="User Icon" class="brand-image " />
     </div>
-
+<br>
     <!-- Login Form -->
     <form method="POST" action="{{ url('entrada') }}">
         @csrf

@@ -34,7 +34,14 @@
       </li>
     </ul>
 
-    
+    <!-- SEARCH FORM -->
+    <!-- <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-navbar" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+    </form> -->
+
     <!-- Right navbar links -->
  
   </nav>
@@ -102,13 +109,56 @@
             </li>
           @endif
           @if(Session::get('rol') == "Bibliotecario" || Session::get('rol') == "Administrador" )
-              <li class="nav-item">
-                <a href="{{url('libro')}}" class="nav-link">
-                  <i class="nav-icon fas fa-book"></i>
-                  <p>Libros</p>
-                </a>
-              </li>
-              @endif
+          <li class="nav-item has-treeview">
+              <a href="" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Libros
+                <i class="right fas fa-angle-left"></i>
+              </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{url('libro')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Registrar</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{url('autor')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Autores</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{url('editorial')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Editoriales</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{url('carrera')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Carreras</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{url('materia')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Materias</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @endif
               @if(Session::get('rol') == "Administrador")  
             <li class="nav-item has-treeview">
               <a href="" class="nav-link">
@@ -131,7 +181,7 @@
 
             </ul>
           </li>
-          @if(Session::get('rol') == "Bibliotecario") 
+          @if(Session::get('rol') == "Bibliotecario" || Session::get('rol') == "Administrador") 
           <li class="nav-header">SECCIÓN DE PRESTAMOS</li>
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
@@ -154,12 +204,12 @@
                   <p>Devoluciones</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="pages/charts/inline.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Todos</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           @endif
