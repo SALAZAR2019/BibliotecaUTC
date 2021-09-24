@@ -70,6 +70,7 @@ class ApiLibrosController extends Controller
 
         //$datosEmpleado = request() ->all();
         $datosLibro = request()->except('_token');
+        
 
 
         if($request->hasFile('foto')) {
@@ -87,7 +88,6 @@ class ApiLibrosController extends Controller
         {
             $ejemplar[]=[
                 //'id_ejemplar'=>$ejemplares,
-                
                 'ISBN'=>$ISBN,
                 'descripcion'=>$resenia,
                 'fecha_alta'=>$fecha_alta
