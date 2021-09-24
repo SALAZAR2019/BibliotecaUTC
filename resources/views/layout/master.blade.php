@@ -20,7 +20,7 @@
   <script type="text/javascript" src="js/vue.js"></script>
   <script type="text/javascript" src="js/vue-resource.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+ 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -34,14 +34,7 @@
       </li>
     </ul>
 
-    <!-- SEARCH FORM -->
-    <!-- <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-    </form> -->
-
+    
     <!-- Right navbar links -->
  
   </nav>
@@ -244,13 +237,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.4
-    </div>
-  </footer>
+
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

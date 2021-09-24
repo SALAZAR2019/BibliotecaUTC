@@ -22,7 +22,7 @@
 			</div>
 			<div class="col-2 position-relative">
 				<span class="input-group-btn">
-					<button id="btnEnviar" class="btn btn-success" type="submit" disabled class="btn btn-success" @click="getLibros()">Agregar</button>
+					<button id="btnEnviar" class="btn btn-success" type="submit" disabled class="btn btn-success" @click="getLibros()">Agregar libro</button>
 				</span>
 			</div>
         </div>
