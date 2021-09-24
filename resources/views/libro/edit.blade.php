@@ -6,7 +6,7 @@
 {!! Form::model($libro, ['url' => "/libro/{$libro->ISBN}", 'method' =>'PATCH']) !!}
 @csrf
 {{ method_field('PATCH') }}
-@include('libro.form',['modo'=>'Editar']);
+@include('libro.form',['modo'=>'Editar'])
 </form>
 </div>
 @endsection

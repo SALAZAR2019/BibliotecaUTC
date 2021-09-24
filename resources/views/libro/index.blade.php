@@ -1,6 +1,11 @@
-@extends('layouts.app')
-@section('content')
+@extends('layout.master')
+@section('contenido')
 <div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>LISTA DE LIBROS</h1>
+        </div>
+    </div>
 
 
 @if(Session::has('mensaje'))
@@ -14,8 +19,10 @@
 
 <a href="{{ url('libro/create') }}" class="btn btn-success">Registrar nuevo Libro</a>
 <br><br>
-<table class="table table-light table-responsive">
-    <thead class="thead-light">
+<div class="row">
+	<div class="col-12">
+<table class="table table-borderes table-responsive">
+    <thead style="background: #ffffcc">
         <tr>
             
             <th>Foto</th>
@@ -60,7 +67,7 @@
             <td>{{ $libro -> activo}}</td>
             <td>
 
-            <a href="{{ url('/libro/'.$libro->ISBN.'/edit' ) }}" class="btn btn-warning" >
+            <a href="{{ url('/libro/'.$libro->ISBN.'/edit' ) }}" class="btn btn-primary">
             Editar
             </a>
 |
@@ -75,6 +82,8 @@
         @endforeach
     </tbody>
 </table>
+</div>
+</div>
 {!! $libros->links()!!}
 </div>
 @endsection

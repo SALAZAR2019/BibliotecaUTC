@@ -35,12 +35,12 @@
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline my-2 my-lg-0">
+    <!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-navbar" type="submit">
             <i class="fas fa-search"></i>
           </button>
-    </form>
+    </form> -->
 
     <!-- Right navbar links -->
  
@@ -141,7 +141,7 @@
 
             </ul>
           </li>
-          @if(Session::get('rol') == "Bibliotecario") 
+          @if(Session::get('rol') == "Bibliotecario" || Session::get('rol') == "Administrador") 
           <li class="nav-header">SECCIÓN DE PRESTAMOS</li>
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
@@ -164,12 +164,12 @@
                   <p>Devoluciones</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="pages/charts/inline.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Todos</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           @endif

@@ -17,11 +17,12 @@ class ejemplares extends Model
 
     protected $fillable=
     [
-        'id_ejemplar',
+        // 'id_ejemplar',
+        'codigo',
         'ISBN',
         'prestado',
-        //'ISBN',
-        'activo'
+        'descripcion',
+        // 'activo'
     ];
     public function libros(){
         return $this-> belongsTo(Libro::class,'ISBN');
