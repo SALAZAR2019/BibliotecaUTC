@@ -33,8 +33,8 @@ Route::resource('materia',ApiMateriasController::class);
 
 //vistas
 
-  Route::view('dev', 'devoluciones')->middleware('biblio');
-  Route::view('prestamo','prestamos')->middleware('biblio');
+  Route::view('dev', 'devoluciones')->middleware('admin');
+  Route::view('prestamo','prestamos')->middleware('admin');
   Route::view('user','Usuarios.user_login')->middleware('admin');
   Route::view('login','login');
   Route::view('usuario','Usuarios.usuarios')->middleware('admin');

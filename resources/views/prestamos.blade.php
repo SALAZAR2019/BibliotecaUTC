@@ -14,7 +14,7 @@
 			</div>
 			<div class="col-3 position-relative">
 				<span class="input-group-btn">
-					<button id="btnUser" class="btn btn-success" type="submit"  class="btn btn-success" @click="getUser()">Agregar</button>
+					<button id="btnUser" class="btn btn-success" type="submit"  class="btn btn-success" @click="getUser()">verificar usuario</button>
 				</span>
 			</div>
 			<div class="col-3 position-relative">
@@ -22,7 +22,7 @@
 			</div>
 			<div class="col-3 position-relative">
 				<span class="input-group-btn">
-					<button id="btnEnviar" class="btn btn-success" type="submit" disabled class="btn btn-success" @click="getLibros()">Agregar</button>
+					<button id="btnEnviar" class="btn btn-success" type="submit" disabled class="btn btn-success" @click="getLibros()">Agregar libro</button>
 				</span>
 			</div>
         </div>
