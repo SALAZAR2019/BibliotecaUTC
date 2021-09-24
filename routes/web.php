@@ -17,10 +17,10 @@ Route::get('/', function () {
 });
 Route::resource('empleado',ApiEmpleadoController::class);
 Route::resource('libro',ApiLibrosController::class)->middleware('sesion');
-Route::resource('editorial',ApiEditorialesController::class);
-Route::resource('autor',ApiAutoresController::class);
-Route::resource('carrera',ApiCarrerasController::class);
-Route::resource('materia',ApiMateriasController::class);
+Route::resource('editorial',ApiEditorialesController::class)->middleware('sesion');
+Route::resource('autor',ApiAutoresController::class)->middleware('sesion');
+Route::resource('carrera',ApiCarrerasController::class)->middleware('sesion');
+Route::resource('materia',ApiMateriasController::class)->middleware('sesion');
 //Auth::routes();
 
 //Route::get('/home',[ApiEmpleadoController::class,'index']) ->name('home');
