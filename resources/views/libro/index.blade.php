@@ -12,7 +12,6 @@
 </div>
 @endif
 
-
 <a href="{{ url('libro/create') }}" class="btn btn-success">Registrar nuevo Libro</a>
 <br><br>
 <table class="table table-light table-responsive">
