@@ -112,19 +112,62 @@
             </li>
           @endif
           @if(Session::get('rol') == "Bibliotecario" || Session::get('rol') == "Administrador" )
-              <li class="nav-item">
-                <a href="{{url('libro')}}" class="nav-link">
-                  <i class="nav-icon fas fa-book"></i>
-                  <p>Libros</p>
-                </a>
-              </li>
-              @endif
+          <li class="nav-item has-treeview">
+              <a href="" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Libros
+                <i class="right fas fa-angle-left"></i>
+              </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{url('libro')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Registrar</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{url('autor')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Autores</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{url('editorial')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Editoriales</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{url('carrera')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Carreras</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{url('materia')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Materias</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @endif
               @if(Session::get('rol') == "Administrador")  
             <li class="nav-item has-treeview">
               <a href="" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Uusarios
+                Usuarios
                 <i class="right fas fa-angle-left"></i>
               </p>
               </a>
