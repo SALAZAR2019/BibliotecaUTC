@@ -19,6 +19,8 @@ Route::resource('empleado',ApiEmpleadoController::class);
 Route::resource('libro',ApiLibrosController::class);
 Route::resource('editorial',ApiEditorialesController::class);
 Route::resource('autor',ApiAutoresController::class);
+Route::resource('carrera',ApiCarrerasController::class);
+Route::resource('materia',ApiMateriasController::class);
 //Auth::routes();
 
 //Route::get('/home',[ApiEmpleadoController::class,'index']) ->name('home');

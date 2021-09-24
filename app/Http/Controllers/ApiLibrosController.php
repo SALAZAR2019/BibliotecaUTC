@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Libro;
 use App\Models\EditorialController;
 use App\Models\AutorController;
+use App\Models\CarreraController;
+use App\Models\MateriaController;
 use App\Models\ejemplares;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,8 +23,10 @@ class ApiLibrosController extends Controller
         //
         $autores= AutorController::all();
         $editoriales = EditorialController::all();
+        $carreras= CarreraController::all();
+        $materias = MateriaController::all();
         $datos['libros']=Libro::paginate(5);
-        return view('libro.index',$datos, compact('editoriales','autores'));
+        return view('libro.index',$datos, compact('editoriales','autores','carreras','materias'));
     }
 
     /**
@@ -35,7 +39,9 @@ class ApiLibrosController extends Controller
         //
         $autores= AutorController::all();
         $editoriales= EditorialController::all();
-        return view('libro.create', compact('editoriales','autores'));
+        $carreras= CarreraController::all();
+        $materias = MateriaController::all();
+        return view('libro.create', compact('editoriales','autores','carreras','materias'));
     }
 
     /**
@@ -123,8 +129,10 @@ class ApiLibrosController extends Controller
         //
         $autores= AutorController::all();
         $editoriales= EditorialController::all();
+        $carreras= CarreraController::all();
+        $materias = MateriaController::all();
         $libro=Libro::findOrFail($id);
-        return view('libro.edit', compact('libro','autores','editoriales') );
+        return view('libro.edit', compact('libro','autores','editoriales', 'carreras','materias') );
     }
 
     /**
