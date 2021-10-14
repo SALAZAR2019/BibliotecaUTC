@@ -67,7 +67,7 @@ new Vue({
 							'titulo':json.data.libros.titulo,
 							//'ISBN':json.data.libros.ISBN,
 							'codigo':json.data.codigo,
-							'prestado':json.data.prestado,
+							
 							}
 
 				if (prestamo.ISBN){
