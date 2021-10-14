@@ -34,14 +34,7 @@
       </li>
     </ul>
 
-    <!-- SEARCH FORM -->
-    <!-- <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-    </form> -->
-
+    
     <!-- Right navbar links -->
  
   </nav>
