@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 
+use App\Mail\Sendemail;
+
 use Illuminate\Http\Request;
+
+use Mail;
+
 use App\Models\Libro;
 use App\Models\ejemplares;
 use App\Models\Prestamos;
 use App\Models\Detalle_prestamo;
+use Carbon;
 use DB;
 
 class ApiPrestamoController extends Controller
@@ -43,17 +49,24 @@ class ApiPrestamoController extends Controller
 
         $detalles=$request->get('newdetalles');
         $usuario=$request->get('id_usuario');
+        $folio=$request->get('folio');
+        
+
+        $User=DB::table('usuarios')->where('id_usuario','=',$usuario)->select('correo')->first();
+
+        
 
         for($i=0;$i<count($detalles);$i++)
         {
             $records[]=[
                 'folio'=>$request->get('folio'),
                 
-                'id_usuario'=>$usuario,
+                
 
                 'fecha_prestamo'=>$request->get('fecha_prestamo'),
 
-                'id_ejemplar'=>$detalles[$i]['id_ejemplar']
+                'id_ejemplar'=>$detalles[$i]['id_ejemplar'],
+                'titulo'=>$detalles[$i]['titulo'],
 
             ];
             $activo=$detalles[$i]['id_ejemplar'];
@@ -64,9 +77,10 @@ class ApiPrestamoController extends Controller
         if($records!=null){
 
             Prestamos::insert($records);
+
         }
         
-        
+        Mail::to($User->correo)->send(new Sendemail($records,$usuario,$folio));
 
     }
 
