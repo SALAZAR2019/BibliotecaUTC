@@ -60,12 +60,11 @@ class ApiPrestamoController extends Controller
         {
             $records[]=[
                 'folio'=>$request->get('folio'),
-                
-                
 
                 'fecha_prestamo'=>$request->get('fecha_prestamo'),
 
                 'id_ejemplar'=>$detalles[$i]['id_ejemplar'],
+
                 'titulo'=>$detalles[$i]['titulo'],
 
             ];
@@ -75,12 +74,9 @@ class ApiPrestamoController extends Controller
                         where id_ejemplar='$activo'");
         }
         if($records!=null){
-
             Prestamos::insert($records);
-
+            Mail::to($User->correo)->send(new Sendemail($detalles,$usuario,$folio));
         }
-        
-        Mail::to($User->correo)->send(new Sendemail($records,$usuario,$folio));
 
     }
 

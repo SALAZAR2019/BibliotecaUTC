@@ -11,7 +11,7 @@ class Sendemail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $records;
+    public $detalles;
     public $usuario;
     public $folio;
 
@@ -20,10 +20,10 @@ class Sendemail extends Mailable
      *
      * @return void
      */
-    public function __construct($records,$usuario,$folio)
+    public function __construct($detalles,$usuario,$folio)
     {
         //
-        $this->records = $records;
+        $this->detalles = $detalles;
         $this->usuario =$usuario;
         $this->folio =$folio;
     }
