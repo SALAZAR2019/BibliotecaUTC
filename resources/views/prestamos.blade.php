@@ -34,8 +34,9 @@
 					<thead style="background: #ffffcc">
 						<th>ID</th>
 						<th>ISBN</th>
+						<th width="15%">CÓDIGO</th>
 						<th width="15%">TITULO</th>
-						<th width="15%">ESTADO</th>
+						
 						<th width="15%">OPCIONES</th>
 					</thead>
 					<tbody>
