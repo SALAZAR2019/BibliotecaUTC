@@ -177,17 +177,17 @@ new Vue({
 			else if(detalles2.length!=newdetalles.length){
 				Swal.fire({
 					title: "hay libros repetidos en el prestamo",
-					text: "si continua se tomara solo un libro en cuenta ¿desea continuar?",
+					text: "Si continua se tomará solo un libro en cuenta ¿desea continuar?",
 					icon: "warning",
 					showCancelButton: true,
-					confirmButtonText:"si,deseo continuar",
+					confirmButtonText:"Si, deseo continuar",
 					cancelButtonText:"cancelar",
 					dangerMode: true,
 				  }).then(resultado => {
 					if (resultado.value) {
 						this.$http.post(urlPres,unprestamo)
 						.then(function(json){
-						Swal.fire("se ha realizado su prestamo su folio es :"+unprestamo.folio, {
+						Swal.fire("Se ha realizado su prestamo su folio es :"+unprestamo.folio, {
 							icon: "success",
 						});
 						this.eliminarLibros();
@@ -201,13 +201,14 @@ new Vue({
 						return true;
 					}
 					else{
-						Swal.fire("revise los libros repetidos porfavor");
+						Swal.fire("Revise los libros repetidos porfavor");
 					}
 				});
 			}else{
 				this.$http.post(urlPres,unprestamo)
 				.then(function(json){
 					this.eliminarLibros();
+					this.eliminarUser();
 					this.foliarVenta();
 					this.id_usuario='';
 					Swal.fire({

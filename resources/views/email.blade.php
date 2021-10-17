@@ -12,8 +12,8 @@
     <h1>prestamo de libros </h1>
     <p>su folio es {{$folio}}</p>
     <p>Libros prestados</p>
-    @foreach ($records as $record)
-        <li>{{$record['titulo']}}</li>
+    @foreach ($detalles as $detalle)
+        <li>{{$detalle['titulo']}}</li>
     @endforeach
     
 
