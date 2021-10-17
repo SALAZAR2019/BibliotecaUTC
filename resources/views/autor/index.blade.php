@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+@extends('layout.master')
+@section('contenido')
 <div class="container">
 
 
@@ -12,7 +12,7 @@
 </div>
 @endif
 
-
+<br><br>
 <a href="{{ url('autor/create') }}" class="btn btn-success">Registrar nuevo Autor</a>
 <br><br>
 <table class="table table-light">
@@ -31,7 +31,7 @@
             <td>{{ $autor -> nom_autor}}</td>
             <td>{{ $autor -> activo}}</td>
             <td>
-            <a href="{{ url('/autor/'.$autor->id_autor.'/edit' ) }}" class="btn btn-warning" >
+            <a href="{{ url('/autor/'.$autor->id_autor.'/edit' ) }}" class="btn btn-primary" >
             Editar
             </a>
 

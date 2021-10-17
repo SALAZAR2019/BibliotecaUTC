@@ -34,4 +34,4 @@ value="{{ isset($autor -> activo)?$autor->activo:old('activo')}}">
 
 <input class="btn btn-success" type="submit"  value="{{ $modo }} datos">
 
-<a href="{{ url('autor/') }}" class="btn btn-primary">Regresar</a>
+<a href="{{ url('autor/') }}" class="btn btn-warning">Cancelar</a>

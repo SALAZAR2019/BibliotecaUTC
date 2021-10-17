@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+@extends('layout.master')
+@section('contenido')
 <div class="container">
 
 
@@ -12,7 +12,7 @@
 </div>
 @endif
 
-
+<br><br>
 <a href="{{ url('materia/create') }}" class="btn btn-success">Registrar nueva materia</a>
 <br><br>
 <table class="table table-light">
@@ -31,7 +31,7 @@
             <td>{{ $materia -> nom_materia}}</td>
             <td>{{ $materia -> activo}}</td>
             <td>
-            <a href="{{ url('/materia/'.$materia->id_materia.'/edit' ) }}" class="btn btn-warning" >
+            <a href="{{ url('/materia/'.$materia->id_materia.'/edit' ) }}" class="btn btn-primary" >
             Editar
             </a>
 

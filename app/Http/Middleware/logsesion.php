@@ -19,7 +19,8 @@ class logsesion
     {
         if(Session::get('rol')=='Administrador')
             return $next($request);
-
+        if(Session::get('rol')=='Bibliotecario')
+            return $next($request);
         return redirect('/login');
     }
 }

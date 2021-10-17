@@ -27,4 +27,4 @@ value="{{ isset($editorial -> nom_editorial)?$editorial -> nom_editorial:old('no
 
 <input class="btn btn-success" type="submit"  value="{{ $modo }} datos">
 
-<a href="{{ url('editorial/') }}" class="btn btn-primary">Regresar</a>
+<a href="{{ url('editorial/') }}" class="btn btn-warning">Cancelar</a>

@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+@extends('layout.master')
+@section('contenido')
 <div class="container">
 
 
@@ -12,7 +12,7 @@
 </div>
 @endif
 
-
+<br><br>
 <a href="{{ url('carrera/create') }}" class="btn btn-success">Registrar nueva carrera</a>
 <br><br>
 <table class="table table-light">
@@ -31,7 +31,7 @@
             <td>{{ $carrera -> nom_carrera}}</td>
             <td>{{ $carrera -> activo}}</td>
             <td>
-            <a href="{{ url('/carrera/'.$carrera->id_carrera.'/edit' ) }}" class="btn btn-warning" >
+            <a href="{{ url('/carrera/'.$carrera->id_carrera.'/edit' ) }}" class="btn btn-primary" >
             Editar
             </a>
 

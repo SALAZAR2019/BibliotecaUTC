@@ -16,11 +16,11 @@ Route::get('/', function () {
     return view('auth.login');
 });
 Route::resource('empleado',ApiEmpleadoController::class);
-Route::resource('libro',ApiLibrosController::class);
-Route::resource('editorial',ApiEditorialesController::class);
-Route::resource('autor',ApiAutoresController::class);
-Route::resource('carrera',ApiCarrerasController::class);
-Route::resource('materia',ApiMateriasController::class);
+Route::resource('libro',ApiLibrosController::class)->middleware('sesion');
+Route::resource('editorial',ApiEditorialesController::class)->middleware('sesion');
+Route::resource('autor',ApiAutoresController::class)->middleware('sesion');
+Route::resource('carrera',ApiCarrerasController::class)->middleware('sesion');
+Route::resource('materia',ApiMateriasController::class)->middleware('sesion');
 //Auth::routes();
 
 //Route::get('/home',[ApiEmpleadoController::class,'index']) ->name('home');
@@ -33,14 +33,23 @@ Route::resource('materia',ApiMateriasController::class);
 
 //vistas
 
-  Route::view('dev', 'devoluciones')->middleware('admin');
-  Route::view('prestamo','prestamos')->middleware('admin');
-  Route::view('user','Usuarios.user_login')->middleware('admin');
+  Route::view('dev', 'devoluciones')->middleware('sesion');
+  Route::view('prestamo','prestamos')->middleware('sesion');
+  Route::view('user','Usuarios.user_login')->middleware('sesion');
   Route::view('login','login');
-  Route::view('usuario','Usuarios.usuarios')->middleware('admin');
-  Route::view('tipo','Usuarios.tipo_usuario')->middleware('admin');
+  Route::view('usuario','Usuarios.usuarios')->middleware('sesion');
+  Route::view('tipo','Usuarios.tipo_usuario')->middleware('sesion');
 
 
+
+//vistas
+// Route::view('dev', 'devoluciones');
+// Route::view('prestamo','prestamos');
+// Route::view('user','Usuarios.user_login');
+// Route::view('login','login');
+// Route::view('usuario','Usuarios.usuarios');
+// Route::view('tipo','Usuarios.tipo_usuario');
+Route::view('ejemplar','ejemplares');
 
 
 //controladores

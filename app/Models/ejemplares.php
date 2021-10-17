@@ -9,7 +9,7 @@ class ejemplares extends Model
 {
     use HasFactory;
     protected $table="ejemplares";
-    protected $primaryKey="id_ejemplar";
+    protected $primaryKey="titulo";
     public $timestamps=false;
     public $incrementing=false;
 
@@ -17,11 +17,13 @@ class ejemplares extends Model
 
     protected $fillable=
     [
-        'id_ejemplar',
+        // 'id_ejemplar',
+        'codigo',
+        'titulo',
         'ISBN',
         'prestado',
-        //'ISBN',
-        'activo'
+        'descripcion',
+        // 'activo'
     ];
     public function libros(){
         return $this-> belongsTo(Libro::class,'ISBN');

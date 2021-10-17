@@ -9,18 +9,18 @@
     </div>
     <div class="row g-2">
         <div class="input-group">
-			<div class=" col-2 position-relative">
+			<div class=" col-3 position-relative">
 				<input id="id_usuario" type="text" name="id_usuario" v-model="id_usuario" class="form-control" placeholder="ingrese matricula-cedula" onkeyup="verificar(this.value);" >
 			</div>
 			<div class="col-3 position-relative">
 				<span class="input-group-btn">
-					<button id="btnUser" class="btn btn-success" type="submit"  class="btn btn-success" @click="getUser()">verificar usuario</button>
+					<button id="btnUser" class="btn btn-success" type="submit"  class="btn btn-success" @click="getUser()">Verificar</button>
 				</span>
 			</div>
 			<div class="col-3 position-relative">
                	<input id="libro" type="text" name="libro" class="form-control" v-model="codigo" ref="buscar" placeholder="ingrese id libro" disabled onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
 			</div>
-			<div class="col-3 position-relative">
+			<div class="col-2 position-relative">
 				<span class="input-group-btn">
 					<button id="btnEnviar" class="btn btn-success" type="submit" disabled class="btn btn-success" @click="getLibros()">Agregar libro</button>
 				</span>
@@ -34,8 +34,9 @@
 					<thead style="background: #ffffcc">
 						<th>ID</th>
 						<th>ISBN</th>
+						<th width="15%">CÓDIGO</th>
 						<th width="15%">TITULO</th>
-						<th width="15%">ESTADO</th>
+						
 						<th width="15%">OPCIONES</th>
 					</thead>
 					<tbody>
@@ -54,7 +55,7 @@
 			<ul v-for="usu in users" class="nav navbar-nav">
 				<li>@{{usu.nombres}}</li>
 				<li>@{{usu.correo}}</li>
-				<li><span class="btn btn-bg" @click="eliminarUser(users.id_usuario)">Cambiar</span></li>
+				<li><span class="btn btn-bg btn-warning" @click="eliminarUser(users.id_usuario)">Cambiar</span></li>
 			</ul>
 		</div>
 	</div>

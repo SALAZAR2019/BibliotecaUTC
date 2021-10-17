@@ -34,6 +34,9 @@ class ApiEjemplaresController extends Controller
     public function store(Request $request)
     {
         //
+        $ejemplar= new ejemplares;
+        $ejemplar->codigo=$request->get('codigo');
+        $ejemplar->save();
     }
 
     /**
@@ -58,7 +61,9 @@ class ApiEjemplaresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ejemplar=ejemplares::find($id);
+        $ejemplar->codigo=$request->get('codigo');
+        $ejemplar->update();
 
     }
 

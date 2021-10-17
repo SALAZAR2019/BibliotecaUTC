@@ -67,7 +67,7 @@ new Vue({
 							'titulo':json.data.libros.titulo,
 							//'ISBN':json.data.libros.ISBN,
 							'codigo':json.data.codigo,
-							'prestado':json.data.prestado,
+							
 							}
 
 				if (prestamo.ISBN){
@@ -145,9 +145,9 @@ new Vue({
 
 			for (var i = 0; i < this.prestamos.length; i++) {
 				detalles2.push({
-					id_libro:this.prestamos[i].id_libro,
+					//id_libro:this.prestamos[i].id_libro,
 					titulo:this.prestamos[i].titulo,
-					describe_estado:this.prestamos[i].describe_estado,
+					//describe_estado:this.prestamos[i].describe_estado,
 					id_ejemplar:this.prestamos[i].id_ejemplar,
 					ISBN:this.prestamos[i].ISBN,
 					
@@ -155,7 +155,8 @@ new Vue({
 				var set =new Set(detalles2.map(JSON.stringify))
 				var newdetalles = Array.from(set).map(JSON.parse);
 			}
-
+			console.log(detalles2);
+			console.log(newdetalles);
 			var unprestamo = {
 				folio:this.folio,
 				fecha_prestamo:this.fecha_prestamo,
@@ -176,17 +177,17 @@ new Vue({
 			else if(detalles2.length!=newdetalles.length){
 				Swal.fire({
 					title: "hay libros repetidos en el prestamo",
-					text: "si continua se tomara solo un libro en cuenta ¿desea continuar?",
+					text: "Si continua se tomará solo un libro en cuenta ¿desea continuar?",
 					icon: "warning",
 					showCancelButton: true,
-					confirmButtonText:"si,deseo continuar",
+					confirmButtonText:"Si, deseo continuar",
 					cancelButtonText:"cancelar",
 					dangerMode: true,
 				  }).then(resultado => {
 					if (resultado.value) {
 						this.$http.post(urlPres,unprestamo)
 						.then(function(json){
-						Swal.fire("se ha realizado su prestamo su folio es :"+unprestamo.folio, {
+						Swal.fire("Se ha realizado su prestamo su folio es :"+unprestamo.folio, {
 							icon: "success",
 						});
 						this.eliminarLibros();
@@ -200,13 +201,14 @@ new Vue({
 						return true;
 					}
 					else{
-						Swal.fire("revise los libros repetidos porfavor");
+						Swal.fire("Revise los libros repetidos porfavor");
 					}
 				});
 			}else{
 				this.$http.post(urlPres,unprestamo)
 				.then(function(json){
 					this.eliminarLibros();
+					this.eliminarUser();
 					this.foliarVenta();
 					this.id_usuario='';
 					Swal.fire({
