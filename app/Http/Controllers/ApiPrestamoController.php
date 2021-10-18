@@ -13,7 +13,7 @@ use App\Models\Libro;
 use App\Models\ejemplares;
 use App\Models\Prestamos;
 use App\Models\Detalle_prestamo;
-use Carbon;
+use Carbon\Carbon;
 use DB;
 
 class ApiPrestamoController extends Controller
@@ -33,6 +33,7 @@ class ApiPrestamoController extends Controller
         //->get();
         //return $prestamos;
         return Prestamos::where("estado_prestamo",'=','1')->select('*')->get();
+        
 
     }
 
@@ -45,27 +46,29 @@ class ApiPrestamoController extends Controller
     public function store(Request $request)
     {
         //
-        $records=[];
+        //$records=[];
 
         $detalles=$request->get('newdetalles');
         $usuario=$request->get('id_usuario');
         $folio=$request->get('folio');
-        
+
+        $endDate = Carbon::now()->addDay(3)->format('Y-m-d');
 
         $User=DB::table('usuarios')->where('id_usuario','=',$usuario)->select('correo')->first();
-
-        
-
         for($i=0;$i<count($detalles);$i++)
         {
             $records[]=[
                 'folio'=>$request->get('folio'),
+
+                'id_usuario'=>$request->get('id_usuario'),
 
                 'fecha_prestamo'=>$request->get('fecha_prestamo'),
 
                 'id_ejemplar'=>$detalles[$i]['id_ejemplar'],
 
                 'titulo'=>$detalles[$i]['titulo'],
+
+                'fecha_devolucion'=>$endDate
 
             ];
             $activo=$detalles[$i]['id_ejemplar'];
@@ -75,7 +78,9 @@ class ApiPrestamoController extends Controller
         }
         if($records!=null){
             Prestamos::insert($records);
-            Mail::to($User->correo)->send(new Sendemail($detalles,$usuario,$folio));
+        }
+        if($detalles!=null){
+            Mail::to($User->correo)->send(new Sendemail($detalles,$usuario,$folio,$endDate));
         }
 
     }

@@ -61,10 +61,14 @@ Route::apiResource('apiTipos','ApiTiposController');
 Route::apiResource('ApiUsuario','ApiUsuarioController');
 Route::apiResource('apiCarrera','ApiCarrera');
 
+Route::apiResource('envio','autosendmail');
+
 
 //validación
 Route::post('entrada','AccesoController@validar');
 Route::get('logout', 'AccesoController@salir');
+
+Route::get('envios','autosend@send');
 
 
 //Auth::routes();

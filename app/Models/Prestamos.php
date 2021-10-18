@@ -13,7 +13,7 @@ class Prestamos extends Model
     public $timestamps=false;
     public $incrementing=false;
    
-    protected $with=['ejemplar'];
+    protected $with=['ejemplar','usuario'];
 
     protected $fillable=
     [
@@ -28,6 +28,9 @@ class Prestamos extends Model
         
     ];
     public function ejemplar(){
-        return $this-> belongsTo(ejemplares::class,'id_ejemplar');
+        return $this-> belongsTo(ejemplares::class,'titulo');
+    }
+    public function usuario(){
+        return $this-> belongsTo(Usuarios::class,'id_usuario');
     }
 }
