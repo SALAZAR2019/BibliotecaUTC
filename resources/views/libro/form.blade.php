@@ -76,9 +76,6 @@ value="{{ isset($libro -> id_editorial)?$libro -> id_editorial:old('id_editorial
 </div>
 
 
-
-
-
 <div class="form-group">
 <label for="edicion"> Edición</label>
 <input class="form-control" type="text"  name="edicion"  id="edicion" 
