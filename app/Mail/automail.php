@@ -7,27 +7,22 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class Sendemail extends Mailable
+class automail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $detalles;
-    public $usuario;
-    public $folio;
-    public $endDate;
+    public $user;
+    
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($detalles,$usuario,$folio,$endDate)
+    public function __construct($user)
     {
         //
-        $this->detalles = $detalles;
-        $this->usuario =$usuario;
-        $this->folio =$folio;
-        $this->endDate =$endDate;
+        $this->user =$user;
     }
 
     /**
@@ -37,6 +32,6 @@ class Sendemail extends Mailable
      */
     public function build()
     {
-        return $this->view('email');
+        return $this->view('aviso');
     }
 }

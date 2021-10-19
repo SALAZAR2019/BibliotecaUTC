@@ -10,12 +10,12 @@
 <body>
 <div >
     <h1>prestamo de libros </h1>
-    <p>su folio es {{$folio}}</p>
+    <p></p>
     <p>Libros prestados</p>
-    @foreach ($detalles as $detalle)
-        <li>{{$detalle['titulo']}}</li>
+    @foreach ($user as $use)
+        <li>{{$use}}</li>
     @endforeach
-    <p>fecha para devolver: {{$endDate}}</p>
+    <p></p>
 
 </div>
 </body>
