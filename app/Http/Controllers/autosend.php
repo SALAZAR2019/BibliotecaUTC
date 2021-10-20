@@ -33,7 +33,7 @@ class autosend extends Controller
                 Mail::to($user->correo)->send(new automail($user));
             }
         }
-        return "Ok";
+        
         
         //$User=DB::table('usuarios')->where('id_usuario','=',$usuario)->select('correo')->first();
 

@@ -48,7 +48,7 @@ class ApiEjemplaresController extends Controller
     public function show($id)
     {
         //
-        $libro=ejemplares::where('Activo','=','1')->find($id);
+        $libro=ejemplares::where('prestado','=','1')->find($id);
         return $libro;
     }
 

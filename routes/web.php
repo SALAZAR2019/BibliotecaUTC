@@ -68,7 +68,7 @@ Route::apiResource('envio','autosendmail');
 Route::post('entrada','AccesoController@validar');
 Route::get('logout', 'AccesoController@salir');
 
-Route::get('envios','autosend@send');
+Route::post('envios','autosend@send');
 
 
 //Auth::routes();

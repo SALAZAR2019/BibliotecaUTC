@@ -73,7 +73,7 @@ class ApiPrestamoController extends Controller
             ];
             $activo=$detalles[$i]['id_ejemplar'];
             DB::update("UPDATE ejemplares
-                        SET activo='0'
+                        SET prestado='0'
                         where id_ejemplar='$activo'");
         }
         if($records!=null){

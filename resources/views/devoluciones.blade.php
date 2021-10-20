@@ -13,11 +13,6 @@
           <div class="col-6 position-relative">
             <input type="text" name="" class="form-control" v-model="buscar">
           </div>
-          <div class="col-3 position-relative">
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-success"  >Buscar</button>
-            </span>
-          </div>
         </div>
       </div>
     </div>
