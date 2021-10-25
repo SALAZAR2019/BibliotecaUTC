@@ -46,7 +46,7 @@
     <a class="brand-link">
     <span class="logo-mini "><b class="text-warning"><b class="text-white">-------</b>U</b><b class="text-success font-italic">TC</b></span>
       <!-- <img src="img/utc.jpg" class="brand-image img-rounded elevation-3"
-           style="opacity: .8"> -->
+           style="opacity: .9"> -->
       <span class="text-warning font-weight-italic">Biblioteca<b class="text-white">-------</b></span>
     </a>
 
