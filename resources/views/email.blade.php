@@ -9,9 +9,9 @@
   </head>
 <body>
 <div >
-    <h1>prestamo de libros </h1>
-    <p>su folio es {{$folio}}</p>
-    <p>Libros prestados</p>
+    <h1>Prestamo de libros </h1>
+    <p>Su folio es :{{$folio}}</p>
+    <p>Lista de libros prestados</p>
     @foreach ($detalles as $detalle)
         <li>{{$detalle['titulo']}}</li>
     @endforeach
