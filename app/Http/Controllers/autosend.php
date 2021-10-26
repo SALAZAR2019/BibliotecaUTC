@@ -21,6 +21,7 @@ class autosend extends Controller
         ->join('usuarios as b','a.id_usuario','=','b.id_usuario')
         ->select('*')
         
+        
         ->get();
         //return $Users;
         //$Users=Prestamos::all();
