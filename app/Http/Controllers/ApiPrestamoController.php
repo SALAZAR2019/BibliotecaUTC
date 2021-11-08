@@ -78,10 +78,9 @@ class ApiPrestamoController extends Controller
         }
         if($records!=null){
             Prestamos::insert($records);
-        }
-        if($detalles!=null){
             Mail::to($User->correo)->send(new Sendemail($detalles,$usuario,$folio,$endDate));
         }
+
 
     }
 
