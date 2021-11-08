@@ -25,7 +25,7 @@
         <table role="presentation" style="width:602px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
           <tr>
             <td align="center" style="padding:40px 0 30px 0;background:#dede1b;">
-              <img src="https://i.postimg.cc/NMfcnyFW/descarga.png" alt="" width="300" style="height:auto;display:block;" />
+              <img src="https://i.postimg.cc/ZRZM7X7n/LOGO-UTC.png" alt="" width="300" style="height:auto;display:block;" />
             </td>
           </tr>
           <tr>
@@ -44,8 +44,9 @@
                     <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;">
                       <tr>
                         <td style="width:260px;padding:0;vertical-align:top;color:#153643;">
-                          <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><img src="https://assets.codepen.io/210284/left.gif" alt="" width="260" style="height:auto;display:block;" /></p>
-                          <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">{{$detalle['titulo']}}</p>
+                          <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><img src="{{$detalle['foto']}}" alt="" width="260" style="height:auto;display:block;" /></p>
+                          <img src="img/user.png" class="img-circle elevation-2" alt="User Image">
+                          <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">{{$detalle['foto']}}</p>
                         </td>
                       </tr>
                     </table>

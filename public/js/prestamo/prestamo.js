@@ -65,6 +65,7 @@ new Vue({
 				var prestamo={'ISBN':json.data.ISBN,
 							'id_ejemplar':json.data.id_ejemplar,
 							'titulo':json.data.libros.titulo,
+							'foto':json.data.libros.foto,
 							//'ISBN':json.data.libros.ISBN,
 							'codigo':json.data.codigo,
 							
@@ -147,6 +148,7 @@ new Vue({
 				detalles2.push({
 					//id_libro:this.prestamos[i].id_libro,
 					titulo:this.prestamos[i].titulo,
+					foto:this.prestamos[i].foto,
 					//describe_estado:this.prestamos[i].describe_estado,
 					id_ejemplar:this.prestamos[i].id_ejemplar,
 					ISBN:this.prestamos[i].ISBN,
