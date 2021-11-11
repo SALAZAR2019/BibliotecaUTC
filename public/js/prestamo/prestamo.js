@@ -42,13 +42,14 @@ new Vue({
 		activo:'',
 		pago:0,
 		tot:0,
-		
+		enviando:false,
 		folio:'',
 		fecha_prestamo:moment().format('YYYY-MM-DD') //almacena fecha.
 	},
 
 	// area de metodos
 	methods:{
+		
 		getLibros:function(){
 			this.$http.get(urlLib + '/' + this.codigo)
 			.then(function(json){
@@ -84,7 +85,37 @@ new Vue({
 		getUser:function(){
 			this.$http.get(urlUser + '/' + this.id_usuario)
 			.then(function(json){
-				
+				let timerInterval
+				Swal.fire({
+				  title: 'Verificando datos',
+				  timer: 2400,
+				  timerProgressBar: true,
+				  didOpen: () => {
+					Swal.showLoading()
+					timerInterval = setInterval(() => {
+					  b.textContent = Swal.getTimerLeft()
+					}, 100)
+				  },
+				  willClose: () => {
+					clearInterval(timerInterval)
+				  }
+				}).then((result) => {
+				  /* Read more about handling dismissals below */
+					var user={'id_usuario':json.data.id_usuario,
+					'nombres':json.data.nombres,
+					'correo':json.data.correo,
+					}
+
+					if (user.id_usuario){
+						this.users.push(user);
+						document.getElementById("id_usuario").disabled=true;
+						document.getElementById("btnUser").disabled=true;
+						document.getElementById("libro").disabled=false;
+						
+						
+						
+					}
+				})	
 				if(json.data===""||caja1 ===""){
 					Swal.fire({
 						text: "Dato incorrecto o no disponible intente de nuevo ",
@@ -94,20 +125,7 @@ new Vue({
 					document.getElementById("btnEnviar").disabled=true;
 					this.id_usuario='';
 				}
-				var user={'id_usuario':json.data.id_usuario,
-							'nombres':json.data.nombres,
-							'correo':json.data.correo,
-							}
 
-				if (user.id_usuario){
-					this.users.push(user);
-					document.getElementById("id_usuario").disabled=true;
-					document.getElementById("btnUser").disabled=true;
-					document.getElementById("libro").disabled=false;
-					
-					
-					
-				}
 				console.log(json);
 				//this.codigo='';
 				//this.$refs.buscar.focus();
@@ -132,7 +150,18 @@ new Vue({
 			this.prestamos.splice(id);
 			this.id_usuario="";
 		}, 
-		
+		 //Obligaremos a entrar el if en el primer submit
+
+		checkSubmit:function() {
+			if (!enviando) {
+				enviando= true;
+				return true;
+			} else {
+				//Si llega hasta aca significa que pulsaron 2 veces el boton submit
+				alert("El formulario ya se esta enviando");
+				return false;
+			}
+		},
 		foliarVenta:function(){
 			this.folio='VTA-' + moment().format('YYMMDDhmmss');
 		},
@@ -209,15 +238,14 @@ new Vue({
 			}else{
 				this.$http.post(urlPres,unprestamo)
 				.then(function(json){
-					this.eliminarLibros();
-					this.eliminarUser();
-					this.foliarVenta();
-					this.id_usuario='';
 					Swal.fire({
 						text: "Se ha realizado su prestamo \n su folio es:" + unprestamo.folio,
 						icon: "success",
-
-					  })
+					  });
+					  this.eliminarLibros();
+					  this.eliminarUser();
+					  this.foliarVenta();
+					  this.id_usuario='';
 					document.getElementById("libro").disabled=true;
 				}).catch(function(json){
 	

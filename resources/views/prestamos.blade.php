@@ -10,11 +10,12 @@
     <div class="row g-2">
         <div class="input-group">
 			<div class=" col-3 position-relative">
-				<input id="id_usuario" type="text" name="id_usuario" v-model="id_usuario" class="form-control" placeholder="ingrese matricula-cedula" onkeyup="verificar(this.value);" >
+				<input id="id_usuario" type="text" name="id_usuario" v-model="id_usuario" class="form-control" placeholder="ingrese matricula-cedula"  onkeyup="verificar(this.value);" >
 			</div>
 			<div class="col-3 position-relative">
 				<span class="input-group-btn">
-					<button id="btnUser" class="btn btn-success" type="submit"  class="btn btn-success" @click="getUser()">Verificar</button>
+					<button id="btnUser" class="btn btn-success" type="submit" onsubmit="return checkSubmit();"
+  class="btn btn-success" @click="getUser()">Verificar</button>
 				</span>
 			</div>
 			<div class="col-3 position-relative">
