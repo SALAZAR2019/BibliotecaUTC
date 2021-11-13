@@ -64,7 +64,7 @@
 	<div class="row">
 		<div class="col-4">
 			<span class="input-group-btn">
-				<button class="btn btn-success" @click="prestamo" >Realizar prestamo</button>
+				<button class="btn btn-success" @click="prestamo" id="btnpre" >Realizar prestamo</button>
 			</span>
 		</div>
 	</div>
@@ -74,5 +74,7 @@
 	<script src="js/prestamo/prestamo.js"></script>
 	<script src="js/moment-with-locales.min.js"></script>
 	<script src="js/validar.js"></script>
+	<script src="sweetalert2.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endpush
 <input type="hidden" name="route" value="{{url('/')}}">

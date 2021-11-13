@@ -30,26 +30,3 @@ function verificar(valor) {
     document.getElementById("libro").disabled=true;
   }
 }
-
-var clicando= false;
-
-// Evento de click del primer botón
-$("#btn-dobleclick").click(function() {
-  // Mostramos el Alert
-  alert( "Handler for dobleclick.click() called." );
-});
-
-// Evento del segundo boton
-$("#btnUser").click(function() {
-  // Si ha sido clicado
-  if (clicando){
-    // Mostramos que ya se ha clicado, y no puede clicarse de nuevo
-    alert( "Que ya he realizado un click." );
-  // Si no ha sido clicado
-  } else {
-    // Le decimos que ha sido clicado
-    clicando= true;
-    // Mostramos el mensaje de que ha sido clicado
-    alert( "Handler for only1click.click() called." );
-  }
-});

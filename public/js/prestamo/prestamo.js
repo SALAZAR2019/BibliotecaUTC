@@ -4,7 +4,6 @@ var urlLib = route + '/apiejem';
 var urlPres= route +'/apiPrestamo';
 
 var urlUser=route+'/ApiUsuario';
-
 var btnEnviar = document.getElementById("btnEnviar");
 var caja1 = document.getElementById("id_usuario");
 var caja2 = document.getElementById("libro");
@@ -85,21 +84,15 @@ new Vue({
 		getUser:function(){
 			this.$http.get(urlUser + '/' + this.id_usuario)
 			.then(function(json){
-				let timerInterval
+				document.getElementById("btnUser").disabled=true;
+				if(json.data !=""){
 				Swal.fire({
-				  title: 'Verificando datos',
-				  timer: 2400,
-				  timerProgressBar: true,
-				  didOpen: () => {
-					Swal.showLoading()
-					timerInterval = setInterval(() => {
-					  b.textContent = Swal.getTimerLeft()
-					}, 100)
-				  },
-				  willClose: () => {
-					clearInterval(timerInterval)
-				  }
-				}).then((result) => {
+					title: 'Please Wait',
+					timer:800,
+					onOpen: ()=>{
+						Swal.showLoading();
+					}
+				}).then((result)=>{
 				  /* Read more about handling dismissals below */
 					var user={'id_usuario':json.data.id_usuario,
 					'nombres':json.data.nombres,
@@ -115,7 +108,8 @@ new Vue({
 						
 						
 					}
-				})	
+				});
+				}
 				if(json.data===""||caja1 ===""){
 					Swal.fire({
 						text: "Dato incorrecto o no disponible intente de nuevo ",
@@ -123,6 +117,7 @@ new Vue({
 						buttons: ['OK'],
 					  })
 					document.getElementById("btnEnviar").disabled=true;
+					document.getElementById("btnUser").disabled=true;
 					this.id_usuario='';
 				}
 
@@ -136,7 +131,6 @@ new Vue({
 
 		eliminarLibro:function(id){
 			this.prestamos.splice(id,1);
-			
 		},
 		eliminarUser:function(id){
 			this.users.splice(id,1);
@@ -173,6 +167,8 @@ new Vue({
 
 			var id_usuario = document.getElementById("id_usuario").value;
 
+			document.getElementById("btnpre").disabled=true;
+
 			for (var i = 0; i < this.prestamos.length; i++) {
 				detalles2.push({
 					//id_libro:this.prestamos[i].id_libro,
@@ -203,6 +199,7 @@ new Vue({
 					icon: "warning",
 					buttons: ['OK'],
 				  })
+				  document.getElementById("btnpre").disabled=false;
 			}
 
 			else if(detalles2.length!=newdetalles.length){
@@ -220,41 +217,45 @@ new Vue({
 						.then(function(json){
 						Swal.fire("Se ha realizado su prestamo su folio es :"+unprestamo.folio, {
 							icon: "success",
-						});
+						}).then((result)=>{
 						this.eliminarLibros();
 						this.eliminarUser();
 						this.foliarVenta();
 						this.id_usuario='';
 						document.getElementById("libro").disabled=true;
-							}).catch(function(json){
+						document.getElementById("btnpre").disabled=false;
+							})
+						}).catch(function(json){
 	
 						});
 						return true;
 					}
 					else{
 						Swal.fire("Revise los libros repetidos porfavor");
+						document.getElementById("btnpre").disabled=false;
 					}
 				});
 			}else{
-				this.$http.post(urlPres,unprestamo)
-				.then(function(json){
-					Swal.fire({
-						text: "Se ha realizado su prestamo \n su folio es:" + unprestamo.folio,
+				document.getElementById("btnpre").disabled=true;
+					swal({
+						title:"Se ha realizado su prestamo su folio es :"+unprestamo.folio,
 						icon: "success",
-					  });
-					  this.eliminarLibros();
-					  this.eliminarUser();
-					  this.foliarVenta();
-					  this.id_usuario='';
-					document.getElementById("libro").disabled=true;
-				}).catch(function(json){
-	
-				});
-				return true;
+					}).then((result)=>{
+						this.eliminarLibros();
+						this.eliminarUser();
+						this.foliarVenta();
+						this.id_usuario='';
+						document.getElementById("libro").disabled=true;
+						document.getElementById("btnpre").disabled=false;
+						this.$http.post(urlPres,unprestamo)
+							.then(function(json){
+						}).catch(function(json){	
+					});
+					return true;
+				});				
 			}
 		}
 	},
-
 });
 }
 window.onload=init;

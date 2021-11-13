@@ -22,10 +22,10 @@
   <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#ffffff;">
     <tr>
       <td align="center" style="padding:0;">
-        <table role="presentation" style="width:602px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
+        <table role="presentation" style="width:502px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
           <tr>
             <td align="center" style="padding:40px 0 30px 0;background:#dede1b;">
-              <img src="https://i.postimg.cc/ZRZM7X7n/LOGO-UTC.png" alt="" width="300" style="height:auto;display:block;" />
+              <img src="https://i.postimg.cc/ZRZM7X7n/LOGO-UTC.png" alt="" width="200" style="height:auto;display:block;" />
             </td>
           </tr>
           <tr>
@@ -35,7 +35,7 @@
                   <td style="padding:0 0 36px 0;color:#153643;">
                     <h1 style="font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;">Registro de Prestamo de libros</h1>
                     <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">Su folio es : {{$folio}}</p>
-                    <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><a href="http://www.example.com" style="color:#ee4c50;text-decoration:underline;">In tempus felis blandit</a></p>
+                    <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">Libros Prestados</p>
                   </td>
                 </tr>
                 <tr>
@@ -44,9 +44,7 @@
                     <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;">
                       <tr>
                         <td style="width:260px;padding:0;vertical-align:top;color:#153643;">
-                          <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><img src="{{$detalle['foto']}}" alt="" width="260" style="height:auto;display:block;" /></p>
-                          <img src="img/user.png" class="img-circle elevation-2" alt="User Image">
-                          <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">{{$detalle['foto']}}</p>
+                          <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">{{$detalle['titulo']}}</p>
                         </td>
                       </tr>
                     </table>
@@ -62,20 +60,8 @@
                 <tr>
                   <td style="padding:0;width:50%;" align="left">
                     <p style="margin:0;font-size:14px;line-height:16px;font-family:Arial,sans-serif;color:#ffffff;">
-                      &reg; fecha para devolver: {{$endDate}}<br/><a href="http://www.example.com" style="color:#ffffff;text-decoration:underline;">Unsubscribe</a>
+                      &reg; fecha para devolver:{{$endDate}}<br/><a href="http://www.example.com" style="color:#ffffff;text-decoration:underline;">Unsubscribe</a>
                     </p>
-                  </td>
-                  <td style="padding:0;width:50%;" align="right">
-                    <table role="presentation" style="border-collapse:collapse;border:0;border-spacing:0;">
-                      <tr>
-                        <td style="padding:0 0 0 10px;width:38px;">
-                          <a href="http://www.twitter.com/" style="color:#ffffff;"><img src="https://assets.codepen.io/210284/tw_1.png" alt="Twitter" width="38" style="height:auto;display:block;border:0;" /></a>
-                        </td>
-                        <td style="padding:0 0 0 10px;width:38px;">
-                          <a href="http://www.facebook.com/" style="color:#ffffff;"><img src="https://assets.codepen.io/210284/fb_1.png" alt="Facebook" width="38" style="height:auto;display:block;border:0;" /></a>
-                        </td>
-                      </tr>
-                    </table>
                   </td>
                 </tr>
               </table>
