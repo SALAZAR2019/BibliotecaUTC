@@ -52,7 +52,7 @@ new Vue({
 		getLibros:function(){
 			this.$http.get(urlLib + '/' + this.codigo)
 			.then(function(json){
-				console.log(json);
+
 				if(json.data===""){
 					 Swal.fire({
 						text: "El libro no se encuentra disponible ",
@@ -121,7 +121,7 @@ new Vue({
 					this.id_usuario='';
 				}
 
-				console.log(json);
+
 				//this.codigo='';
 				//this.$refs.buscar.focus();
 
@@ -144,18 +144,8 @@ new Vue({
 			this.prestamos.splice(id);
 			this.id_usuario="";
 		}, 
-		 //Obligaremos a entrar el if en el primer submit
 
-		checkSubmit:function() {
-			if (!enviando) {
-				enviando= true;
-				return true;
-			} else {
-				//Si llega hasta aca significa que pulsaron 2 veces el boton submit
-				alert("El formulario ya se esta enviando");
-				return false;
-			}
-		},
+
 		foliarVenta:function(){
 			this.folio='VTA-' + moment().format('YYMMDDhmmss');
 		},
@@ -182,8 +172,7 @@ new Vue({
 				var set =new Set(detalles2.map(JSON.stringify))
 				var newdetalles = Array.from(set).map(JSON.parse);
 			}
-			console.log(detalles2);
-			console.log(newdetalles);
+
 			var unprestamo = {
 				folio:this.folio,
 				fecha_prestamo:this.fecha_prestamo,

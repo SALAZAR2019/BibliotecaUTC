@@ -11,7 +11,7 @@
       <div class="col-6">
         <div class="input-group">
           <div class="col-6 position-relative">
-            <input type="text" name="" class="form-control" v-model="buscar">
+            <input type="text" placeholder="Buscar por folio" name="" class="form-control" v-model="buscar">
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@
 	</div>
   <!-- Modal -->
   <div class="modal fade" tabindex="-1" role="dialog" id="add_devolucion">
-    <div class="modal-dialog modal-lg " role="document">
+    <div class="modal-dialog modal-md " role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="Salir()">
@@ -57,26 +57,26 @@
               <!-- Elementos del body -->
                     <div class="modal-body">
                       <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                           <label>ID EJEMPLAR</label>
-                            <input type="text" name="" placeholder="Ingrese su nombre" class="form-control" v-model="id_ejemplar">
+                            <p>@{{id_ejemplar}}</p>
                           <label>ID DEL PRESTAMO</label>
-                            <input type="text" name="" placeholder="Ingrese su apellido paterno" class="form-control" v-model="id_prestamo">
+                            <p>@{{id_prestamo}}</p>
                           <label>TITULO</label>
-                            <input type="text" name="" placeholder="Ingrese su curp" class="form-control" v-model="titulo">
+                            <p>@{{titulo}}</p>
                           <label>ID USUARIO</label>
-                            <input type="text" name="" placeholder="Ingrese su direccion" class="form-control" v-model="id_usuario">
+                            <p>@{{id_usuario}}</p>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                           <label>fecha del prestamo</label>
-                          <input type="text" name="" placeholder="Ingrese su nombre" class="form-control" v-model="fecha_prestamo">
+                          <p>@{{fecha_prestamo}}</p>
                           <label>fecha Actual</label>
-                          <input type="text" name="" placeholder="Ingrese su nombre" class="form-control" v-model="fecha_actual">        
+                          <p>@{{fecha_actual}}</p>
                         </div>
                       </div>  
                     </div>
                     <div class="modal-footer">
-                      <button type="submit" class="btn btn-outline-success"  v-on:click="devolver">Guardar</button>
+                      <button type="submit" class="btn btn-outline-success"  v-on:click="devolver">Registrar devolucion</button>
                     </div>
                   </div>
                 </div>

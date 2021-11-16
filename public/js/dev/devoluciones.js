@@ -101,6 +101,7 @@
 			   setInterval(()=>{
 				this.envio();
 			   },43200000);
+			   //43200000
 		   },
 			devolver:function(){
 				var dev={
@@ -117,7 +118,6 @@
 					swal({
 						text: "Se ha registrado la devolucion del libro",
 						icon: "success",
-
 					  })
 					this.getPre();
 				});
