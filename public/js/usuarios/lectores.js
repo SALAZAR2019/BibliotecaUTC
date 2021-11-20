@@ -42,6 +42,7 @@ function init()
                     this.lectores=json.data;
                 });
             },
+
             getTipo:function(){
                 this.$http.get(urlT)
                 .then(function(json){

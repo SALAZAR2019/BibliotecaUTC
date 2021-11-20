@@ -7,6 +7,7 @@
             <h1>PRESTAMO DE LIBROS</h1>
         </div>
     </div>
+	@{{prestamos}}
     <div class="row g-2">
         <div class="input-group">
 			<div class=" col-3 position-relative">

@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Mail\Sendemail;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\collection;
 
 use Mail;
 
@@ -64,20 +65,29 @@ class ApiPrestamoController extends Controller
 
                 'fecha_prestamo'=>$request->get('fecha_prestamo'),
 
-                'id_ejemplar'=>$detalles[$i]['id_ejemplar'],
+                'ISBN'=>$detalles[$i]['ISBN'],
 
                 'titulo'=>$detalles[$i]['titulo'],
 
                 'fecha_devolucion'=>$endDate
 
             ];
-            $activo=$detalles[$i]['id_ejemplar'];
+            $activo=$detalles[$i]['ISBN'];
+            $ejemplar=DB::table('ejemplares')->select('id_ejemplar')->where('ISBN','=',$activo)->Where('prestado','=','1')->limit(1)->get();
+            foreach($ejemplar as $ejem){
+                $user =$ejem->id_ejemplar;
+                
+            }
+            
             DB::update("UPDATE ejemplares
-                        SET prestado='0'
-                        where id_ejemplar='$activo'");
+            SET prestado='0'
+            where id_ejemplar ='$user'"
+            );
         }
-        if($records!=null){
-            Prestamos::insert($records);
+        
+
+    if($records!=null){
+           Prestamos::insert($records);
             Mail::to($User->correo)->send(new Sendemail($detalles,$usuario,$folio,$endDate));
         }
 
