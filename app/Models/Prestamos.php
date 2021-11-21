@@ -28,7 +28,7 @@ class Prestamos extends Model
         
     ];
     public function ejemplar(){
-        return $this-> belongsTo(ejemplares::class,'titulo');
+        return $this-> belongsTo(ejemplares::class,'id_ejemplar');
     }
     public function usuario(){
         return $this-> belongsTo(Usuarios::class,'id_usuario');

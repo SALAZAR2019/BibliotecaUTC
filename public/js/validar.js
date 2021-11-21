@@ -14,7 +14,7 @@ function verificar2(valor) {
     document.getElementById("btnEnviar").disabled=false;
   } else {
       btnEnviar.disabled = true;
-      document.getElementById("btnEnviar").disabled=true;
+      //document.getElementById("btnEnviar").disabled=true;
   }
 }
 
@@ -29,4 +29,7 @@ function verificar(valor) {
     btnEnviar.disabled = true;
     document.getElementById("libro").disabled=true;
   }
+}
+function mayus(e){
+  e.value=e.value.toUpperCase();
 }

@@ -24,6 +24,7 @@ new Vue({
 	el:'#prestamo',
 
 	created:function(){
+		this.getlib();
 		this.foliarVenta();
 	},
 
@@ -46,10 +47,6 @@ new Vue({
 		folio:'',
 		fecha_prestamo:moment().format('YYYY-MM-DD'), //almacena fecha.
 	},
-
-	created:function(){
-		this.getlib();
-	},
 	// area de metodos
 	methods:{
 
@@ -57,18 +54,24 @@ new Vue({
 			this.$http.get(urlLib)
 			.then(function(json){
 				this.ejemplares=json.data;
+				//console.log(json);
 			});
 		},
 
 		getLibros:function(){
 			this.$http.get(urlLib,this.codigo)
 			.then(function(json){
+				
+				if (this.ejemplares==""){
+					alert('el libro no esta disponible')
+					this.getlib();
+				}
 				var detalles2 = [];
 				for (var i = 0; i < this.ejemplares.length; i++) {
 					detalles2.push({
 						titulo:this.ejemplares[i].titulo,
-						
-						id_ejemplar:this.ejemplares[i].id_ejemplar,
+						codigo:this.ejemplares[i].codigo,
+						//id_ejemplar:this.ejemplares[i].id_ejemplar,
 						ISBN:this.ejemplares[i].ISBN,
 					})
 					var set =new Set(detalles2.map(JSON.stringify))
@@ -78,14 +81,18 @@ new Vue({
 				
 				const newArray = newdetalles.filter(ejemplar => ejemplar.titulo == libro).map(JSON.stringify);
 				
+				if(newArray==""){
+					alert('libro no disponible');
+				}else{
 				const myObj = JSON.parse(newArray);
 				
-				console.log(myObj);
+				console.log(newArray);
 					//if(titulo=codigo);
 				
-
+				
 				if (myObj){
 					this.prestamos.push(myObj);
+				}
 				}
 				//this.prestamos.slice(0,1);
 				//ejemplares.find(element => ejemplares.data.titulo === this.codigo)
@@ -95,6 +102,7 @@ new Vue({
 				
 				this.codigo='';
 				this.$refs.buscar.focus();
+				this.getlib();
 
 			})
 		},
@@ -102,6 +110,7 @@ new Vue({
 			this.$http.get(urlUser + '/' + this.id_usuario)
 			.then(function(json){
 				document.getElementById("btnUser").disabled=true;
+				//document.getElementById("btnEnviar").disabled=true;
 				if(json.data !=""){
 				Swal.fire({
 					title: 'Please Wait',
@@ -121,6 +130,7 @@ new Vue({
 						document.getElementById("id_usuario").disabled=true;
 						document.getElementById("btnUser").disabled=true;
 						document.getElementById("libro").disabled=false;
+						document.getElementById("btnEnviar").disabled=false;
 						
 						
 						
@@ -162,7 +172,6 @@ new Vue({
 			this.id_usuario="";
 		}, 
 
-
 		foliarVenta:function(){
 			this.folio='VTA-' + moment().format('YYMMDDhmmss');
 		},
@@ -182,7 +191,7 @@ new Vue({
 					titulo:this.prestamos[i].titulo,
 					//foto:this.prestamos[i].foto,
 					//describe_estado:this.prestamos[i].describe_estado,
-					//id_ejemplar:this.prestamos[i].id_ejemplar,
+					codigo:this.prestamos[i].codigo,
 					ISBN:this.prestamos[i].ISBN,
 					
 				})
@@ -246,6 +255,7 @@ new Vue({
 						title:"Se ha realizado su prestamo su folio es :"+unprestamo.folio,
 						icon: "success",
 					}).then((result)=>{
+						this.getlib();
 						this.eliminarLibros();
 						this.eliminarUser();
 						this.foliarVenta();

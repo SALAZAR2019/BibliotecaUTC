@@ -69,7 +69,9 @@ class ApiPrestamoController extends Controller
 
                 'titulo'=>$detalles[$i]['titulo'],
 
-                'fecha_devolucion'=>$endDate
+                'fecha_devolucion'=>$endDate,
+
+                
 
             ];
             $activo=$detalles[$i]['ISBN'];
@@ -84,10 +86,29 @@ class ApiPrestamoController extends Controller
             where id_ejemplar ='$user'"
             );
         }
-        
+        $id=$user;
+        for($i=0;$i<count($detalles);$i++)
+        {
+            $record[]=[
+                'folio'=>$request->get('folio'),
 
-    if($records!=null){
-           Prestamos::insert($records);
+                'id_usuario'=>$request->get('id_usuario'),
+
+                'fecha_prestamo'=>$request->get('fecha_prestamo'),
+
+                'ISBN'=>$detalles[$i]['ISBN'],
+
+                'titulo'=>$detalles[$i]['titulo'],
+
+                'fecha_devolucion'=>$endDate,
+
+                'id_ejemplar'=>$id
+
+            ];
+        }  
+
+    if($record!=null){
+           Prestamos::insert($record);
             Mail::to($User->correo)->send(new Sendemail($detalles,$usuario,$folio,$endDate));
         }
 
