@@ -1,6 +1,6 @@
 
 var	route= document.querySelector("[name=route]").value;
-var urlLib = route + '/apiejem';
+var urlLib = route + '/apiPrestamo';
 var urlPres= route +'/apiPrestamo';
 
 var urlUser=route+'/ApiUsuario';
