@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Mail\Sendemail;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\collection;
 
 use Mail;
 
@@ -32,7 +33,12 @@ class ApiPrestamoController extends Controller
         //->groupBy('b.folio')
         //->get();
         //return $prestamos;
-        return Prestamos::where("estado_prestamo",'=','1')->select('*')->get();
+        $libros = DB::table('Libros as a')
+        ->join('ejemplares as b','a.ISBN','=','b.ISBN')
+        ->select('a.titulo','a.ISBN','b.prestado',)
+        ->where('b.prestado','=','1')
+        ->get();
+        return $libros;
         
 
     }
@@ -64,20 +70,50 @@ class ApiPrestamoController extends Controller
 
                 'fecha_prestamo'=>$request->get('fecha_prestamo'),
 
-                'id_ejemplar'=>$detalles[$i]['id_ejemplar'],
+                'ISBN'=>$detalles[$i]['ISBN'],
 
                 'titulo'=>$detalles[$i]['titulo'],
 
-                'fecha_devolucion'=>$endDate
+                'fecha_devolucion'=>$endDate,
+
+                
 
             ];
-            $activo=$detalles[$i]['id_ejemplar'];
+            $activo=$detalles[$i]['ISBN'];
+            $ejemplar=DB::table('ejemplares')->select('id_ejemplar')->where('ISBN','=',$activo)->Where('prestado','=','1')->limit(1)->get();
+            foreach($ejemplar as $ejem){
+                $user =$ejem->id_ejemplar;
+                
+            }
+            
             DB::update("UPDATE ejemplares
-                        SET prestado='0'
-                        where id_ejemplar='$activo'");
+            SET prestado='0'
+            where id_ejemplar ='$user'"
+            );
         }
-        if($records!=null){
-            Prestamos::insert($records);
+        $id=$user;
+        for($i=0;$i<count($detalles);$i++)
+        {
+            $record[]=[
+                'folio'=>$request->get('folio'),
+
+                'id_usuario'=>$request->get('id_usuario'),
+
+                'fecha_prestamo'=>$request->get('fecha_prestamo'),
+
+                'ISBN'=>$detalles[$i]['ISBN'],
+
+                'titulo'=>$detalles[$i]['titulo'],
+
+                'fecha_devolucion'=>$endDate,
+
+                'id_ejemplar'=>$id
+
+            ];
+        }  
+
+    if($record!=null){
+           Prestamos::insert($record);
             Mail::to($User->correo)->send(new Sendemail($detalles,$usuario,$folio,$endDate));
         }
 

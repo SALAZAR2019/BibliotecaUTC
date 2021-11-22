@@ -17,12 +17,8 @@ class ApiEjemplaresController extends Controller
      */
     public function index()
     {
-        return ejemplares::all();
-        /*$libros = DB::table('Libros as a')
-        ->join('ejemplares as b','a.ISBN','=','b.ISBN')
-        ->select('titulo','b.id_ejemplar')
-        ->get();
-        return $libros;*/
+        //return libros::all();
+        
     }
 
     /**

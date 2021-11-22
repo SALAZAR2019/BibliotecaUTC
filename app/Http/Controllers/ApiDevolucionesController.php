@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Prestamos;
 use App\Models\devoluciones;
+use App\Models\ejemplares;
 use DB;
 
 class ApiDevolucionesController extends Controller
@@ -17,7 +18,8 @@ class ApiDevolucionesController extends Controller
     public function index()
     {
         //
-        return $prestamos=Prestamos::all();
+        //return $prestamos=Prestamos::all();
+        return Prestamos::where("estado_prestamo",'=','1')->select('*')->get();
     }
 
     /**
@@ -60,6 +62,8 @@ class ApiDevolucionesController extends Controller
     public function show($id)
     {
         //
+        $libro=Prestamos::find($id);
+        return $libro;
     }
 
     /**

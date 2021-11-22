@@ -7,6 +7,7 @@
             <h1>PRESTAMO DE LIBROS</h1>
         </div>
     </div>
+	
     <div class="row g-2">
         <div class="input-group">
 			<div class=" col-3 position-relative">
@@ -19,7 +20,7 @@
 				</span>
 			</div>
 			<div class="col-3 position-relative">
-               	<input id="libro" type="text" name="libro" class="form-control" v-model="codigo" ref="buscar" placeholder="ingrese id libro" disabled onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
+               	<input id="libro" type="text" onkeyup="mayus(this);" name="libro" class="form-control" v-model="codigo" ref="buscar" placeholder="ingrese id libro" disabled onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
 			</div>
 			<div class="col-2 position-relative">
 				<span class="input-group-btn">
@@ -29,6 +30,7 @@
         </div>
     </div>
     <hr>
+	@{{prestamos}}
     <div class="row">
 			<div class="col-8">
 				<table id="table" class="table table-bordered">

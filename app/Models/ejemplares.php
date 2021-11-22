@@ -9,7 +9,7 @@ class ejemplares extends Model
 {
     use HasFactory;
     protected $table="ejemplares";
-    protected $primaryKey="codigo";
+    protected $primaryKey="id_ejemplar";
     public $timestamps=false;
     public $incrementing=false;
 
