@@ -30,7 +30,7 @@
         </div>
     </div>
     <hr>
-	@{{prestamos}}
+	@{{ejemplares}}
     <div class="row">
 			<div class="col-8">
 				<table id="table" class="table table-bordered">
