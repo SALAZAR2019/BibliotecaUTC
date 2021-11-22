@@ -71,7 +71,7 @@ new Vue({
 							
 							}
 
-				if (prestamo.ISBN){
+				if (prestamo.codigo){
 					this.prestamos.push(prestamo);
 					
 				}
