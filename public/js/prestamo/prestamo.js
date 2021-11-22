@@ -61,6 +61,7 @@ new Vue({
 		getLibros:function(){
 			this.$http.get(urlLib,this.codigo)
 			.then(function(json){
+				this.getlib();
 				
 				if (this.ejemplares==""){
 					alert('el libro no esta disponible')
@@ -102,7 +103,7 @@ new Vue({
 				
 				this.codigo='';
 				this.$refs.buscar.focus();
-				this.getlib();
+				
 
 			})
 		},
