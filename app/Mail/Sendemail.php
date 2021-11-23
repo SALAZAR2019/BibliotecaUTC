@@ -11,6 +11,8 @@ class Sendemail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $subject = 'Detalles de Prestamo';
+
     public $detalles;
     public $usuario;
     public $folio;

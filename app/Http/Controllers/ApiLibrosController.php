@@ -85,6 +85,7 @@ class ApiLibrosController extends Controller
         Libro::insert($datosLibro);
         
         $resenia=$request->get('resenia');
+        $titulo=$request->get('titulo');
         $fecha_alta = Carbon::now();
 
         $ISBN = $request->get('ISBN');
@@ -94,7 +95,9 @@ class ApiLibrosController extends Controller
         {
             $ejemplar[]=[
                 //'id_ejemplar'=>$ejemplares,
+                'codigo'=>$ISBN+$i,
                 'ISBN'=>$ISBN,
+                'titulo'=>$titulo,
                 'descripcion'=>$resenia,
                 'fecha_alta'=>$fecha_alta
                 

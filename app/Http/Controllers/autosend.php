@@ -19,8 +19,8 @@ class autosend extends Controller
     {
         $Users = DB::table('prestamos as a')
         ->join('usuarios as b','a.id_usuario','=','b.id_usuario')
-        ->select('*')
-        
+        ->select('folio','titulo','correo','fecha_devolucion')
+        ->where('estado_prestamo',1)
         ->get();
         //return $Users;
         //$Users=Prestamos::all();
@@ -33,7 +33,7 @@ class autosend extends Controller
                 Mail::to($user->correo)->send(new automail($user));
             }
         }
-        return "Ok";
+        
         
         //$User=DB::table('usuarios')->where('id_usuario','=',$usuario)->select('correo')->first();
 

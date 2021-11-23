@@ -7,18 +7,20 @@
             <h1>PRESTAMO DE LIBROS</h1>
         </div>
     </div>
+	
     <div class="row g-2">
         <div class="input-group">
 			<div class=" col-3 position-relative">
-				<input id="id_usuario" type="text" name="id_usuario" v-model="id_usuario" class="form-control" placeholder="ingrese matricula-cedula" onkeyup="verificar(this.value);" >
+				<input id="id_usuario" type="text" name="id_usuario" v-model="id_usuario" class="form-control" placeholder="ingrese matricula-cedula"  onkeyup="verificar(this.value);" >
 			</div>
 			<div class="col-3 position-relative">
 				<span class="input-group-btn">
-					<button id="btnUser" class="btn btn-success" type="submit"  class="btn btn-success" @click="getUser()">Verificar</button>
+					<button id="btnUser" class="btn btn-success" type="submit" onsubmit="return checkSubmit();"
+  class="btn btn-success" @click="getUser()">Verificar</button>
 				</span>
 			</div>
 			<div class="col-3 position-relative">
-               	<input id="libro" type="text" name="libro" class="form-control" v-model="codigo" ref="buscar" placeholder="ingrese id libro" disabled onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
+               	<input id="libro" type="text" onkeyup="mayus(this);" name="libro" class="form-control" v-model="codigo" ref="buscar" placeholder="ingrese id libro" disabled onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
 			</div>
 			<div class="col-2 position-relative">
 				<span class="input-group-btn">
@@ -28,6 +30,7 @@
         </div>
     </div>
     <hr>
+	@{{ejemplares}}
     <div class="row">
 			<div class="col-8">
 				<table id="table" class="table table-bordered">
@@ -63,7 +66,7 @@
 	<div class="row">
 		<div class="col-4">
 			<span class="input-group-btn">
-				<button class="btn btn-success" @click="prestamo" >Realizar prestamo</button>
+				<button class="btn btn-success" @click="prestamo" id="btnpre" >Realizar prestamo</button>
 			</span>
 		</div>
 	</div>
@@ -73,5 +76,7 @@
 	<script src="js/prestamo/prestamo.js"></script>
 	<script src="js/moment-with-locales.min.js"></script>
 	<script src="js/validar.js"></script>
+	<script src="sweetalert2.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endpush
 <input type="hidden" name="route" value="{{url('/')}}">

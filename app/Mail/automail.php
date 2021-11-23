@@ -11,6 +11,8 @@ class automail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $subject = 'Devolucion de libro';
+
     public $user;
     
 

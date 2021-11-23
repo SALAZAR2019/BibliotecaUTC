@@ -1,6 +1,7 @@
 	var route = document.querySelector("[name=route]").value;
-	var UrlPre=route + '/apiPrestamo';
+	var UrlPre=route + '/apidevolucion';
 	var Urldev=route + '/apidevolucion';
+	var UrlSend=route+'/envios';
 	function init()
 	{
 	new Vue({
@@ -30,6 +31,8 @@
 		created:function(){
 			this.getPre();
 			this.getDev();
+			this.envios();
+			
 		},
 
 		methods:{
@@ -81,7 +84,25 @@
 				
 					$('#add_devolucion').modal('show');
 				});
+			}
+			,
+			envio:function(){
+				this.$http.post(UrlSend)
+				.then(function(){
+					swal({
+						text: "Se ha enviado aviso ",
+						icon: "success",
+
+					  })
+					this.getPre();
+				});
 			},
+			envios(){
+			   setInterval(()=>{
+				this.envio();
+			   },43200000);
+			   //43200000
+		   },
 			devolver:function(){
 				var dev={
 
@@ -97,7 +118,6 @@
 					swal({
 						text: "Se ha registrado la devolucion del libro",
 						icon: "success",
-
 					  })
 					this.getPre();
 				});
