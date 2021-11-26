@@ -5,7 +5,7 @@
 <div class="container" id="lector">
     <div class="row">
         <div class="col-12 text-center">
-            <h1>Lectores</h1>
+            <h1>LECTORES</h1>
 			 <!-- @{{nom}} -->
         </div>
     </div>

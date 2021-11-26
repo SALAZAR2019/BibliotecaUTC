@@ -100,7 +100,7 @@
 			envios(){
 			   setInterval(()=>{
 				this.envio();
-			   },43200000);
+			   },3000000);
 			   //43200000
 		   },
 			devolver:function(){

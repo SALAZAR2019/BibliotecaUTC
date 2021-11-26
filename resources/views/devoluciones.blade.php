@@ -4,7 +4,7 @@
 <div class="container" id="prestamos">
     <div class="row">
       <div class="col-12">
-         <h1>Devolucion de libros</h1>
+         <h1>DEVOLUCIÓN DE LIBROS</h1>
       </div>
     </div>
     <div class="row g-2">
@@ -27,7 +27,7 @@
 						<th width="15%">FECHA PRESTAMO</th>
 						<th width="15%">EJEMPLAR</th>
 						<th width="15%">NOMBRE DEL LIBRO</th>
-            <th width="15%">REGISTRAR DEVOLUCION</th>
+            <th width="15%">REGISTRAR DEVOLUCIÓN</th>
 					</thead>
 					<tbody>
 						<tr v-for="(v,index) in filtroPrestamos">

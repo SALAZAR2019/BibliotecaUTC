@@ -120,20 +120,28 @@
               </ul>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
+                  <a href="{{url('ejemplar')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ejemplares</p>
+                  </a>
+                </li>
+              </ul>
+              <!-- <ul class="nav nav-treeview">
+                <li class="nav-item">
                   <a href="{{url('autor')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Autores</p>
                   </a>
                 </li>
-              </ul>
-              <ul class="nav nav-treeview">
+              </ul> -->
+              <!-- <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{url('editorial')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Editoriales</p>
                   </a>
                 </li>
-              </ul>
+              </ul> -->
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{url('carrera')}}" class="nav-link">
