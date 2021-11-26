@@ -63,7 +63,7 @@ class ApiLibrosController extends Controller
             'id_clasifidewey'=>'required|string|max:11',
             'paginas'=>'required|string|max:20',
             'ejemplar_total'=>'required|string|max:11',
-            'resenia'=>'required|string|max:900',
+            // 'resenia'=>'required|string|max:900',
             'ubicacion'=>'required|string|max:90',
             'describe_estado'=>'required|string|max:900',
             'foto'=>'required|max:10000|mimes:jpeg,png,jpg',
@@ -158,7 +158,7 @@ class ApiLibrosController extends Controller
             'id_clasifidewey'=>'required|string|max:11',
             'paginas'=>'required|string|max:20',
             'ejemplar_total'=>'required|string|max:11',
-            'resenia'=>'required|string|max:900',
+            // 'resenia'=>'required|string|max:900',
             'ubicacion'=>'required|string|max:90',
             'describe_estado'=>'required|string|max:900',
         ];

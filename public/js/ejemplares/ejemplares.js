@@ -15,10 +15,12 @@ function init()
         data:{
             nom:'hola',
             ejemplares:[],
+            id_ejemplar:'',
             titulo:'',
             codigo:'',
             prestado:'',
             descripcion:'',
+            id_auxiliar:'',
             editar:false
             
         },
@@ -50,7 +52,8 @@ function init()
                 .then(function(json){
                     this.codigo=json.data.codigo;
                     this.titulo=json.data.titulo;
-                   
+                    this.id_auxiliar=json.data.id_ejemplar;
+                  
 
                     $('#edit_ejemplar').modal('show');
                 });
@@ -58,29 +61,46 @@ function init()
             //actualizar datos 
             updateEjemplar:function(){
                 var us={
-                    codigo:this.codigo
+                    id_ejemplar:this.id_ejemplar,
+                    codigo:this.codigo,
+                    titulo:this.titulo
                  
                 };
-                this.$http.patch(urlE + '/' + this.titulo, us)
+                this.$http.patch(urlE + '/' + this.id_auxiliar, us)
                 .then(function(json){
                     this.Salir();
                     this.getEjemplares();
-                    Swal.fire({
-                        type: 'success',
-                        title: 'Actualizado',
-                        showConfirmButton: false,
-                        timer: 1900
-                    });
+                   
+                    
                  
-                }, function(reason){
-                    Swal.fire({
-                        type: 'error',
-                        title: 'Error',
-                        text: 'Campos vacíos',
-                        footer: 'Llene todos los campos para continuar'
-                    });
                 });
          },
+
+           //eliminar user
+           deleteEj:function(id){
+            swal({
+                title: "Se eliminará el usuario",
+                text: "Está seguro de eliminar el usuario?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                    this.$http.delete(urlE +'/'+id)
+                    .then(function(json){
+                        this.getEjemplares();
+                        
+                    });
+                  swal("El usuario fue eliminado exitosamente", {
+                    icon: "success",
+                  });
+                } else {
+                  swal("El usuario no se ha eliminado");
+                }
+              });
+
+            }, //fin eliminar
 
         } //fin de methods
 

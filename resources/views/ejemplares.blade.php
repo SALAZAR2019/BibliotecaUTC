@@ -5,7 +5,7 @@
 <div class="container" id="ejemplar">
     <div class="row">
         <div class="col-12 text-center">
-            <h1>Ejemplares</h1>
+            <h1>EJEMPLARES</h1>
 			
         </div>
     </div>
@@ -34,14 +34,14 @@
 							
                             
 							<td>
-								<span class="btn btn-outline-primary btn-sm" @click="editEjemplar(ej.codigo)"><i class="fa fa-edit"></i></span>
-								<!-- <span class="btn btn-outline-danger btn-sm" @click=""><i class="fa fa-trash"></i></span> -->
+								<span class="btn btn-outline-primary btn-sm" @click="editEjemplar(ej.id_ejemplar)"><i class="fa fa-edit"></i></span>
+								<span class="btn btn-outline-danger btn-sm" @click="deleteEj(ej.id_ejemplar)"><i class="fa fa-trash"></i></span>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 				<!-- Button trigger modal -->
-				<span class="btn btn-info" data-toggle="modal" v-on:click="showModal()"><i class="fa fa-plus"></i></span>
+				<!-- <span class="btn btn-info" data-toggle="modal" v-on:click="showModal()"><i class="fa fa-plus"></i></span> -->
 
 			</div>
 	</div> <!--final del div row-->
@@ -65,11 +65,12 @@
 				  	<form class="needs-validation" novalidate>
 						<div class="form-row">
 							<div class="col-md-8 mb-3">
-								<label for="validationCustom01">Título</label>
+								<label>Título</label>
 								<p>@{{titulo}}</p>
 							</div>
 							<div class="col-md-4 mb-3">
 								<label for="validationCustom02">Código</label>
+
 								<input type="text" placeholder="Apellidos" class="form-control" id="validationCustom02" v-model="codigo" class="form-control" required>
 								<div class="valid-feedback">
 									ok
@@ -78,8 +79,7 @@
 						</div>
 					
 						<button type="submit" class="btn btn-success"  v-on:click="updateEjemplar" v-if="editar">Actualizar</button>
-						<button type="submit" class="btn btn-success" v-on:click="" v-if="!editar">Guardar</button>
-						<button type="submit" class="btn btn-warning" @click="">Cancelar</button>
+						<button type="submit" class="btn btn-warning" @click="Salir()">Cancelar</button>
 					</form>
 
 					<!-- <input type="text" placeholder="Rol" v-model="rol_puesto" class="form-control"> -->

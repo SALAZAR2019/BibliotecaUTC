@@ -62,7 +62,7 @@ new Vue({
 			this.$http.get(urlLib,this.codigo)
 			.then(function(json){
 				this.getlib();
-				
+				this.ejemplares=json.data;
 				if (this.ejemplares==""){
 					alert('el libro no esta disponible')
 					this.getlib();

@@ -49,7 +49,7 @@ Route::resource('materia',ApiMateriasController::class)->middleware('sesion');
 // Route::view('login','login');
 // Route::view('usuario','Usuarios.usuarios');
 // Route::view('tipo','Usuarios.tipo_usuario');
-Route::view('ejemplar','ejemplares');
+Route::view('ejemplar','ejemplares')->middleware('sesion');
 
 
 //controladores
