@@ -35,7 +35,7 @@ class AccesoController extends Controller
                 return redirect('user');
             }
         }else {
-            return redirect('login');
+            return redirect('/');
         }
     }
     public function salir()
