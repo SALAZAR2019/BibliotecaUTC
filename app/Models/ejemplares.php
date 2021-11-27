@@ -13,7 +13,7 @@ class ejemplares extends Model
     public $timestamps=false;
     public $incrementing=false;
 
-    protected $with=['libros'];
+    //protected $with=['libros'];
 
     protected $fillable=
     [
