@@ -44,6 +44,6 @@ class AccesoController extends Controller
         Session::reflash();
         Cache::flush();
         unset($_SESSION);
-        return Redirect::to('login');
+        return Redirect::to('/');
     }
 }
