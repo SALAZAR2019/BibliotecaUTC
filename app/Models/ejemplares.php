@@ -25,7 +25,7 @@ class ejemplares extends Model
         'descripcion',
         // 'activo'
     ];
-     function libros(){
-        return $this-> belongsTo(Libro::class,'ISBN');
-    }
+    // function libros(){
+    //    return $this-> belongsTo(Libro::class,'ISBN');
+    //}
 }
