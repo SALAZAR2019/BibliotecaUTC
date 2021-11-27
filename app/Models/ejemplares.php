@@ -28,4 +28,8 @@ class ejemplares extends Model
     // function libros(){
     //    return $this-> belongsTo(Libro::class,'ISBN');
     //}
+    public function libros()
+    {
+        return $this->belongsTo(libro::class, 'ISBN');
+    }
 }
