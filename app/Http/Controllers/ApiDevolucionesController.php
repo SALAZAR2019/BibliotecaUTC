@@ -18,8 +18,8 @@ class ApiDevolucionesController extends Controller
     public function index()
     {
         //
-        //return $prestamos=Prestamos::all();
-        return Prestamos::where("estado_prestamo",'=','1')->select('*')->get();
+        return $prestamos=Prestamos::all();
+        //return Prestamos::where("estado_prestamo",'=','1')->select('*')->get();
     }
 
     /**

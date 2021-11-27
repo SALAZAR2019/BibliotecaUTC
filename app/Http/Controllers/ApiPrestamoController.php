@@ -33,12 +33,13 @@ class ApiPrestamoController extends Controller
         //->groupBy('b.folio')
         //->get();
         //return $prestamos;
-        $libros = DB::table('Libros as a')
-        ->join('ejemplares as b','a.ISBN','=','b.ISBN')
-        ->select('a.titulo','a.ISBN','b.prestado',)
-        ->where('b.prestado','=','1')
-        ->get();
-        return $libros;
+        //$libros = DB::table('Libros as a')
+        //->join('ejemplares as b','a.ISBN','=','b.ISBN')
+        //->select('a.titulo','a.ISBN','b.prestado',)
+        //->where('b.prestado','=','1')
+        //->get();
+        //return $libros;
+        return $libros=ejemplares::all();
         
 
     }
