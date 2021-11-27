@@ -21,6 +21,6 @@ class logsesion
             return $next($request);
         if(Session::get('rol')=='Bibliotecario')
             return $next($request);
-        return redirect('/login');
+        return redirect('/');
     }
 }
