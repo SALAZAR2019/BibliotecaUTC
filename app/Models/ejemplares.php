@@ -13,12 +13,12 @@ class ejemplares extends Model
     public $timestamps=false;
     public $incrementing=false;
 
-   
-
     protected $with=['libros'];
 
     protected $fillable=
-    [
+    ['code' => 'string',
+    'code_menu' => 'string',
+    'code_sub_menu' => 'string',
         // 'id_ejemplar',
         'codigo',
         'titulo',
