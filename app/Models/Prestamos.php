@@ -13,7 +13,7 @@ class Prestamos extends Model
     public $timestamps=false;
     public $incrementing=false;
     public $keyType = 'string';
-    protected $with=['ejemplar','usuario'];
+    //protected $with=['ejemplar','usuario'];
 
     protected $fillable=
     [
