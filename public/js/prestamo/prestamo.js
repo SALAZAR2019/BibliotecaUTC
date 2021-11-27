@@ -80,7 +80,7 @@ new Vue({
 				}
 				var libro = this.codigo;
 				
-				const newArray = newdetalles.filter(ejemplar => ejemplar.titulo == libro).map(JSON.stringify);
+				const newArray = newdetalles.filter(ejemplar => ejemplar.codigo == libro).map(JSON.stringify);
 				
 				if(newArray==""){
 					alert('libro no disponible');

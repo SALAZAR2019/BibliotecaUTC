@@ -36,7 +36,6 @@
 							<td>@{{v.id_usuario}}</td>
               <td>@{{v.fecha_prestamo}}</td>
 							<td>@{{v.id_ejemplar}}</td>
-							<td>@{{v.ejemplar.libros.titulo}}</td>
 							<td>
 								<span class="btn btn-outline-primary" @click="dev(v.id_prestamo)"><i class="fa fa-edit"></i></span>
 							</td>

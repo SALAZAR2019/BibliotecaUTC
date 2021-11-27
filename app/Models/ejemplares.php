@@ -12,8 +12,8 @@ class ejemplares extends Model
     protected $primaryKey="id_ejemplar";
     public $timestamps=false;
     public $incrementing=false;
-
-    //protected $with=['libros'];
+    public $keyType = 'string';
+    protected $with=['libros'];
 
     protected $fillable=
     [
