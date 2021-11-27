@@ -11,6 +11,7 @@ class Usuarios extends Model
     protected $table="usuarios";
     protected $primaryKey="id_usuario";
     //protected $with=['tipo'];
+    
     public $timestamps=false;
     public $incrementing=false;
 
