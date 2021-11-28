@@ -32,7 +32,7 @@ class ApiPrestamoController extends Controller
         //->select('b.folio')
         //->groupBy('b.folio')
         //->get();
-        return $prestamos;
+        //return $prestamos;
         $libros = DB::table('Libros as a')
         ->join('ejemplares as b','a.ISBN','=','b.ISBN')
         ->select('a.titulo','a.ISBN','b.prestado',)
