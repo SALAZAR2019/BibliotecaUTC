@@ -5,6 +5,12 @@
         <div class="col-12 text-center">
             <h1>LISTA DE LIBROS</h1>
         </div>
+        <form class="form-inline">
+
+            <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
+
+               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+          </form>
     </div>
 
 
@@ -24,7 +30,7 @@
 <table class="table table-borderes table-responsive">
     <thead style="background: #ffffcc">
         <tr>
-            
+
             <th>Foto</th>
             <th>ISBN</th>
             <th>Titulo</th>
@@ -41,23 +47,23 @@
             <th>Estado del libro</th>
             <th>Activo</th>
             <th>Acciones</th>
-            
+
         </tr>
     </thead>
     <tbody>
         @foreach( $libros as $libro )
         <tr>
-            
+
             <td>
-                <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$libro -> foto }}" height="100" width="200" alt="50"> 
+                <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$libro -> foto }}" height="100" width="200" alt="50">
             </td>
             <td>{{ $libro -> ISBN }}</td>
             <td>{{ $libro -> titulo}}</td>
-            <td><label class="label label-info">{{ $libro->autores->nom_autor}}</label></td>
-            <td><label class="label label-info">{{ $libro->editoriales->nom_editorial}}</label></td> 
+            <td>{{ $libro -> autor}}</td>
+            <td>{{ $libro -> editorial}}</td>
             <td>{{ $libro -> edicion}}</td>
             <td><label class="label label-info">{{ $libro->carreras->nom_carrera}}</label></td>
-            <td><label class="label label-info">{{ $libro->materias->nom_materia}}</label></td> 
+            <td><label class="label label-info">{{ $libro->materias->nom_materia}}</label></td>
             <td>{{ $libro -> id_clasifidewey}}</td>
             <td>{{ $libro -> paginas}}</td>
             <td>{{ $libro -> ejemplar_total}}</td>
@@ -72,7 +78,7 @@
             </a>
 |
             <form action="{{ url ('/libro/'.$libro->ISBN ) }}" method="post" class="d-inline ">
-            @csrf 
+            @csrf
             {{ method_field('DELETE') }}
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
 

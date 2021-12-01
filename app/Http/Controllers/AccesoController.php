@@ -35,7 +35,7 @@ class AccesoController extends Controller
                 return redirect('user');
             }
         }else {
-            return redirect('login');
+            return redirect('/');
         }
     }
     public function salir()
@@ -44,6 +44,6 @@ class AccesoController extends Controller
         Session::reflash();
         Cache::flush();
         unset($_SESSION);
-        return Redirect::to('login');
+        return Redirect::to('/');
     }
 }

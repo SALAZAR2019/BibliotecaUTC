@@ -12,9 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('auth.login');
-});
+
 Route::resource('empleado',ApiEmpleadoController::class);
 Route::resource('libro',ApiLibrosController::class)->middleware('sesion');
 Route::resource('editorial',ApiEditorialesController::class)->middleware('sesion');
@@ -36,7 +34,7 @@ Route::resource('materia',ApiMateriasController::class)->middleware('sesion');
   Route::view('dev', 'devoluciones')->middleware('sesion');
   Route::view('prestamo','prestamos')->middleware('sesion');
   Route::view('user','Usuarios.user_login')->middleware('sesion');
-  Route::view('login','login');
+  Route::view('/','login');
   Route::view('usuario','Usuarios.usuarios')->middleware('sesion');
   Route::view('tipo','Usuarios.tipo_usuario')->middleware('sesion');
 

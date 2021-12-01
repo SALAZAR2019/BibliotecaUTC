@@ -12,7 +12,7 @@ class ejemplares extends Model
     protected $primaryKey="id_ejemplar";
     public $timestamps=false;
     public $incrementing=false;
-
+    public $keyType = 'string';
     protected $with=['libros'];
 
     protected $fillable=
@@ -25,7 +25,11 @@ class ejemplares extends Model
         'descripcion',
         // 'activo'
     ];
-    public function libros(){
-        return $this-> belongsTo(Libro::class,'ISBN');
+    // function libros(){
+    //    return $this-> belongsTo(Libro::class,'ISBN');
+    //}
+    public function libros()
+    {
+        return $this->belongsTo(Libro::class,'ISBN','ISBN');
     }
 }
