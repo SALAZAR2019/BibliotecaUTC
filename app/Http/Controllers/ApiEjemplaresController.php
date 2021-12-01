@@ -18,6 +18,7 @@ class ApiEjemplaresController extends Controller
     public function index()
     {
         //return libros::all();
+        return $ejemplar=ejemplares::all();
         
     }
 
@@ -71,6 +72,7 @@ class ApiEjemplaresController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $ejemplar= ejemplares::destroy($id);
     }
 }

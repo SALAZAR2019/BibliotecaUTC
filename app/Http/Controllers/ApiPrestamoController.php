@@ -35,10 +35,11 @@ class ApiPrestamoController extends Controller
         //return $prestamos;
         $libros = DB::table('Libros as a')
         ->join('ejemplares as b','a.ISBN','=','b.ISBN')
-        ->select('a.titulo','a.ISBN','b.prestado',)
+        ->select('a.titulo','a.ISBN','b.prestado','b.codigo')
         ->where('b.prestado','=','1')
         ->get();
         return $libros;
+        //return $libros=ejemplares::all();
         
 
     }
@@ -74,46 +75,26 @@ class ApiPrestamoController extends Controller
 
                 'titulo'=>$detalles[$i]['titulo'],
 
+                'id_ejemplar'=>$detalles[$i]['codigo'],
+
                 'fecha_devolucion'=>$endDate,
 
                 
 
             ];
-            $activo=$detalles[$i]['ISBN'];
+            $activo=$detalles[$i]['codigo'];
             $ejemplar=DB::table('ejemplares')->select('id_ejemplar')->where('ISBN','=',$activo)->Where('prestado','=','1')->limit(1)->get();
-            foreach($ejemplar as $ejem){
-                $user =$ejem->id_ejemplar;
-                
-            }
+            
             
             DB::update("UPDATE ejemplares
             SET prestado='0'
-            where id_ejemplar ='$user'"
+            where codigo ='$activo'"
             );
         }
-        $id=$user;
-        for($i=0;$i<count($detalles);$i++)
-        {
-            $record[]=[
-                'folio'=>$request->get('folio'),
+        $id=$activo;  
 
-                'id_usuario'=>$request->get('id_usuario'),
-
-                'fecha_prestamo'=>$request->get('fecha_prestamo'),
-
-                'ISBN'=>$detalles[$i]['ISBN'],
-
-                'titulo'=>$detalles[$i]['titulo'],
-
-                'fecha_devolucion'=>$endDate,
-
-                'id_ejemplar'=>$id
-
-            ];
-        }  
-
-    if($record!=null){
-           Prestamos::insert($record);
+    if($records!=null){
+           Prestamos::insert($records);
             Mail::to($User->correo)->send(new Sendemail($detalles,$usuario,$folio,$endDate));
         }
 

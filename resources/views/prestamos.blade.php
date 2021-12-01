@@ -7,11 +7,11 @@
             <h1>PRESTAMO DE LIBROS</h1>
         </div>
     </div>
-
+	<br>
     <div class="row g-2">
         <div class="input-group">
 			<div class=" col-3 position-relative">
-				<input id="id_usuario" type="text" name="id_usuario" v-model="id_usuario" class="form-control" placeholder="ingrese matricula-cedula"  onkeyup="verificar(this.value);" >
+				<input id="id_usuario" type="text" name="id_usuario" v-model="id_usuario" class="form-control" placeholder="Ingrese el DNI"  onkeyup="verificar(this.value);" >
 			</div>
 			<div class="col-3 position-relative">
 				<span class="input-group-btn">
@@ -20,7 +20,7 @@
 				</span>
 			</div>
 			<div class="col-3 position-relative">
-               	<input id="libro" type="text"  name="libro" class="form-control" v-model="codigo" ref="buscar" placeholder="ingrese id libro" disabled onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
+               	<input id="libro" type="text"  name="libro" class="form-control" v-model="codigo" ref="buscar" placeholder="Ingrese el título del libro" disabled onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
 			</div>
 			<div class="col-2 position-relative">
 				<span class="input-group-btn">
@@ -30,7 +30,6 @@
         </div>
     </div>
     <hr>
-	@{{ejemplares}}
     <div class="row">
 			<div class="col-8">
 				<table id="table" class="table table-bordered">
@@ -38,8 +37,8 @@
 						<th>ID</th>
 						<th>ISBN</th>
 						<th width="15%">CÓDIGO</th>
-						<th width="15%">TITULO</th>
-
+						<th width="15%">TÍTULO</th>
+						
 						<th width="15%">OPCIONES</th>
 					</thead>
 					<tbody>
@@ -48,13 +47,13 @@
 							<td>@{{v.ISBN}}</td>
 							<td>@{{v.codigo}}</td>
 							<td>@{{v.titulo}}</td>
-							<td><span class="btn btn-bg" @click="eliminarLibro(index)">eliminar</span></td>
+							<td><span class="btn btn-bg" @click="eliminarLibro(index)">Eliminar</span></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 			<div class="navbar-custom-menu">
-
+			
 			<ul v-for="usu in users" class="nav navbar-nav">
 				<li>@{{usu.nombres}}</li>
 				<li>@{{usu.correo}}</li>

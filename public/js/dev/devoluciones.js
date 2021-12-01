@@ -32,6 +32,7 @@
 			this.getPre();
 			this.getDev();
 			this.envios();
+			//this.pintar();
 			
 		},
 
@@ -100,8 +101,30 @@
 			envios(){
 			   setInterval(()=>{
 				this.envio();
-			   },43200000);
+			   },3000000);
 			   //43200000
+		   },
+		   pintar:function(){
+
+			var fecha=[];
+			for (var i = 0; i < this.prestamos.length; i++) {
+				fecha.push({
+					//id_libro:this.prestamos[i].id_libro,
+					id:this.prestamos[i].fecha_devolucion,
+					//foto:this.prestamos[i].foto,
+					//describe_estado:this.prestamos[i].describe_estado,
+					//codigo:this.prestamos[i].codigo,
+					//ISBN:this.prestamos[i].ISBN,
+					
+				})
+			
+			}
+			console.log(fecha);
+			if(fecha<=this.fecha_actual){
+				document.getElementById("celda").style.color = "#FFFFFF";
+			}else{
+				document.getElementById("celda").style.color = "#676575"
+			}
 		   },
 			devolver:function(){
 				var dev={

@@ -5,7 +5,7 @@
 <div class="container" id="tipo_us">
     <div class="row">
         <div class="col-12 text-center">
-            <h1>Tipos de lectores</h1>
+            <h1>TIPOS DE LECTORES</h1>
         </div>
     </div>
 
