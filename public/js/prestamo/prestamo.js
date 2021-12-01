@@ -63,44 +63,34 @@ new Vue({
 			.then(function(json){
 				
 				this.ejemplares=json.data;
-				if (this.ejemplares==""){
-					alert('el libro no esta disponible')
-					this.getlib();
-				}
+				
 				var detalles2 = [];
+
 				for (var i = 0; i < this.ejemplares.length; i++) {
 					detalles2.push({
 						titulo:this.ejemplares[i].titulo,
 						codigo:this.ejemplares[i].codigo,
-						//id_ejemplar:this.ejemplares[i].id_ejemplar,
 						ISBN:this.ejemplares[i].ISBN,
 					})
 					var set =new Set(detalles2.map(JSON.stringify))
 					var newdetalles = Array.from(set).map(JSON.parse);
 				}
 				var libro = this.codigo;
-				
 				const newArray = newdetalles.filter(ejemplar => ejemplar.codigo == libro).map(JSON.stringify);
 				
 				if(newArray==""){
-					alert('libro no disponible');
-				}else{
+					Swal.fire("Verifique el dato ingresado",{
+						icon: "alert",
+					});
+				}
+				else{
 				const myObj = JSON.parse(newArray);
-				
-				console.log(newArray);
-					//if(titulo=codigo);
-				
-				
+
 				if (myObj){
 					this.prestamos.push(myObj);
 				}
 				}
-				//this.prestamos.slice(0,1);
-				//ejemplares.find(element => ejemplares.data.titulo === this.codigo)
-
-
-				
-				
+	
 				this.codigo='';
 				this.$refs.buscar.focus();
 				
@@ -111,7 +101,7 @@ new Vue({
 			this.$http.get(urlUser + '/' + this.id_usuario)
 			.then(function(json){
 				document.getElementById("btnUser").disabled=true;
-				//document.getElementById("btnEnviar").disabled=true;
+
 				if(json.data !=""){
 				Swal.fire({
 					title: 'Please Wait',
@@ -120,7 +110,7 @@ new Vue({
 						Swal.showLoading();
 					}
 				}).then((result)=>{
-				  /* Read more about handling dismissals below */
+			
 					var user={'id_usuario':json.data.id_usuario,
 					'nombres':json.data.nombres,
 					'correo':json.data.correo,
@@ -132,9 +122,7 @@ new Vue({
 						document.getElementById("btnUser").disabled=true;
 						document.getElementById("libro").disabled=false;
 						document.getElementById("btnEnviar").disabled=false;
-						
-						
-						
+	
 					}
 				});
 				}
@@ -150,12 +138,8 @@ new Vue({
 				}
 
 
-				//this.codigo='';
-				//this.$refs.buscar.focus();
-
 			})
 		},
-		// fin de get Libros
 
 		eliminarLibro:function(id){
 			this.prestamos.splice(id,1);
@@ -188,10 +172,7 @@ new Vue({
 
 			for (var i = 0; i < this.prestamos.length; i++) {
 				detalles.push({
-					//id_libro:this.prestamos[i].id_libro,
 					titulo:this.prestamos[i].titulo,
-					//foto:this.prestamos[i].foto,
-					//describe_estado:this.prestamos[i].describe_estado,
 					codigo:this.prestamos[i].codigo,
 					ISBN:this.prestamos[i].ISBN,
 					

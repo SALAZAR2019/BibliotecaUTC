@@ -15,6 +15,7 @@
           </div>
         </div>
       </div>
+      <button @click="pintar">pintar</button>
     </div>
     <hr>
     <div class="row">
@@ -30,12 +31,13 @@
             <th width="15%">REGISTRAR DEVOLUCIÓN</th>
 					</thead>
 					<tbody>
-						<tr v-for="(v,index) in filtroPrestamos">
+						<tr v-for="(v,index) in filtroPrestamos" id="celda"  >
 							<td>@{{v.id_prestamo}}</td>
 							<td>@{{v.folio}}</td>
 							<td>@{{v.id_usuario}}</td>
               <td>@{{v.fecha_prestamo}}</td>
 							<td>@{{v.id_ejemplar}}</td>
+              <td >@{{v.fecha_devolucion}}</td>
 							<td>
 								<span class="btn btn-outline-primary" @click="dev(v.id_prestamo)"><i class="fa fa-edit"></i></span>
 							</td>
