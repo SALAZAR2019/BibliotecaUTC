@@ -7,15 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Libros extends Model
 {
-    //
     use HasFactory;
     protected $table='libros';
     protected $primaryKey='id_libro';
 
     public $timestamps=false;
     public $incrementing=false;
-
-
 
     public $fillable=[
     'id_libro',
@@ -34,8 +31,6 @@ class Libros extends Model
     'activo',
     'created_at',
     'updated_at',
-    // 'id_carrera',
-    // 'id_materia',
    
     ];
     
