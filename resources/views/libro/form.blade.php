@@ -23,57 +23,26 @@ value="{{ isset($libro -> ISBN)?$libro -> ISBN:old('ISBN') }}" required>
 
 <div class="form-group">
 <label for="titulo"> Titulo </label>
-<input class="form-control" type="text"  name="titulo"  id="titulo" 
+<input class="form-control" type="text"  name="titulo"  id="titulo"
 value="{{ isset($libro -> titulo)?$libro->titulo:old('titulo')}}" required>
 </div>
 
-
-
-
-
 <div class="form-group">
-    <label for="">Autores</label>
-    <select name="id_autor" id="id_autor" class="form-control" required>
-        <option value="">--Elige un autor--</option>
-        @foreach ($autores as $autor)
-        <option value="{{ $autor-> id_autor }}"
-            @if (!is_null(old('id_autor'))) 
-            {{ old('id_autor') == $autores -> id_autor ? 'selected' : ''}}
-            @else
-            @if(isset($libro))
-            {{$libro ->id_autor ==$autor->id_autor ? 'selected' : '' }}
-            @endif
-            @endif
-            >{{$autor->nom_autor}}</option>
-        @endforeach
-    </select>
-</div>
+    <label for="autor"> Autor </label>
+    <input class="form-control" type="text"  name="autor"  id="autor"
+    value="{{ isset($libro -> autor)?$libro->autor:old('autor')}}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="editorial"> Editorial del libro </label>
+        <input class="form-control" type="text"  name="editorial"  id="editorial"
+        value="{{ isset($libro -> editorial)?$libro->editorial:old('editorial')}}" required>
+        </div>
 
 
 
 
-<!--<div class="form-group">
-<label for="id_editorial"> Editorial </label>
-<input class="form-control" type="text"  name="id_editorial"  id="id_editorial" 
-value="{{ isset($libro -> id_editorial)?$libro -> id_editorial:old('id_editorial')}}">
-</div>-->
-<div class="form-group">
-    <label for="">Editorial</label>
-    <select name="id_editorial"  class="form-control" required>
-    <option value="">--Elige una editorial--</option>
-        @foreach ($editoriales as $editorial)
-        <option value="{{ $editorial-> id_editorial }}"
-            @if (!is_null(old('id_editorial'))) 
-            {{ old('id_editorial') == $editoriales -> id_editorial ? 'selected' : ''}}
-            @else
-            @if(isset($libro))
-            {{$libro ->id_editorial ==$editorial->id_editorial ? 'selected' : '' }}
-            @endif
-            @endif
-            >{{$editorial->nom_editorial}}</option>
-        @endforeach
-    </select>
-</div>
+
 
 
 <div class="form-group">
@@ -90,7 +59,7 @@ value="{{ isset($libro -> edicion)?$libro->edicion:old('edicion')}}" required>
     <option value="">--Elige una carrera--</option>
         @foreach ($carreras as $carrera)
         <option value="{{ $carrera-> id_carrera }}"
-            @if (!is_null(old('id_carrera'))) 
+            @if (!is_null(old('id_carrera')))
             {{ old('id_carrera') == $carreras -> id_carrera ? 'selected' : ''}}
             @else
             @if(isset($libro))
@@ -108,7 +77,7 @@ value="{{ isset($libro -> edicion)?$libro->edicion:old('edicion')}}" required>
     <option value="">--Elige una materia--</option>
         @foreach ($materias as $materia)
         <option value="{{ $materia-> id_materia }}"
-            @if (!is_null(old('id_materia'))) 
+            @if (!is_null(old('id_materia')))
             {{ old('id_materia') == $materias -> id_materia ? 'selected' : ''}}
             @else
             @if(isset($libro))
@@ -150,19 +119,19 @@ value="{{ isset($libro -> resenia)?$libro -> resenia:old('resenia') }}" >
 
 <div class="form-group">
 <label for="ubicacion"> Ubicación </label>
-<input class="form-control" type="text"  name="ubicacion"  id="ubicacion" 
+<input class="form-control" type="text"  name="ubicacion"  id="ubicacion"
 value="{{ isset($libro -> ubicacion)?$libro -> ubicacion:old('ubicacion')}}" required>
 </div>
 
 <div class="form-group">
 <label for="describe_estado"> Estado </label>
-<input class="form-control" type="text"  name="describe_estado"  id="describe_estado" 
+<input class="form-control" type="text"  name="describe_estado"  id="describe_estado"
 value="{{ isset($libro -> describe_estado)?$libro -> describe_estado:old('describe_estado')}}" required>
 </div>
 
 <!--<div class="form-group">
 <label for="activo"> Activo </label>
-<input class="form-control" type="checkbox"  name="activo"  id="activo" 
+<input class="form-control" type="checkbox"  name="activo"  id="activo"
 value="{{ isset($libro -> activo)?$libro -> activo:old('activo')}}">
 </div>-->
 
@@ -179,7 +148,7 @@ value="{{ isset($libro -> activo)?$libro -> activo:old('activo')}}">
 @if(isset($libro -> foto))
 <img src="{{ asset('storage').'/'.$libro -> foto }}" class="img-thumbnail img-fluid" width="100" alt="">
 @endif
-<input class="form-control" type="file"  name="foto"  id="foto" value="" required>
+<input class="form-control" type="file"  name="foto"  id="foto" value="" required >
 </div>
 </div>
 

@@ -21,7 +21,7 @@ class Libro extends Model
         //'id_libro',
         'ISBN',
         'titulo',
-        'id_autor',
+        'autor',
         'id_editorial',
         'edicion',
         'id_carrera',
@@ -35,16 +35,6 @@ class Libro extends Model
         'foto',
         'activo',
     ];
-
-    public function editoriales()
-    {
-        return $this->belongsTo(EditorialController::class, 'id_editorial');
-    }
-
-    public function autores()
-    {
-        return $this->belongsTo(AutorController::class, 'id_autor', 'id_autor');
-    }
 
     public function carreras()
     {
