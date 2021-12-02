@@ -17,7 +17,7 @@
 
 <div class="form-group">
 <label for="ISBN"> ISBN </label>
-<input class="form-control" type="number" name="ISBN"  id="ISBN" 
+<input class="form-control" type="number" name="ISBN"  id="ISBN"
 value="{{ isset($libro -> ISBN)?$libro -> ISBN:old('ISBN') }}" required>
 </div>
 
@@ -27,17 +27,21 @@ value="{{ isset($libro -> ISBN)?$libro -> ISBN:old('ISBN') }}" required>
 value="{{ isset($libro -> titulo)?$libro->titulo:old('titulo')}}" required>
 </div>
 
+
 <div class="form-group">
-    <label for="autor"> Autor </label>
+    <label for="autor"> Nombre del autor </label>
     <input class="form-control" type="text"  name="autor"  id="autor"
     value="{{ isset($libro -> autor)?$libro->autor:old('autor')}}" required>
-    </div>
+</div>
 
     <div class="form-group">
         <label for="editorial"> Editorial del libro </label>
         <input class="form-control" type="text"  name="editorial"  id="editorial"
         value="{{ isset($libro -> editorial)?$libro->editorial:old('editorial')}}" required>
-        </div>
+</div>
+
+
+
 
 
 
@@ -47,7 +51,7 @@ value="{{ isset($libro -> titulo)?$libro->titulo:old('titulo')}}" required>
 
 <div class="form-group">
 <label for="edicion"> Edición</label>
-<input class="form-control" type="number"  name="edicion"  id="edicion" 
+<input class="form-control" type="number"  name="edicion"  id="edicion"
 value="{{ isset($libro -> edicion)?$libro->edicion:old('edicion')}}" required>
 </div>
 </div>
@@ -91,19 +95,19 @@ value="{{ isset($libro -> edicion)?$libro->edicion:old('edicion')}}" required>
 
 <div class="form-group">
 <label for="id_clasifidewey"> Dewey </label>
-<input class="form-control" type="number"  name="id_clasifidewey"  id="id_clasifidewey" 
+<input class="form-control" type="number"  name="id_clasifidewey"  id="id_clasifidewey"
 value="{{ isset($libro -> id_clasifidewey)?$libro -> id_clasifidewey:old('id_clasifidewey') }}">
 </div>
 
 <div class="form-group">
 <label for="paginas"> Paginas </label>
-<input class="form-control" type="number"  name="paginas"  id="paginas" 
+<input class="form-control" type="number"  name="paginas"  id="paginas"
 value="{{ isset($libro -> paginas)?$libro -> paginas:old('paginas')}}" required>
 </div>
 
 <div class="form-group">
 <label for="ejemplar_total"> Ejemplar </label>
-<input class="form-control" type="number"  name="ejemplar_total"  id="ejemplar_total" 
+<input class="form-control" type="number"  name="ejemplar_total"  id="ejemplar_total"
 value="{{ isset($libro -> ejemplar_total)?$libro->ejemplar_total:old('ejemplar_total')}}" required>
 </div>
 </div>
@@ -113,7 +117,7 @@ value="{{ isset($libro -> ejemplar_total)?$libro->ejemplar_total:old('ejemplar_t
 <div class="col-sm-4">
 <div class="form-group">
 <label for="resenia"> Reseña </label>
-<input class="form-control" type="text"  name="resenia"  id="resenia" 
+<input class="form-control" type="text"  name="resenia"  id="resenia"
 value="{{ isset($libro -> resenia)?$libro -> resenia:old('resenia') }}" >
 </div>
 
@@ -148,7 +152,7 @@ value="{{ isset($libro -> activo)?$libro -> activo:old('activo')}}">
 @if(isset($libro -> foto))
 <img src="{{ asset('storage').'/'.$libro -> foto }}" class="img-thumbnail img-fluid" width="100" alt="">
 @endif
-<input class="form-control" type="file"  name="foto"  id="foto" value="" required >
+<input class="form-control" type="file"  name="foto"  id="foto" value="" required>
 </div>
 </div>
 

@@ -5,15 +5,17 @@
         <div class="col-12 text-center">
             <h1>LISTA DE LIBROS</h1>
         </div>
-        <form class="form-inline">
 
-            <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
+        <form class="form-inline ">
 
-               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            <input name="buscarpor" class="form-control  mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
+
+               <button class="btn btn-outline-success  my-2 my-sm-0" type="submit">Buscar</button>
           </form>
     </div>
 
 
+<br>
 @if(Session::has('mensaje'))
 <div class="alert alert-success alert-dismissible" role="alert">
 {{ Session::get('mensaje') }}
