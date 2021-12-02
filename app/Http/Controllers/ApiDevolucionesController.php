@@ -51,8 +51,8 @@ class ApiDevolucionesController extends Controller
         $activo=$request->get('id_ejemplar');
         
         DB::update("UPDATE ejemplares
-        SET prestado='1'
-        where id_ejemplar='$activo'");
+        SET prestado ='1'
+        where codigo='$activo'");
 
         $pres=$request->get('id_prestamo');
 
