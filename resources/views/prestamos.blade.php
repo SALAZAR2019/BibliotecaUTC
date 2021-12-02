@@ -33,16 +33,13 @@
 			<div class="col-8">
 				<table id="table" class="table table-bordered">
 					<thead style="background: #ffffcc">
-						<th>ID</th>
-						<th>ISBN</th>
+						<th width="15%">ISBN</th>
 						<th width="15%">CÓDIGO</th>
 						<th width="15%">TITULO</th>
-
 						<th width="15%">OPCIONES</th>
 					</thead>
 					<tbody>
 						<tr v-for="(v,index) in prestamos">
-							<td>@{{v.id_ejemplar}}</td>
 							<td>@{{v.ISBN}}</td>
 							<td>@{{v.codigo}}</td>
 							<td>@{{v.titulo}}</td>
@@ -54,8 +51,8 @@
 			<div class="navbar-custom-menu">
 
 			<ul v-for="usu in users" class="nav navbar-nav">
-				<li>@{{usu.nombres}}</li>
-				<li>@{{usu.correo}}</li>
+				<li>Alumno: @{{usu.nombres}} @{{usu.apellido_p}}</li>
+				<li>Correo: @{{usu.correo}}</li>
 				<li><span class="btn btn-bg btn-warning" @click="eliminarUser(users.id_usuario)">Cambiar</span></li>
 			</ul>
 		</div>
