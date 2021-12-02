@@ -8,7 +8,7 @@
 
   <title>BIBLIOTECA UTC</title>
   <!-- Tell the browser to be responsive to screen width -->
-  
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
@@ -20,7 +20,7 @@
   <script type="text/javascript" src="js/vue.js"></script>
   <script type="text/javascript" src="js/vue-resource.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- 
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -34,9 +34,9 @@
       </li>
     </ul>
 
-    
+
     <!-- Right navbar links -->
- 
+
   </nav>
   <!-- /.navbar -->
 
@@ -70,11 +70,11 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
           <a href="#" class="nav-link active">
-            <i class="fas fa-book">  Libros   </i>              
-              
+            <i class="fas fa-book">  Libros   </i>
+
             </a>
 
-            
+
             <ul class="nav nav-treeview">
               @if(Session::get('rol') == "Bibliotecario" || Session::get('rol') == "Administrador" )
               <li class="nav-item has-treeview">
@@ -160,7 +160,7 @@
               </ul>
             </li>
           @endif
-              @if(Session::get('rol') == "Administrador")  
+              @if(Session::get('rol') == "Administrador")
             <li class="nav-item has-treeview">
               <a href="" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
@@ -182,7 +182,7 @@
 
             </ul>
           </li>
-          @if(Session::get('rol') == "Bibliotecario" || Session::get('rol') == "Administrador") 
+          @if(Session::get('rol') == "Bibliotecario" || Session::get('rol') == "Administrador")
           <li class="nav-header">SECCIÓN DE PRESTAMOS</li>
           <li class="nav-item has-treeview">
             <a href="" class="nav-link">
@@ -253,7 +253,7 @@
 <!-- ./wrapper -->
 
     @stack('scripts')
-    
+
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -263,6 +263,8 @@
 <script src="js/sweetalert2.all.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+@yield('js')
 
 </body>
 </html>

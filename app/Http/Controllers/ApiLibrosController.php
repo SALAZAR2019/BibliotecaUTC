@@ -196,6 +196,6 @@ class ApiLibrosController extends Controller
         if(Storage::delete('public/'.$libro->foto)){
         Libro::destroy($id);
         }
-        return redirect('libro')->with('mensaje','Libro Borrado');
+        return redirect('libro')->with('eliminar','ok');
     }
 }

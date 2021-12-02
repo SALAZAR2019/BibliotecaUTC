@@ -79,10 +79,10 @@
             Editar
             </a>
 |
-            <form action="{{ url ('/libro/'.$libro->ISBN ) }}" method="post" class="d-inline ">
+            <form action="{{ url ('/libro/'.$libro->ISBN ) }}" method="post" class="d-inline formulario-eliminar">
             @csrf
             {{ method_field('DELETE') }}
-            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+            <input class="btn btn-danger" type="submit"  value="Borrar">
 
             </form>
             </td>
@@ -94,4 +94,51 @@
 </div>
 {!! $libros->links()!!}
 </div>
+@endsection
+
+@section('js')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (session('eliminar')== 'ok')
+<script>
+
+Swal.fire(
+      'Eliminado!',
+      'Su archivo ha sido eliminado.',
+      'éxito'
+    )
+
+</script>
+
+@endif
+
+<script>
+
+    $('.formulario-eliminar').submit(function(e){
+        e.preventDefault();
+
+    Swal.fire({
+  title: '¿Estás seguro?',
+  text: "¡No podrás revertir esto!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: '¡Sí, bórralo!',
+  cancelButtonText: 'Cancelar',
+}).then((result) => {
+  if (result.isConfirmed) {
+    /*Swal.fire(
+      'Eliminado!',
+      'Su archivo ha sido eliminado.',
+      'éxito'
+    )*/
+    this.submit();
+  }
+})
+    });
+
+
+   /*  */
+</script>
 @endsection
