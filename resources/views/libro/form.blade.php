@@ -106,9 +106,9 @@ value="{{ isset($libro -> paginas)?$libro -> paginas:old('paginas')}}" required>
 </div>
 
 <div class="form-group">
-<label for="ejemplar_total"> Ejemplar </label>
-<input class="form-control" type="number"  name="ejemplar_total"  id="ejemplar_total"
-value="{{ isset($libro -> ejemplar_total)?$libro->ejemplar_total:old('ejemplar_total')}}" required>
+<label for="ejemplares"> Ejemplar </label>
+<input class="form-control" type="number"  name="ejemplares"  id="ejemplares"
+value="{{ isset($libro -> ejemplares)?$libro->ejemplares:old('ejemplares')}}" required>
 </div>
 </div>
 

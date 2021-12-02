@@ -28,7 +28,7 @@ class Libro extends Model
         'id_materia',
         'id_clasifidewey',
         'paginas',
-        'ejemplar_total',
+        'ejemplares',
         'resenia',
         'ubicacion',
         'describe_estado',
