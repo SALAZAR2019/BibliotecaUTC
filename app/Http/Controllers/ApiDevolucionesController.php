@@ -15,10 +15,22 @@ class ApiDevolucionesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return Prestamos::where("estado_prestamo",'=','1')->select('*')->get();
+        $prestamos = Prestamos::where("estado_prestamo",'=','1')->paginate(3);
+
+        return[
+            'pagination'=>[
+                'total' => $prestamos->total(),
+                'current_page' => $prestamos->currentpage(),
+                'per_page' => $prestamos->perpage(),
+                'last_page' => $prestamos->lastpage(),
+                'from' => $prestamos->firstItem(),
+                'to'=>$prestamos->lastPage(),
+            ],
+            'prestamos'=> $prestamos
+        ];
     }
 
     /**

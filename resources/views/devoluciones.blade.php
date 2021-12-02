@@ -7,6 +7,7 @@
          <h1>DEVOLUCIÓN DE LIBROS</h1>
       </div>
     </div>
+
     <div class="row g-2">
       <div class="col-6">
         <div class="input-group">
@@ -37,6 +38,7 @@
 							<td>@{{v.id_usuario}}</td>
               <td>@{{v.fecha_prestamo}}</td>
 							<td>@{{v.id_ejemplar}}</td>
+              <td>@{{v.titulo}}</td>
               <td >@{{v.fecha_devolucion}}</td>
 							<td>
 								<span class="btn btn-outline-primary" @click="dev(v.id_prestamo)"><i class="fa fa-edit"></i></span>
@@ -44,6 +46,27 @@
 						</tr>
 					</tbody>
 				</table>
+        <nav>
+          <ul  class="pagination">
+            <li v-if="pagination.current_page > 1">  
+              <a href="#" @click.prevent="changePage(pagination.current_page - 1)">
+                <span>atras</span>
+              </a>
+            </li
+            >
+            <li v-for="page in pageNumber" v-bind:class="[ page == isActived ? 'active':'']">  
+              <a href="" @click.prevent="changePage(page)">
+                @{{page}}
+              </a>
+            </li>
+            
+            <li v-if="pagination.current_page < pagination.last_page">  
+              <a href="#" @click.prevent="changePage(pagination.current_page + 1)">
+                <span>siguiente</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
 			</div>
 	</div>
   <!-- Modal -->

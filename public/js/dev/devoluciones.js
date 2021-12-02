@@ -1,5 +1,5 @@
 	var route = document.querySelector("[name=route]").value;
-	var UrlPre=route + '/apidevolucion';
+	
 	var Urldev=route + '/apidevolucion';
 	var UrlSend=route+'/envios';
 	function init()
@@ -14,6 +14,14 @@
 		el:'#prestamos',
 
 		data:{
+			pagination:{
+                'total':0,
+                'current_page':0,
+                'per_page':0,
+                'last_page':0,
+                'from':0,
+                'to':0,
+			},
 			prestamos:[],
 			devoluciones:[],
 			buscar:'',
@@ -37,10 +45,12 @@
 		},
 
 		methods:{
-			getPre:function(){
+			getPre:function(page){
+				var UrlPre=route + '/apidevolucion?page='+page;
 				this.$http.get(UrlPre)
 				.then(function(json){
-					this.prestamos=json.data;
+					this.prestamos=json.data.prestamos.data;
+					this.pagination= json.data.pagination
                     
 				});
 			},
@@ -146,13 +156,44 @@
 				});
 				this.Salir();
 			},
+			changePage:function(page){
+				this.pagination.current_page=page;
+				this.getPre(page);
+			},
 			
 	},
 	computed:{
+
+		isActived:function(){
+			return this.pagination.current_page;
+		},
+
+		pageNumber:function(){
+			if(!this.pagination.to){
+				return [];
+			}
+			var from = this.pagination.current_page - 2;//
+			if(from<1){
+				from=1;
+			}
+			var to = from +(2*2);//
+			if(to>=this.pagination.last_page){
+				to=this.pagination.last_page;
+			}
+			var pagesArray=[];
+
+			while(from<=to){
+				pagesArray.push(from);
+				from++;
+			}
+			return pagesArray;
+		},
+
+
 		filtroPrestamos:function(){
 			return this.prestamos.filter((pre)=>{
 				return pre.folio.match(this.buscar.trim())||
-				pre.ejemplar.libros.titulo.toLowerCase().match(this.buscar.trim().toLowerCase());
+				pre.titulo.toLowerCase().match(this.buscar.trim().toLowerCase());
 			});
 		}
 	}

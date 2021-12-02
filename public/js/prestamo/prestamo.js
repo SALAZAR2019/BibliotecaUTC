@@ -113,6 +113,7 @@ new Vue({
 			
 					var user={'id_usuario':json.data.id_usuario,
 					'nombres':json.data.nombres,
+					'apellido_p':json.data.apellido_p,
 					'correo':json.data.correo,
 					}
 
