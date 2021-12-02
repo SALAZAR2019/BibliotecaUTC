@@ -68,7 +68,7 @@
             <td><label class="label label-info">{{ $libro->materias->nom_materia}}</label></td>
             <td>{{ $libro -> id_clasifidewey}}</td>
             <td>{{ $libro -> paginas}}</td>
-            <td>{{ $libro -> ejemplar_total}}</td>
+            <td>{{ $libro -> ejemplares}}</td>
             <td>{{ $libro -> resenia}}</td>
             <td>{{ $libro -> ubicacion}}</td>
             <td>{{ $libro -> describe_estado}}</td>

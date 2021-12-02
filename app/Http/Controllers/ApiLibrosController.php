@@ -19,10 +19,11 @@ class ApiLibrosController extends Controller
     public function index(Request $request)
     {
         //
+        $titulo =$request->get('buscarpor');
 
         $carreras= CarreraController::all();
         $materias = MateriaController::all();
-        $datos['libros']=Libro::paginate(5);
+        $datos['libros']=Libro::where('titulo','like',"%$titulo%")->paginate(5);
         return view('libro.index',$datos, compact('carreras','materias'));
     }
 
@@ -57,7 +58,7 @@ class ApiLibrosController extends Controller
             'id_carrera'=>'required|string|max:11',
             'id_clasifidewey'=>'required|string|max:11',
             'paginas'=>'required|string|max:20',
-            'ejemplar_total'=>'required|string|max:11',
+            'ejemplares'=>'required|string|max:11',
             // 'resenia'=>'required|string|max:900',
             'ubicacion'=>'required|string|max:90',
             'describe_estado'=>'required|string|max:900',
@@ -84,7 +85,7 @@ class ApiLibrosController extends Controller
         $fecha_alta = Carbon::now();
 
         $ISBN = $request->get('ISBN');
-        $ejemplares=$request->get('ejemplar_total');
+        $ejemplares=$request->get('ejemplares');
         //$ejemplares=[];
         for($i=0;$i<($ejemplares);$i++)
         {
@@ -150,7 +151,7 @@ class ApiLibrosController extends Controller
             'id_carrera'=>'required|string|max:11',
             'id_clasifidewey'=>'required|string|max:11',
             'paginas'=>'required|string|max:20',
-            'ejemplar_total'=>'required|string|max:11',
+            'ejemplares'=>'required|string|max:11',
             // 'resenia'=>'required|string|max:900',
             'ubicacion'=>'required|string|max:90',
             'describe_estado'=>'required|string|max:900',
