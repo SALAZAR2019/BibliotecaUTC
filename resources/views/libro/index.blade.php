@@ -45,7 +45,8 @@
             <th>Paginas</th>
             <th>Ejemplar</th>
             <th>Resenia</th>
-            <th>Ubicacion</th>
+            <th>Columna</th>
+            <th>Fila</th>
             <th>Estado del libro</th>
             <th>Activo</th>
             <th>Acciones</th>
@@ -70,7 +71,8 @@
             <td>{{ $libro -> paginas}}</td>
             <td>{{ $libro -> ejemplares}}</td>
             <td>{{ $libro -> resenia}}</td>
-            <td>{{ $libro -> ubicacion}}</td>
+            <td>{{ $libro -> columna}}</td>
+            <td>{{ $libro -> fila}}</td>
             <td>{{ $libro -> describe_estado}}</td>
             <td>{{ $libro -> activo}}</td>
             <td>
