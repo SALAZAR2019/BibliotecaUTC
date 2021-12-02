@@ -36,7 +36,7 @@
             </a>
 
             <form action="{{ url ('/carrera/'.$carrera->id_carrera ) }}" method="post" class="d-inline ">
-            @csrf 
+            @csrf
             {{ method_field('DELETE') }}
             <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
 

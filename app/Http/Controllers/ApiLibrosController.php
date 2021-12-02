@@ -23,7 +23,7 @@ class ApiLibrosController extends Controller
 
         $carreras= CarreraController::all();
         $materias = MateriaController::all();
-        $datos['libros']=Libro::where('titulo','like',"%$titulo%")->paginate(5);
+        $datos['libros']=Libro::where('titulo','like',"%$titulo%")->paginate(2);
         return view('libro.index',$datos, compact('carreras','materias'));
     }
 
@@ -49,13 +49,16 @@ class ApiLibrosController extends Controller
     public function store(Request $request)
     {
         //
+
+
         $campos=[
             'ISBN'=>'required|string|max:200',
             'titulo'=>'required|string|max:150',
             'autor'=>'required|string|max:300',
             'editorial'=>'required|string|max:300',
             'edicion'=>'required|string|max:80',
-            'id_carrera'=>'required|string|max:11',
+            'id_carrera'=>'required',
+            'id_materia'=>'required',
             'id_clasifidewey'=>'required|string|max:11',
             'paginas'=>'required|string|max:20',
             'ejemplares'=>'required|string|max:11',
@@ -103,6 +106,7 @@ class ApiLibrosController extends Controller
         }
         ejemplares::insert($ejemplar);
 
+
         //return response()->json($ejemplar);
          return redirect('libro')->with('mensaje','Libro agregado con éxito');
     }
@@ -149,7 +153,6 @@ class ApiLibrosController extends Controller
             'autor'=>'required|string|max:300',
             'editorial'=>'required|string|max:300',
             'edicion'=>'required|string|max:80',
-            'id_carrera'=>'required|string|max:11',
             'id_clasifidewey'=>'required|string|max:11',
             'paginas'=>'required|string|max:20',
             'ejemplares'=>'required|string|max:11',

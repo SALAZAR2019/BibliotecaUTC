@@ -14,6 +14,7 @@ class ApiCarrerasController extends Controller
     public function index()
     {
         //
+
         $datos['carreras']=CarreraController::paginate(2);
         return view('carrera.index',$datos);
     }
@@ -112,7 +113,7 @@ class ApiCarrerasController extends Controller
     {
         //
         CarreraController::destroy($id);
-            
+
         return redirect('carrera')->with('mensaje','carrera Borrada con exito');
     }
 }
