@@ -51,8 +51,8 @@
 			<div class="navbar-custom-menu">
 
 			<ul v-for="usu in users" class="nav navbar-nav">
-				<li>@{{usu.nombres}}</li>
-				<li>@{{usu.correo}}</li>
+				<li>Alumno: @{{usu.nombres}} @{{usu.apellido_p}}</li>
+				<li>Correo: @{{usu.correo}}</li>
 				<li><span class="btn btn-bg btn-warning" @click="eliminarUser(users.id_usuario)">Cambiar</span></li>
 			</ul>
 		</div>
