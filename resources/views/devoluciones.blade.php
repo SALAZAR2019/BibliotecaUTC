@@ -16,7 +16,6 @@
           </div>
         </div>
       </div>
-      <button @click="pintar">pintar</button>
     </div>
     <hr>
     <div class="row">
@@ -37,7 +36,6 @@
 							<td>@{{v.folio}}</td>
 							<td>@{{v.id_usuario}}</td>
               <td>@{{v.fecha_prestamo}}</td>
-							<td>@{{v.id_ejemplar}}</td>
               <td>@{{v.titulo}}</td>
               <td >@{{v.fecha_devolucion}}</td>
 							<td>
@@ -46,24 +44,16 @@
 						</tr>
 					</tbody>
 				</table>
-        <nav>
-          <ul  class="pagination">
-            <li v-if="pagination.current_page > 1">  
-              <a href="#" @click.prevent="changePage(pagination.current_page - 1)">
-                <span>atras</span>
-              </a>
-            </li
-            >
-            <li v-for="page in pageNumber" v-bind:class="[ page == isActived ? 'active':'']">  
-              <a href="" @click.prevent="changePage(page)">
-                @{{page}}
-              </a>
+          <nav aria-label="">
+          <ul class="pagination justify-content-center">
+            <li class="page-item "  v-if="pagination.current_page > 1">
+              <a class="page-link" href="#" @click.prevent="changePage(pagination.current_page - 1)">Atras</a>
             </li>
-            
-            <li v-if="pagination.current_page < pagination.last_page">  
-              <a href="#" @click.prevent="changePage(pagination.current_page + 1)">
-                <span>siguiente</span>
-              </a>
+            <li class="page-item " v-for="page in pageNumber" v-bind:class="[ page == isActived ? 'active':'']">
+              <a class="page-link" href="#"  href="" @click.prevent="changePage(page)">@{{page}}</a>
+            </li>
+            <li v-if="pagination.current_page < pagination.last_page">
+              <a class="page-link"  href="#" @click.prevent="changePage(pagination.current_page + 1)">Next</a>
             </li>
           </ul>
         </nav>

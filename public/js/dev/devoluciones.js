@@ -1,5 +1,5 @@
 	var route = document.querySelector("[name=route]").value;
-	
+	var UrlPre=route + '/apidevolucion';
 	var Urldev=route + '/apidevolucion';
 	var UrlSend=route+'/envios';
 	function init()
