@@ -18,7 +18,7 @@ class ApiDevolucionesController extends Controller
     public function index(Request $request)
     {
         //
-        $prestamos = Prestamos::where("estado_prestamo",'=','1')->paginate(3);
+        $prestamos = Prestamos::where("estado_prestamo",'=','1')->paginate(6);
 
         return[
             'pagination'=>[
@@ -27,7 +27,7 @@ class ApiDevolucionesController extends Controller
                 'per_page' => $prestamos->perpage(),
                 'last_page' => $prestamos->lastpage(),
                 'from' => $prestamos->firstItem(),
-                'to'=>$prestamos->lastPage(),
+                'to'=>$prestamos->lastItem(),
             ],
             'prestamos'=> $prestamos
         ];
