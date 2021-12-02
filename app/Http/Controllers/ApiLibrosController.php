@@ -23,7 +23,7 @@ class ApiLibrosController extends Controller
 
         $carreras= CarreraController::all();
         $materias = MateriaController::all();
-        $datos['libros']=Libro::where('titulo','like',"%$titulo%")->paginate(2);
+        $datos['libros']=Libro::where('titulo','like',"%$titulo%")->paginate(5);
         return view('libro.index',$datos, compact('carreras','materias'));
     }
 
