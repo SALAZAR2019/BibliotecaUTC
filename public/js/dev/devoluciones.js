@@ -89,7 +89,7 @@
 				this.id_prestamo=json.data.id_prestamo;
 				this.id_usuario=json.data.id_usuario;
 				this.id_libro=json.data.id_libro;
-				this.titulo=json.data.ejemplar.libros.titulo;
+				this.titulo=json.data.titulo;
 				this.fecha_prestamo=json.data.fecha_prestamo;
 				this.fecha_actual=this.fecha_actual;
 				

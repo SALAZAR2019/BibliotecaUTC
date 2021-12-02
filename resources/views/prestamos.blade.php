@@ -19,7 +19,7 @@
 				</span>
 			</div>
 			<div class="col-3 position-relative">
-               	<input id="libro" type="text"  name="libro" class="form-control" v-model="codigo" ref="buscar" placeholder="ingrese id libro" disabled onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
+               	<input id="libro" type="text"  name="libro" class="form-control" v-model="codigo" ref="buscar" placeholder="ingrese ID Ejemplar" disabled onkeyup="verificar2(this.value);" v-on:keyup.enter="getLibros()">
 			</div>
 			<div class="col-2 position-relative">
 				<span class="input-group-btn">
