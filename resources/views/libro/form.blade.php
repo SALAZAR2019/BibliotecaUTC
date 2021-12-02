@@ -122,16 +122,10 @@ value="{{ isset($libro -> resenia)?$libro -> resenia:old('resenia') }}" >
 </div>
 
 <div class="form-group">
-<label for="columna"> Columna </label>
-<input class="form-control" type="text"  name="columna"  id="columna"
-value="{{ isset($libro -> columna)?$libro -> columna:old('columna')}}" required>
+<label for="ubicacion"> Ubicación </label>
+<input class="form-control" type="text"  name="ubicacion"  id="ubicacion"
+value="{{ isset($libro -> ubicacion)?$libro -> ubicacion:old('ubicacion')}}" required>
 </div>
-
-<div class="form-group">
-    <label for="fila"> Fila </label>
-    <input class="form-control" type="text"  name="fila"  id="fila"
-    value="{{ isset($libro -> fila)?$libro -> fila:old('fila')}}" required>
-    </div>
 
 <div class="form-group">
 <label for="describe_estado"> Estado </label>
@@ -158,7 +152,7 @@ value="{{ isset($libro -> activo)?$libro -> activo:old('activo')}}">
 @if(isset($libro -> foto))
 <img src="{{ asset('storage').'/'.$libro -> foto }}" class="img-thumbnail img-fluid" width="100" alt="">
 @endif
-<input class="form-control" type="file"  name="foto"  id="foto" value="" >
+<input class="form-control" type="file"  name="foto"  id="foto" value="" required>
 </div>
 </div>
 

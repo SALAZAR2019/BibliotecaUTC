@@ -60,8 +60,7 @@ class ApiLibrosController extends Controller
             'paginas'=>'required|string|max:20',
             'ejemplares'=>'required|string|max:11',
             // 'resenia'=>'required|string|max:900',
-            'columna'=>'required|string|max:90',
-            'fila'=>'required|string|max:90',
+            'ubicacion'=>'required|string|max:90',
             'describe_estado'=>'required|string|max:900',
             'foto'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
@@ -154,15 +153,14 @@ class ApiLibrosController extends Controller
             'paginas'=>'required|string|max:20',
             'ejemplares'=>'required|string|max:11',
             // 'resenia'=>'required|string|max:900',
-            'columna'=>'required|string|max:90',
-            'fila'=>'required|string|max:90',
+            'ubicacion'=>'required|string|max:90',
             'describe_estado'=>'required|string|max:900',
         ];
         $mensaje=[
             'required'=>'El :attribute es requerido',
         ];
         if($request->hasFile('foto')) {
-
+            $campos=[ 'foto'=>'required|max:10000|mimes:jpeg,png,jpg' ];
             $mensaje=[ 'foto.required'=>'La foto es requerida' ];
         }
 
