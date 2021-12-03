@@ -1,4 +1,4 @@
-<h1>{{ $modo }} materia </h1>
+<h1>{{ $modo }} sección </h1>
 
 @if(count($errors)>0)
 <div class="alert alert-danger" role="alert">
@@ -11,15 +11,15 @@
 @endif
 
 <div class="form-group">
-<label for="nom_materia"> Materia </label>
-<input class="form-control" type="text" name="nom_materia"  id="nom_materia" 
+<label for="nom_materia"> Sección </label>
+<input class="form-control" type="text" name="nom_materia"  id="nom_materia"
 value="{{ isset($materia -> nom_materia)?$materia -> nom_materia:old('nom_materia') }}">
 </div>
 
 
 <!--<div class="form-group">
 <label for="activo"> ACTIVO </label>
-<input class="form-control" type="checkbox"  name="activo"  id="activo" 
+<input class="form-control" type="checkbox"  name="activo"  id="activo"
 value="{{ isset($autor -> activo)?$autor->activo:old('activo')}}">
 </div>-->
 <div class="checkbox">

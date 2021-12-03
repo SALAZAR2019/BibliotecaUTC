@@ -111,10 +111,10 @@ class ApiEditorialesController extends Controller
     public function destroy($id)
     {
         //
-        
+
         EditorialController::destroy($id);
-            
-        return redirect('editorial')->with('mensaje','Editorial Borrada con exito');
-       
+
+        return redirect('editorial')->with('eliminar','ok');
+
     }
 }

@@ -39,13 +39,13 @@
             <th>Autor</th>
             <th>Editorial</th>
             <th>Edicion</th>
-            <th>Carrera</th>
-            <th>Materia</th>
+            <th>Sección</th>
             <th>Dewey</th>
             <th>Paginas</th>
             <th>Ejemplar</th>
             <th>Resenia</th>
-            <th>Ubicacion</th>
+            <th>Columna</th>
+            <th>Fila</th>
             <th>Estado del libro</th>
             <th>Activo</th>
             <th>Acciones</th>
@@ -64,13 +64,13 @@
             <td>{{ $libro -> autor}}</td>
             <td>{{ $libro -> editorial}}</td>
             <td>{{ $libro -> edicion}}</td>
-            <td><label class="label label-info">{{ $libro->carreras->nom_carrera}}</label></td>
             <td><label class="label label-info">{{ $libro->materias->nom_materia}}</label></td>
             <td>{{ $libro -> id_clasifidewey}}</td>
             <td>{{ $libro -> paginas}}</td>
             <td>{{ $libro -> ejemplares}}</td>
             <td>{{ $libro -> resenia}}</td>
-            <td>{{ $libro -> ubicacion}}</td>
+            <td>{{ $libro -> columna}}</td>
+            <td>{{ $libro -> fila}}</td>
             <td>{{ $libro -> describe_estado}}</td>
             <td>{{ $libro -> activo}}</td>
             <td>
@@ -78,11 +78,10 @@
             <a href="{{ url('/libro/'.$libro->ISBN.'/edit' ) }}" class="btn btn-primary">
             Editar
             </a>
-|
-            <form action="{{ url ('/libro/'.$libro->ISBN ) }}" method="post" class="d-inline ">
+            <form action="{{ url ('/libro/'.$libro->ISBN ) }}" method="post" class="d-inline formulario-eliminar">
             @csrf
             {{ method_field('DELETE') }}
-            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+            <input class="btn btn-danger" type="submit"  value="Borrar">
 
             </form>
             </td>
@@ -94,4 +93,51 @@
 </div>
 {!! $libros->links()!!}
 </div>
+@endsection
+
+@section('js')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (session('eliminar')== 'ok')
+<script>
+
+Swal.fire(
+      'Eliminado!',
+      'Su archivo ha sido eliminado.',
+      'éxito'
+    )
+
+</script>
+
+@endif
+
+<script>
+
+    $('.formulario-eliminar').submit(function(e){
+        e.preventDefault();
+
+    Swal.fire({
+  title: '¿Estás seguro?',
+  text: "¡No podrás revertir esto!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: '¡Sí, bórralo!',
+  cancelButtonText: 'Cancelar',
+}).then((result) => {
+  if (result.isConfirmed) {
+    /*Swal.fire(
+      'Eliminado!',
+      'Su archivo ha sido eliminado.',
+      'éxito'
+    )*/
+    this.submit();
+  }
+})
+    });
+
+
+   /*  */
+</script>
 @endsection

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\Libro;
-use App\Models\CarreraController;
 use App\Models\MateriaController;
 use App\Models\ejemplares;
 use Illuminate\Http\Request;
@@ -21,10 +20,9 @@ class ApiLibrosController extends Controller
         //
         $titulo =$request->get('buscarpor');
 
-        $carreras= CarreraController::all();
         $materias = MateriaController::all();
         $datos['libros']=Libro::where('titulo','like',"%$titulo%")->paginate(5);
-        return view('libro.index',$datos, compact('carreras','materias'));
+        return view('libro.index',$datos, compact('materias'));
     }
 
     /**
@@ -35,9 +33,8 @@ class ApiLibrosController extends Controller
     public function create()
     {
         //
-        $carreras= CarreraController::all();
         $materias = MateriaController::all();
-        return view('libro.create', compact('carreras','materias'));
+        return view('libro.create', compact('materias'));
     }
 
     /**
@@ -49,18 +46,21 @@ class ApiLibrosController extends Controller
     public function store(Request $request)
     {
         //
+
+
         $campos=[
             'ISBN'=>'required|string|max:200',
             'titulo'=>'required|string|max:150',
             'autor'=>'required|string|max:300',
             'editorial'=>'required|string|max:300',
             'edicion'=>'required|string|max:80',
-            'id_carrera'=>'required|string|max:11',
+            'id_materia'=>'required',
             'id_clasifidewey'=>'required|string|max:11',
             'paginas'=>'required|string|max:20',
             'ejemplares'=>'required|string|max:11',
             // 'resenia'=>'required|string|max:900',
-            'ubicacion'=>'required|string|max:90',
+            'columna'=>'required|string|max:90',
+            'fila'=>'required|string|max:90',
             'describe_estado'=>'required|string|max:900',
             'foto'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
@@ -102,6 +102,7 @@ class ApiLibrosController extends Controller
         }
         ejemplares::insert($ejemplar);
 
+
         //return response()->json($ejemplar);
          return redirect('libro')->with('mensaje','Libro agregado con éxito');
     }
@@ -126,10 +127,9 @@ class ApiLibrosController extends Controller
     public function edit($id)
     {
         //
-        $carreras= CarreraController::all();
         $materias = MateriaController::all();
         $libro=Libro::findOrFail($id);
-        return view('libro.edit', compact('libro', 'carreras','materias') );
+        return view('libro.edit', compact('libro', 'materias') );
     }
 
     /**
@@ -148,19 +148,19 @@ class ApiLibrosController extends Controller
             'autor'=>'required|string|max:300',
             'editorial'=>'required|string|max:300',
             'edicion'=>'required|string|max:80',
-            'id_carrera'=>'required|string|max:11',
             'id_clasifidewey'=>'required|string|max:11',
             'paginas'=>'required|string|max:20',
             'ejemplares'=>'required|string|max:11',
             // 'resenia'=>'required|string|max:900',
-            'ubicacion'=>'required|string|max:90',
+            'columna'=>'required|string|max:90',
+            'fila'=>'required|string|max:90',
             'describe_estado'=>'required|string|max:900',
         ];
         $mensaje=[
             'required'=>'El :attribute es requerido',
         ];
         if($request->hasFile('foto')) {
-            $campos=[ 'foto'=>'required|max:10000|mimes:jpeg,png,jpg' ];
+
             $mensaje=[ 'foto.required'=>'La foto es requerida' ];
         }
 
@@ -196,6 +196,6 @@ class ApiLibrosController extends Controller
         if(Storage::delete('public/'.$libro->foto)){
         Libro::destroy($id);
         }
-        return redirect('libro')->with('mensaje','Libro Borrado');
+        return redirect('libro')->with('eliminar','ok');
     }
 }
