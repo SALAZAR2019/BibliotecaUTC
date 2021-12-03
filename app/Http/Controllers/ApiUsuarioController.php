@@ -35,7 +35,20 @@ class ApiUsuarioController extends Controller
             'correo'=>'required',
             'telefono'=>'required',
             'id_tipo'=>'required'
-        ]);
+        ],
+        [
+            'id_usuario.required' =>'La credencial requiere 10 dígitos *',
+            'nombres.required' => 'El campo nombre es requerido *',
+            'apellido_p.required' => 'El campo apellido paterno es requerido *',
+            'apellido_m.required' => 'El campo apellido paterno es requerido *',
+            'direccion.required' => 'El campo dirección es requerido *',
+            'correo.required' => 'El campo correo es requerido *',
+            'telefono.required' => 'El campo teléfono es requerido *',
+            'id_tipo.required' => 'Debe seleccionar un tipo de usuario'
+
+
+        ],
+    );
         $usuario= new Usuarios;
         $usuario->id_usuario=$request->get('id_usuario');
         $usuario->nombres=$request->get('nombres');
@@ -71,16 +84,32 @@ class ApiUsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'id_usuario'=>'required',
-        //     'nombres'=>'required',
-        //     'apellido_p'=>'required',
-        //     'apellido_m'=>'required',
-        //     'direccion'=>'required',
-        //     'correo'=>'required',
-        //     'telefono'=>'required',
-        //     // 'id_tipo'=>'required'
-        // ]);
+
+        
+        $request->validate([
+            
+            'id_usuario'=>'required',
+            'nombres'=>'required',
+            'apellido_p'=>'required',
+            'apellido_m'=>'required',
+            'direccion'=>'required',
+            'correo'=>'required',
+            'telefono'=>'required',
+            'id_tipo'=>'required'
+        ],
+        [
+            'id_usuario.required' =>'La credencial requiere 10 d+igitos *',
+            'nombres.required' => 'El campo nombre es requerido *',
+            'apellido_p.required' => 'El campo apellido paerno es requerido *',
+            'apellido_m.required' => 'El campo apellido paerno es requerido *',
+            'direccion.required' => 'El campo dirección es requerido *',
+            'correo.required' => 'El campo correo es requerido *',
+            'telefono.required' => 'El campo teléfono es requerido *',
+            'id_tipo.required' => 'Debe seleccionar un tipo de usuario'
+  
+  
+          ],  
+        );
         $usuario= Usuarios::find($id);
 
         $usuario->id_usuario=$request->get('id_usuario');

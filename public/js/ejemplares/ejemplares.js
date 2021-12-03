@@ -79,8 +79,8 @@ function init()
            //eliminar user
            deleteEj:function(id){
             swal({
-                title: "Se eliminará el usuario",
-                text: "Está seguro de eliminar el usuario?",
+                title: "Se eliminará el ejemplar",
+                text: "Está seguro de eliminar el ejemplar?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -92,11 +92,11 @@ function init()
                         this.getEjemplares();
                         
                     });
-                  swal("El usuario fue eliminado exitosamente", {
+                  swal("El ejemplar fue eliminado exitosamente", {
                     icon: "success",
                   });
                 } else {
-                  swal("El usuario no se ha eliminado");
+                  swal("El ejemplar no se ha eliminado");
                 }
               });
 

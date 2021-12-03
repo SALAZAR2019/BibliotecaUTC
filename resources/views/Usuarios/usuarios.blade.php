@@ -2,6 +2,15 @@
 @section('titulo','Lectores')
 @section('contenido')
 
+<script type="text/javascript">
+        function soloNumeros(e) {
+            var keynum = window.event ? window.event.keyCode : e.which;
+            if ((keynum == 8) || (keynum == 46))
+                return true;
+            return /\d/.test(String.fromCharCode(keynum));
+        }
+    </script>
+
 <div class="container" id="lector">
     <div class="row">
         <div class="col-12 text-center">
@@ -66,73 +75,79 @@
 
       			<!-- Elementos del body -->
       			<div class="modal-body">
-				  	<form class="needs-validation" novalidate>
+				  	<form class="needs-validation" >
 						
 					  	<div class="form-row">
 							
 							<div class="col-md-4 mb-3">
 								<label for="validationCustom02">Nombre</label>
-								<input type="text" placeholder="Nombre o nombres" class="form-control" id="validationCustom02" v-model="nombres" class="form-control" required>
+								<input type="text" placeholder="Nombre o nombres" class="form-control" id="validationCustom01" v-model="nombres" class="form-control" required>
 								<div class="valid-feedback">
 									Ok
 								</div>
+								<div v-if="errors && errors.nombres"><p class="small text-danger">@{{errors.nombres[0]}}</p></div>
 							</div>
 							<div class="col-md-4 mb-3">
-								<label for="validationCustom02">Apellido Paterno</label>
-								<input type="text" placeholder="Escriba su pellido paterno" class="form-control" id="validationCustom02" v-model="apellido_p" class="form-control" required>
-								<div class="valid-feedback">
-									Ok
-								</div>
+								<label for="">Apellido Paterno</label>
+								<input type="text" placeholder="Escriba su pellido paterno" class="form-control" id="" v-model="apellido_p" class="form-control" required>
+
+								<div v-if="errors && errors.nombres"><p class="small text-danger">@{{errors.apellido_p[0]}}</p></div>
 							</div>
 							<div class="col-md-4 mb-3">
 								<label for="validationCustom02">Apellido Materno</label>
-								<input type="text" placeholder="Escriba su apellido materno" class="form-control" id="validationCustom02" v-model="apellido_m" class="form-control" required>
+								<input type="text" placeholder="Escriba su apellido materno" class="form-control" id="validationCustom03" v-model="apellido_m" class="form-control" required>
 								<div class="valid-feedback">
 									Ok
 								</div>
+								<div v-if="errors && errors.nombres"><p class="small text-danger">@{{errors.apellido_m[0]}}</p></div>
 							</div>
 							
 						</div>
 						<div class="form-row">
 							<div class="col-md-6 mb-3">
 								<label for="validationCustom01">DNI</label>
-								<input type="text" placeholder="Escriba la matricula ó cédula" class="form-control" id="validationCustom01" v-model="id_usuario" class="form-control" required>
+								<input type="number" placeholder="Escriba la cédula o matrícula " min="0" oninput="if( this.value.length > 8 ) this.value = this.value.slice(0,8)" class="form-control" id="validationCustom04" v-model="id_usuario" class="form-control" required>
 								<div class="valid-feedback">
-									Asegurese que sean 8 caracteres
+									Ok
 								</div>
+								<div v-if="errors && errors.nombres"><p class="small text-danger">@{{errors.id_usuario[0]}}</p></div>
 							</div>
 							<div class="col-md-6 mb-3">
 								<label for="validationCustom03">Tipo de usuario</label>
-									<select class="form-control" id="validationCustom02" v-model="id_tipo" Required>
+									<select class="form-control" id="validationCustom05" v-model="id_tipo" required>
 										<option disabled value="">Seleccione un tipo</option>
 										<option v-for="usuarios in tipos" v-bind:value="usuarios.id_tipo">@{{usuarios.nombre_tipo}}</option>
 									</select>	
 									<div class="valid-feedback">
 										Ok
 									</div>
+									<div v-if="errors && errors.nombres"><p class="small text-danger">@{{errors.id_tipo[0]}}</p></div>
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="col-md-4 mb-3">
-								<label for="validationCustom03">Deireccion</label>
-								<input type="text" placeholder="Escriba su dirección completa" class="form-control" id="validationCustom03" v-model="direccion" class="form-control" required>
+								<label for="validationCustom03">Direccion</label>
+								<input type="text" placeholder="Escriba su dirección completa" class="form-control" id="validationCustom06" v-model="direccion" class="form-control" required>
 								<div class="invalid-feedback">
 									Calle, N° Int - N° Ext, Cruzamientos
 								</div>
+								<div v-if="errors && errors.nombres"><p class="small text-danger">@{{errors.direccion[0]}}</p></div>
 							</div>
 							<div class="col-md-4 mb-3">
 								<label for="validationCustom04">Correo</label>
-								<input type="text" placeholder="Ingrese un correo" class="form-control" id="validationCustom04" v-model="correo" class="form-control" required>
+								<input type="email" id="t2" id="validationCustom07" name="email" placeholder="Ingrese un correo" v-model="correo" class="form-control" required>
 								<div class="invalid-feedback">
 									ex@abc.xyz
 								</div>
+								<div v-if="errors && errors.nombres"><p class="small text-danger">@{{errors.correo[0]}}</p></div>
 							</div>
 							<div class="col-md-4 mb-3">
 								<label for="validationCustom04">Telefono</label>
-								<input type="text" placeholder="Ingre un número telefónico" class="form-control" id="validationCustom04" v-model="telefono" class="form-control" required>
+								<input type="number" placeholder="Ingre un número telefónico" min="0" oninput="if( this.value.length > 10 ) this.value = this.value.slice(0,10)" class="form-control" id="validationCustom08" v-model="telefono" required>
 								<div class="invalid-feedback">
 									Ok
 								</div>
+								<div v-if="errors && errors.nombres"><p class="small text-danger">@{{errors.telefono[0]}}</p></div>
 							</div>
 						</div>
 						

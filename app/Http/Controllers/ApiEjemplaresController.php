@@ -72,17 +72,6 @@ class ApiEjemplaresController extends Controller
      */
     public function destroy($id)
     {
-        $libro = DB::table('Libros as a')
-        ->join('ejemplares as b','a.ISBN','=','b.ISBN')
-        ->select('b.activo')
-        ->where('b.id_ejemplar','=',$id)
-        ->first();
-
-        $cant = DB::table('Libros as a')
-        ->join('ejemplares as b','a.ISBN','=','b.ISBN')
-        ->select('a.ejemplares')
-        ->where('b.id_ejemplar','=',$id)
-        ->first();
         
         $datos = DB::table('Libros as a')
         ->join('ejemplares as b','a.ISBN','=','b.ISBN')

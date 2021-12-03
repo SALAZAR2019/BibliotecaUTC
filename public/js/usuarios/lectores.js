@@ -26,7 +26,7 @@ function init()
             correo:'',
             telefono:'',
             id_tipo:'',
-
+            errors:[],
             id_auxDNI:'',
             editar:false
 
@@ -63,6 +63,7 @@ function init()
                 this.correo='',
                 this.telefono='',
                 this.id_tipo='',
+                this.errors=""
                $('#add_lector').modal('hide');
             },
             addLector:function(){
@@ -86,14 +87,20 @@ function init()
                         showConfirmButton: false,
                         timer: 1900
                     });
-                },function(reason){
-                    Swal.fire({
-                        type: 'error',
-                        title: 'Error',
-                        text: 'Campos vacios',
-                        footer: 'Llene todos los campos para continuar'
-                      });
+                   
+                    this.errors="";
+    
+                })
+                .catch(function(error){
+                    if(error.status=== 422){
+                        this.errors= error.data.errors;
+                    }else{
+                        this.errors="";
+                    }
+                    
                 });
+                
+                
             }, //fin del agregar lector
 
             //mostrar modal de editar

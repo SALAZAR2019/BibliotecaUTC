@@ -26,8 +26,9 @@
 						<th width="15%">FOLIO</th>
 						<th width="15%">USUARIO</th>
 						<th width="15%">FECHA PRESTAMO</th>
-						<th width="15%">EJEMPLAR</th>
+						
 						<th width="15%">NOMBRE DEL LIBRO</th>
+            <th width="15%">FECHA DEVOLUCIÓN</th>
             <th width="15%">REGISTRAR DEVOLUCIÓN</th>
 					</thead>
 					<tbody>
