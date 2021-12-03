@@ -65,6 +65,15 @@ class ApiLibrosController extends Controller
             'foto'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
         $mensaje=[
+            'id_clasifidewey.required'=>'El dewey es requerido',
+            'edicion.required'=>'El número de edición del libro es requerido',
+            'paginas.required'=>'El número de paginas del libro es requerido',
+            'ISBN.required'=>'El ISBN es requerido',
+            'columna.required'=>'El campo columna es requerido',
+            'titulo.required'=>'El título del libro es requerido',
+            'ejemplares.required'=>'El número de ejemplares es requerido',
+            'fila.required'=>'Campo fila es requerido',
+            'describe_estado.required'=>'Describir el estado del libro es requerido',
             'required'=>'El :attribute es requerido',
             'foto.required'=>'La foto es requerida'
         ];

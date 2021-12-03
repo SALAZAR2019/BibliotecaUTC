@@ -17,26 +17,26 @@
 
 <div class="form-group">
 <label for="ISBN"> ISBN </label>
-<input class="form-control" type="number" name="ISBN"  id="ISBN"
+<input class="form-control" type="number" name="ISBN"  id="ISBN" required
 value="{{ isset($libro -> ISBN)?$libro -> ISBN:old('ISBN') }}" >
 </div>
 
 <div class="form-group">
 <label for="titulo"> Título </label>
-<input class="form-control" type="text"  name="titulo"  id="titulo"
+<input class="form-control" type="text"  name="titulo"  id="titulo" required
 value="{{ isset($libro -> titulo)?$libro->titulo:old('titulo')}}" >
 </div>
 
 
 <div class="form-group">
     <label for="autor"> Nombre del autor </label>
-    <input class="form-control" type="text"  name="autor"  id="autor"
+    <input class="form-control" type="text"  name="autor"  id="autor" required
     value="{{ isset($libro -> autor)?$libro->autor:old('autor')}}" >
 </div>
 
     <div class="form-group">
         <label for="editorial"> Editorial del libro </label>
-        <input class="form-control" type="text"  name="editorial"  id="editorial"
+        <input class="form-control" type="text"  name="editorial"  id="editorial" required
         value="{{ isset($libro -> editorial)?$libro->editorial:old('editorial')}}" >
 </div>
 
@@ -51,7 +51,7 @@ value="{{ isset($libro -> titulo)?$libro->titulo:old('titulo')}}" >
 
 <div class="form-group">
 <label for="edicion"> Edición</label>
-<input class="form-control" type="number"  min="0" name="edicion"  id="edicion"
+<input class="form-control" type="number"  min="0" name="edicion"  id="edicion" required
 value="{{ isset($libro -> edicion)?$libro->edicion:old('edicion')}}" >
 </div>
 </div>
@@ -79,25 +79,25 @@ value="{{ isset($libro -> edicion)?$libro->edicion:old('edicion')}}" >
 
 <div class="form-group">
 <label for="id_clasifidewey"> Dewey </label>
-<input class="form-control" type="number"  min="0" name="id_clasifidewey"  id="id_clasifidewey"
+<input class="form-control" type="number"  min="0" name="id_clasifidewey"  id="id_clasifidewey" required
 value="{{ isset($libro -> id_clasifidewey)?$libro -> id_clasifidewey:old('id_clasifidewey') }}">
 </div>
 
 <div class="form-group">
 <label for="paginas"> Páginas </label>
-<input class="form-control" type="number"  min="0" name="paginas"  id="paginas"
+<input class="form-control" type="number"  min="0" name="paginas"  id="paginas" required
 value="{{ isset($libro -> paginas)?$libro -> paginas:old('paginas')}}" >
 </div>
 
 <div class="form-group">
 <label for="ejemplares"> Ejemplar </label>
-<input class="form-control" type="number" min="0" name="ejemplares"  id="ejemplares"
+<input class="form-control" type="number" min="0" name="ejemplares"  id="ejemplares" required
 value="{{ isset($libro -> ejemplares)?$libro->ejemplares:old('ejemplares')}}" >
 </div>
 
 <div class="form-group">
     <label for="resenia"> Reseña </label>
-    <input class="form-control" type="text"  name="resenia"  id="resenia"
+    <input class="form-control" type="text"  name="resenia"  id="resenia" required
     value="{{ isset($libro -> resenia)?$libro -> resenia:old('resenia') }}" >
     </div>
 
@@ -110,31 +110,27 @@ value="{{ isset($libro -> ejemplares)?$libro->ejemplares:old('ejemplares')}}" >
 
 <div class="form-group">
 <label for="columna"> Columna </label>
-<input class="form-control" type="text"  value="Utc/Fam/" name="columna"  id="columna"
+<input class="form-control" type="text"  value="Utc/Fam/" name="columna"  id="columna" required
 value="{{ isset($libro -> columna)?$libro -> columna:old('columna')}}" >
 </div>
 
 <div class="form-group">
     <label for="fila"> Fila </label>
-    <input class="form-control" type="text"  name="fila"  id="fila"
+    <input class="form-control" type="text"  name="fila"  id="fila" required
     value="{{ isset($libro -> fila)?$libro -> fila:old('fila')}}" >
     </div>
 
 <div class="form-group">
 <label for="describe_estado"> Estado del libro</label>
-<input class="form-control" type="text"  name="describe_estado"  id="describe_estado"
+<input class="form-control" type="text"  name="describe_estado"  id="describe_estado" required
 value="{{ isset($libro -> describe_estado)?$libro -> describe_estado:old('describe_estado')}}" >
 </div>
 
-<!--<div class="form-group">
-<label for="activo"> Activo </label>
-<input class="form-control" type="checkbox"  name="activo"  id="activo"
-value="{{ isset($libro -> activo)?$libro -> activo:old('activo')}}">
-</div>-->
+
 
 <div class="checkbox form-group">
     <label>
-        <input type="hidden" name="activo" value="0" >
+        <input type="hidden" name="activo" value="0" required>
     {!! Form::checkbox('activo', 1) !!}
      Activo
     </label>
