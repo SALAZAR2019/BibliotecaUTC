@@ -91,11 +91,11 @@ class ApiLibrosController extends Controller
         $ISBN = $request->get('ISBN');
         $ejemplares=$request->get('ejemplares');
         //$ejemplares=[];
-        for($i=0;$i<($ejemplares);$i++)
+        for($i=1;$i<=($ejemplares);$i++)
         {
             $ejemplar[]=[
                 //'id_ejemplar'=>$ejemplares,
-                'codigo'=>$ISBN+$i,
+                'codigo'=>$ISBN.'-'.$i,
                 'ISBN'=>$ISBN,
                 'titulo'=>$titulo,
                 'descripcion'=>$resenia,
