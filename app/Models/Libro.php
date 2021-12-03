@@ -24,7 +24,6 @@ class Libro extends Model
         'autor',
         'id_editorial',
         'edicion',
-        'id_carrera',
         'id_materia',
         'id_clasifidewey',
         'paginas',
@@ -37,10 +36,7 @@ class Libro extends Model
         'activo',
     ];
 
-    public function carreras()
-    {
-        return $this->belongsTo(CarreraController::class, 'id_carrera');
-    }
+
 
     public function materias()
     {

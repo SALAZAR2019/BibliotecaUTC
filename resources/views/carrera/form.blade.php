@@ -16,12 +16,6 @@
 value="{{ isset($carrera -> nom_carrera)?$carrera -> nom_carrera:old('nom_carrera') }}">
 </div>
 
-
-<!--<div class="form-group">
-<label for="activo"> ACTIVO </label>
-<input class="form-control" type="checkbox"  name="activo"  id="activo"
-value="{{ isset($autor -> activo)?$autor->activo:old('activo')}}">
-</div>-->
 <div class="checkbox">
     <label>
         <input type="hidden" name="activo" value="0">

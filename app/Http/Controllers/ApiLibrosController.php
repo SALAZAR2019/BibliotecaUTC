@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\Libro;
-use App\Models\CarreraController;
 use App\Models\MateriaController;
 use App\Models\ejemplares;
 use Illuminate\Http\Request;
@@ -21,10 +20,9 @@ class ApiLibrosController extends Controller
         //
         $titulo =$request->get('buscarpor');
 
-        $carreras= CarreraController::all();
         $materias = MateriaController::all();
         $datos['libros']=Libro::where('titulo','like',"%$titulo%")->paginate(5);
-        return view('libro.index',$datos, compact('carreras','materias'));
+        return view('libro.index',$datos, compact('materias'));
     }
 
     /**
@@ -35,9 +33,8 @@ class ApiLibrosController extends Controller
     public function create()
     {
         //
-        $carreras= CarreraController::all();
         $materias = MateriaController::all();
-        return view('libro.create', compact('carreras','materias'));
+        return view('libro.create', compact('materias'));
     }
 
     /**
@@ -57,7 +54,6 @@ class ApiLibrosController extends Controller
             'autor'=>'required|string|max:300',
             'editorial'=>'required|string|max:300',
             'edicion'=>'required|string|max:80',
-            'id_carrera'=>'required',
             'id_materia'=>'required',
             'id_clasifidewey'=>'required|string|max:11',
             'paginas'=>'required|string|max:20',
@@ -131,10 +127,9 @@ class ApiLibrosController extends Controller
     public function edit($id)
     {
         //
-        $carreras= CarreraController::all();
         $materias = MateriaController::all();
         $libro=Libro::findOrFail($id);
-        return view('libro.edit', compact('libro', 'carreras','materias') );
+        return view('libro.edit', compact('libro', 'materias') );
     }
 
     /**

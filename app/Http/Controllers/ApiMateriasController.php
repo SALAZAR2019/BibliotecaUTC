@@ -112,7 +112,7 @@ class ApiMateriasController extends Controller
     {
         //
         MateriaController::destroy($id);
-            
-        return redirect('materia')->with('mensaje','materia Borrada con exito');
+
+        return redirect('materia')->with('eliminar','ok');
     }
 }

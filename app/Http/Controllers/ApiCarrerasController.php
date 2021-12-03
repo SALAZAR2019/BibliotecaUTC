@@ -114,6 +114,6 @@ class ApiCarrerasController extends Controller
         //
         CarreraController::destroy($id);
 
-        return redirect('carrera')->with('mensaje','carrera Borrada con exito');
+        return redirect('carrera')->with('eliminar','ok');
     }
 }

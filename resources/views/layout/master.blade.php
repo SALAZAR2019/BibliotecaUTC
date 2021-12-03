@@ -142,19 +142,12 @@
                   </a>
                 </li>
               </ul> -->
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{url('carrera')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Carreras</p>
-                  </a>
-                </li>
-              </ul>
+
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{url('materia')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Materias</p>
+                  <p>Sección</p>
                   </a>
                 </li>
               </ul>

@@ -39,8 +39,7 @@
             <th>Autor</th>
             <th>Editorial</th>
             <th>Edicion</th>
-            <th>Carrera</th>
-            <th>Materia</th>
+            <th>Sección</th>
             <th>Dewey</th>
             <th>Paginas</th>
             <th>Ejemplar</th>
@@ -65,7 +64,6 @@
             <td>{{ $libro -> autor}}</td>
             <td>{{ $libro -> editorial}}</td>
             <td>{{ $libro -> edicion}}</td>
-            <td><label class="label label-info">{{ $libro->carreras->nom_carrera}}</label></td>
             <td><label class="label label-info">{{ $libro->materias->nom_materia}}</label></td>
             <td>{{ $libro -> id_clasifidewey}}</td>
             <td>{{ $libro -> paginas}}</td>
@@ -80,7 +78,6 @@
             <a href="{{ url('/libro/'.$libro->ISBN.'/edit' ) }}" class="btn btn-primary">
             Editar
             </a>
-|
             <form action="{{ url ('/libro/'.$libro->ISBN ) }}" method="post" class="d-inline formulario-eliminar">
             @csrf
             {{ method_field('DELETE') }}
