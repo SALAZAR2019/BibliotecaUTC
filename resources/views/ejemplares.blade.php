@@ -28,8 +28,8 @@
 							<td>@{{ej.codigo}}</td>
                             <td>@{{ej.titulo}}</td>
                             <!-- <td>@{{ej.prestado}}</td> -->
-							<td v-if="ej.prestado == 1">Si</td>
-							<td v-if="ej.prestado == 0">No</td>
+							<td v-if="ej.prestado == 1">No</td>
+							<td v-if="ej.prestado == 0">Si</td>
 							<td>@{{ej.descripcion}}</td>
 							
                             
