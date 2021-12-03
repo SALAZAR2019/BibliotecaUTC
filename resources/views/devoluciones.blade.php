@@ -26,7 +26,6 @@
 						<th width="15%">FOLIO</th>
 						<th width="15%">USUARIO</th>
 						<th width="15%">FECHA PRESTAMO</th>
-						<th width="15%">EJEMPLAR</th>
 						<th width="15%">NOMBRE DEL LIBRO</th>
             <th width="15%">REGISTRAR DEVOLUCIÓN</th>
 					</thead>
@@ -37,7 +36,6 @@
 							<td>@{{v.id_usuario}}</td>
               <td>@{{v.fecha_prestamo}}</td>
               <td>@{{v.titulo}}</td>
-              <td >@{{v.fecha_devolucion}}</td>
 							<td>
 								<span class="btn btn-outline-primary" @click="dev(v.id_prestamo)"><i class="fa fa-edit"></i></span>
 							</td>
