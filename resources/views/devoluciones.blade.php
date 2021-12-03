@@ -22,10 +22,10 @@
 			<div class="col-12">
 				<table id="tabla-dev" class="table table-bordered">
 					<thead style="background: #ffffcc">
-						<th width="15%">ID PRESTAMO</th>
+						<th width="15%">ID PRÉSTAMO</th>
 						<th width="15%">FOLIO</th>
 						<th width="15%">USUARIO</th>
-						<th width="15%">FECHA PRESTAMO</th>
+						<th width="15%">FECHA PRÉSTAMO</th>
 						<th width="15%">NOMBRE DEL LIBRO</th>
             <th width="15%">REGISTRAR DEVOLUCIÓN</th>
 					</thead>
@@ -72,17 +72,17 @@
                         <div class="col-sm-6">
                           <label>ID EJEMPLAR</label>
                             <p>@{{id_ejemplar}}</p>
-                          <label>ID DEL PRESTAMO</label>
+                          <label>ID DEL PRÉSTAMO</label>
                             <p>@{{id_prestamo}}</p>
-                          <label>TITULO</label>
+                          <label>TÍTULO</label>
                             <p>@{{titulo}}</p>
                           <label>ID USUARIO</label>
                             <p>@{{id_usuario}}</p>
                         </div>
                         <div class="col-sm-6">
-                          <label>fecha del prestamo</label>
+                          <label>FECHA DEL PRÉSTAMO</label>
                           <p>@{{fecha_prestamo}}</p>
-                          <label>fecha Actual</label>
+                          <label>FECHA ACTUAL</label>
                           <p>@{{fecha_actual}}</p>
                         </div>
                       </div>  

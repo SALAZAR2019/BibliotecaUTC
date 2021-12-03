@@ -4,7 +4,7 @@
 <div class="container" id="prestamo">
     <div class="row">
         <div class="col-12">
-            <h1>PRESTAMO DE LIBROS</h1>
+            <h1>PRÉSTAMO DE LIBROS</h1>
         </div>
     </div>
     <div class="row g-2">
@@ -35,8 +35,8 @@
 					<thead style="background: #ffffcc">
 						<th width="15%">ISBN</th>
 						<th width="15%">CÓDIGO</th>
-						<th width="15%">TITULO</th>
-						<th width="15%">OPCIONES</th>
+						<th width="15%">TíTULO</th>
+						<th width="15%">OPCIÓNES</th>
 					</thead>
 					<tbody>
 						<tr v-for="(v,index) in prestamos">
