@@ -35,15 +35,15 @@
 
             <th>Foto</th>
             <th>ISBN</th>
-            <th>Titulo</th>
+            <th>Título</th>
             <th>Autor</th>
             <th>Editorial</th>
-            <th>Edicion</th>
+            <th>Edición</th>
             <th>Sección</th>
             <th>Dewey</th>
-            <th>Paginas</th>
+            <th>Páginas</th>
             <th>Ejemplar</th>
-            <th>Resenia</th>
+            <th>Reseña</th>
             <th>Columna</th>
             <th>Fila</th>
             <th>Estado del libro</th>

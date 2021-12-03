@@ -22,7 +22,7 @@ value="{{ isset($libro -> ISBN)?$libro -> ISBN:old('ISBN') }}" >
 </div>
 
 <div class="form-group">
-<label for="titulo"> Titulo </label>
+<label for="titulo"> Título </label>
 <input class="form-control" type="text"  name="titulo"  id="titulo"
 value="{{ isset($libro -> titulo)?$libro->titulo:old('titulo')}}" >
 </div>
@@ -51,7 +51,7 @@ value="{{ isset($libro -> titulo)?$libro->titulo:old('titulo')}}" >
 
 <div class="form-group">
 <label for="edicion"> Edición</label>
-<input class="form-control" type="number"  name="edicion"  id="edicion"
+<input class="form-control" type="number"  min="0" name="edicion"  id="edicion"
 value="{{ isset($libro -> edicion)?$libro->edicion:old('edicion')}}" >
 </div>
 </div>
@@ -84,7 +84,7 @@ value="{{ isset($libro -> id_clasifidewey)?$libro -> id_clasifidewey:old('id_cla
 </div>
 
 <div class="form-group">
-<label for="paginas"> Paginas </label>
+<label for="paginas"> Páginas </label>
 <input class="form-control" type="number"  min="0" name="paginas"  id="paginas"
 value="{{ isset($libro -> paginas)?$libro -> paginas:old('paginas')}}" >
 </div>
@@ -121,7 +121,7 @@ value="{{ isset($libro -> columna)?$libro -> columna:old('columna')}}" >
     </div>
 
 <div class="form-group">
-<label for="describe_estado"> Estado </label>
+<label for="describe_estado"> Estado del libro</label>
 <input class="form-control" type="text"  name="describe_estado"  id="describe_estado"
 value="{{ isset($libro -> describe_estado)?$libro -> describe_estado:old('describe_estado')}}" >
 </div>
